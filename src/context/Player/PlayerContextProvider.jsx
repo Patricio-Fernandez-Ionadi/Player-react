@@ -1,5 +1,5 @@
 // import Context file
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { PlayerContext } from './PlayerContext'
 
 const turnBooleanState = (state, updater) => updater(!state)
@@ -11,32 +11,53 @@ export const PlayerContextProvider = ({ children }, songs) => {
   const [isPlaying, setIsPlaying] = useState(false)
   // volume
   const [playerVolume, setPlayerVolume] = useState(defaultVolume)
+  // is muted?
+  const [muted, setMuted] = useState(false)
 
-  // audio element where the song will be playing
+  // AUDIO ELEMENT
   const track = useRef()
 
-  // turn the player state (true o false) and pauses the audio or reload it and play it
+  // turn the player state (true o false) and pauses the audio play it
   const playPause = () => {
     turnBooleanState(isPlaying, setIsPlaying)
-    isPlaying
-      ? track.current.pause()
-      : (track.current.load(),
-        // (track.current.volume = volume),
-        track.current.play())
+    isPlaying ? track.current.pause() : track.current.play()
+    console.log(track.current.currentTime)
     return undefined
   }
+  const prev = () => {
+    if (track.current.currentTime > 0) {
+      track.current.load()
+      if (isPlaying) {
+        setTimeout(() => {
+          track.current.play()
+        }, 1000)
+      }
+    }
+  }
 
-  // track.current?.volume = playerVolume
+  // handles the track volume from 0 to 1
+  const handleVolume = (val) => {
+    setPlayerVolume(Number(val) / 100)
+    track.current.volume = playerVolume
+  }
+  // turn the mute / unmute
+  const turnMute = () => {
+    turnBooleanState(muted, setMuted)
+    track.current.muted = !muted
+    return undefined
+  }
 
   const playerContextObject = {
     playPause,
     isPlaying,
+    prev,
     volume: {
       value: playerVolume,
-      setVolume: (val) => {
-        setPlayerVolume(Number(val) / 100)
-        track.current.volume = playerVolume
-      },
+      setVolume: handleVolume,
+    },
+    mute: {
+      value: muted,
+      turn: turnMute,
     },
   }
 
@@ -58,6 +79,6 @@ interface Song {
   duration:number (ms)
   defaultMuted:boolean (false)
   autoplay: boolean (false)
-  format: track.current.src.split('.').pop()
+  // format: track.current.src.split('.').pop()
   }
 */

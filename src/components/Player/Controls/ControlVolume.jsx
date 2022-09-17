@@ -1,5 +1,6 @@
+import { useEffect, useRef } from 'react'
 import { usePlayerContext } from 'context'
-import React, { useEffect, useRef } from 'react'
+
 export const ControlVolume = () => {
   const { volume } = usePlayerContext()
   const volumeControl = useRef()
@@ -11,8 +12,6 @@ export const ControlVolume = () => {
   const hanldeVolumeChange = (e) => volume.setVolume(e.target.value)
 
   return (
-    <div>
-      <input type='range' ref={volumeControl} onChange={hanldeVolumeChange} />
-    </div>
+    <input type='range' ref={volumeControl} onChange={hanldeVolumeChange} />
   )
 }

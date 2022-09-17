@@ -1,9 +1,11 @@
 import React from 'react'
-import { Navbar } from '../components'
+import { Navbar, Player } from '../components'
+
 export const App = () => {
   return (
-    <div>
+    <>
       <Navbar />
-    </div>
+      <Player />
+    </>
   )
 }
