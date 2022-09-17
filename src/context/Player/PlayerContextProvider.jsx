@@ -1,16 +1,19 @@
 // import Context file
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { PlayerContext } from './PlayerContext'
 
 const turnBooleanState = (state, updater) => updater(!state)
+const defaultVolume = '1'
 
 export const PlayerContextProvider = ({ children }, songs) => {
-  // state of player
+  // STATE OF PLAYER
+  // playing?
   const [isPlaying, setIsPlaying] = useState(false)
+  // volume
+  const [playerVolume, setPlayerVolume] = useState(defaultVolume)
+
   // audio element where the song will be playing
   const track = useRef()
-
-  const volume = 0.05
 
   // turn the player state (true o false) and pauses the audio or reload it and play it
   const playPause = () => {
@@ -18,18 +21,27 @@ export const PlayerContextProvider = ({ children }, songs) => {
     isPlaying
       ? track.current.pause()
       : (track.current.load(),
-        (track.current.volume = volume),
+        // (track.current.volume = volume),
         track.current.play())
     return undefined
   }
 
+  // track.current?.volume = playerVolume
+
+  const playerContextObject = {
+    playPause,
+    isPlaying,
+    volume: {
+      value: playerVolume,
+      setVolume: (val) => {
+        setPlayerVolume(Number(val) / 100)
+        track.current.volume = playerVolume
+      },
+    },
+  }
+
   return (
-    <PlayerContext.Provider
-      value={{
-        playPause,
-        isPlaying,
-      }}
-    >
+    <PlayerContext.Provider value={playerContextObject}>
       {children}
       <audio ref={track} src='assets/media/hardcore.mp3' />
     </PlayerContext.Provider>

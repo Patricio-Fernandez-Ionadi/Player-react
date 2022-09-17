@@ -4,7 +4,7 @@ export const Navbar = () => {
   return (
     <div>
       <Player />
-      <Menu />
+      {/* <Menu /> */}
     </div>
   )
 }
