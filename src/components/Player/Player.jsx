@@ -4,6 +4,7 @@ import {
   ControlPrev,
   ControlVolume,
 } from './Controls'
+import { ControlNext } from './Controls/ControlNext'
 
 export const Player = () => {
   return (
@@ -14,6 +15,7 @@ export const Player = () => {
       <ControlMute />
       <ControlPrev />
       <ControlPlayPause />
+      <ControlNext />
     </div>
   )
 }

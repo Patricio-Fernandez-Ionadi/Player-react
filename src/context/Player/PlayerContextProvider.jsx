@@ -4,6 +4,9 @@ import { PlayerContext } from './PlayerContext'
 
 const turnBooleanState = (state, updater) => updater(!state)
 const defaultVolume = '1' // number from 0 to 1
+const getSongName = (list, position) => {
+  return list[position].split('/').pop().split('.', 1)[0]
+}
 
 export const PlayerContextProvider = ({ children, trackList }) => {
   // AUDIO ELEMENT
@@ -17,8 +20,14 @@ export const PlayerContextProvider = ({ children, trackList }) => {
   const [playerVolume, setPlayerVolume] = useState(defaultVolume)
   // is muted?
   const [muted, setMuted] = useState(false)
-  // current track
-  const [currentSong, setCurentSong] = useState(trackList[0])
+  // current track (default primer item de la lista)
+  const [currentSong, setCurentSong] = useState({
+    listPosition: 0,
+    index: 1,
+    song: getSongName(trackList, 0),
+    src: trackList[0],
+  })
+  console.log(currentSong)
   /* ------------------ ################## ------------------  */
 
   // CONTROLS
@@ -28,9 +37,32 @@ export const PlayerContextProvider = ({ children, trackList }) => {
     isPlaying ? track.current?.pause() : track.current?.play()
     return undefined
   }
-  const prev = () => {
+  const prev = (e) => {
+    console.log(e.detail) // veces seguidas que se recibe el evento de click
+
     if (track.current.currentTime > 0) {
       track.current.load()
+      if (isPlaying) {
+        setTimeout(() => {
+          track.current.play()
+        }, 1000)
+      }
+    }
+  }
+
+  const next = () => {
+    if (currentSong.index >= trackList.length) {
+      console.log('no se puede seguir subiendo')
+      return
+    } else {
+      setCurentSong((prev) => ({
+        listPosition: prev.listPosition + 1,
+        index: prev.index + 1,
+        song: getSongName(trackList, prev.listPosition + 1),
+        listPosition: prev.listPosition + 1,
+        src: trackList[prev.listPosition + 1],
+      }))
+
       if (isPlaying) {
         setTimeout(() => {
           track.current.play()
@@ -59,6 +91,8 @@ export const PlayerContextProvider = ({ children, trackList }) => {
     playPause,
     isPlaying,
     prev,
+    next,
+    currentSong,
     volume: {
       value: playerVolume,
       setVolume: handleVolume,
@@ -72,7 +106,7 @@ export const PlayerContextProvider = ({ children, trackList }) => {
   return (
     <PlayerContext.Provider value={playerContextObject}>
       {children}
-      <audio ref={track} src={currentSong} />
+      <audio ref={track} src={currentSong.src} />
     </PlayerContext.Provider>
   )
 }
