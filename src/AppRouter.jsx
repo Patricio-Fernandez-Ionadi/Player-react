@@ -19,7 +19,7 @@ export const trackList = [
 export const AppRouter = () => {
   return (
     <BrowserRouter>
-      <PlayerContextProvider>
+      <PlayerContextProvider trackList={trackList}>
         <App />
       </PlayerContextProvider>
     </BrowserRouter>

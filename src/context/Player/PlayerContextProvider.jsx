@@ -3,9 +3,13 @@ import { useRef, useState } from 'react'
 import { PlayerContext } from './PlayerContext'
 
 const turnBooleanState = (state, updater) => updater(!state)
-const defaultVolume = '1'
+const defaultVolume = '1' // number from 0 to 1
 
-export const PlayerContextProvider = ({ children }, songs) => {
+export const PlayerContextProvider = ({ children, trackList }) => {
+  // AUDIO ELEMENT
+  const track = useRef()
+  /* ------------------ ################## ------------------  */
+
   // STATE OF PLAYER
   // playing?
   const [isPlaying, setIsPlaying] = useState(false)
@@ -13,15 +17,15 @@ export const PlayerContextProvider = ({ children }, songs) => {
   const [playerVolume, setPlayerVolume] = useState(defaultVolume)
   // is muted?
   const [muted, setMuted] = useState(false)
+  // current track
+  const [currentSong, setCurentSong] = useState(trackList[0])
+  /* ------------------ ################## ------------------  */
 
-  // AUDIO ELEMENT
-  const track = useRef()
-
+  // CONTROLS
   // turn the player state (true o false) and pauses the audio play it
   const playPause = () => {
     turnBooleanState(isPlaying, setIsPlaying)
-    isPlaying ? track.current.pause() : track.current.play()
-    console.log(track.current.currentTime)
+    isPlaying ? track.current?.pause() : track.current?.play()
     return undefined
   }
   const prev = () => {
@@ -35,17 +39,21 @@ export const PlayerContextProvider = ({ children }, songs) => {
     }
   }
 
+  // VOLUME
   // handles the track volume from 0 to 1
   const handleVolume = (val) => {
     setPlayerVolume(Number(val) / 100)
     track.current.volume = playerVolume
   }
+
+  // MUTE
   // turn the mute / unmute
   const turnMute = () => {
     turnBooleanState(muted, setMuted)
     track.current.muted = !muted
     return undefined
   }
+  /* ------------------ ################## ------------------  */
 
   const playerContextObject = {
     playPause,
@@ -64,7 +72,7 @@ export const PlayerContextProvider = ({ children }, songs) => {
   return (
     <PlayerContext.Provider value={playerContextObject}>
       {children}
-      <audio ref={track} src='assets/media/hardcore.mp3' />
+      <audio ref={track} src={currentSong} />
     </PlayerContext.Provider>
   )
 }
