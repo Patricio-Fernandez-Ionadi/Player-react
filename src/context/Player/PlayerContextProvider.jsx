@@ -1,33 +1,44 @@
 // import Context file
-import { useRef, useState } from 'react'
+import { useAllSongs } from 'hooks/useAllSongs'
+import { useEffect, useRef, useState } from 'react'
 import { PlayerContext } from './PlayerContext'
 
 const turnBooleanState = (state, updater) => updater(!state)
 const defaultVolume = '1' // number from 0 to 1
-const getSongName = (list, position) => {
-  return list[position].split('/').pop().split('.', 1)[0]
-}
 
-export const PlayerContextProvider = ({ children, trackList }) => {
+export const PlayerContextProvider = ({ children }) => {
   // AUDIO ELEMENT
   const track = useRef()
+  // Songs List
+  const songs = useAllSongs()
   /* ------------------ ################## ------------------  */
 
-  // STATE OF PLAYER
   // playing?
   const [isPlaying, setIsPlaying] = useState(false)
   // volume
   const [playerVolume, setPlayerVolume] = useState(defaultVolume)
   // is muted?
   const [muted, setMuted] = useState(false)
-  // current track (default primer item de la lista)
+  // current track (default is the first item from the list) (it updates when 'songs' from api are ready, it get setted in useEffect)
   const [currentSong, setCurentSong] = useState({
     listPosition: 0,
     index: 1,
-    song: getSongName(trackList, 0),
-    src: trackList[0],
+    song: '',
+    src: '',
   })
-  console.log(currentSong)
+  /* ------------------ ################## ------------------  */
+
+  useEffect(() => {
+    if (songs) {
+      // when songs are ready sets the currentTrack state
+      setCurentSong({
+        listPosition: 0,
+        index: 1,
+        song: songs[0].name,
+        src: songs[0].src,
+      })
+    }
+  }, [songs])
   /* ------------------ ################## ------------------  */
 
   // CONTROLS
@@ -38,8 +49,7 @@ export const PlayerContextProvider = ({ children, trackList }) => {
     return undefined
   }
   const prev = (e) => {
-    console.log(e.detail) // veces seguidas que se recibe el evento de click
-
+    // console.log(e.detail) // veces seguidas que se recibe el evento de click
     if (track.current.currentTime > 0) {
       track.current.load()
       if (isPlaying) {
@@ -51,18 +61,17 @@ export const PlayerContextProvider = ({ children, trackList }) => {
   }
 
   const next = () => {
-    if (currentSong.index >= trackList.length) {
+    if (currentSong.index >= songs.length) {
       console.log('no se puede seguir subiendo')
       return
     } else {
       setCurentSong((prev) => ({
         listPosition: prev.listPosition + 1,
         index: prev.index + 1,
-        song: getSongName(trackList, prev.listPosition + 1),
+        song: songs[prev.listPosition + 1].name,
         listPosition: prev.listPosition + 1,
-        src: trackList[prev.listPosition + 1],
+        src: songs[prev.listPosition + 1].src,
       }))
-
       if (isPlaying) {
         setTimeout(() => {
           track.current.play()
@@ -88,11 +97,11 @@ export const PlayerContextProvider = ({ children, trackList }) => {
   /* ------------------ ################## ------------------  */
 
   const playerContextObject = {
-    playPause,
     isPlaying,
+    // currentSong,
+    playPause,
     prev,
     next,
-    currentSong,
     volume: {
       value: playerVolume,
       setVolume: handleVolume,
@@ -111,7 +120,9 @@ export const PlayerContextProvider = ({ children, trackList }) => {
   )
 }
 
-/* 
+/* ------------------ ################## ------------------ ################## ------------------ */
+
+/*
 interface Song {
   volume: number (from 0 to 1)
   muted: boolean (false)
