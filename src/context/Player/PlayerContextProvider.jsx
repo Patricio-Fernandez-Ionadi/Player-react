@@ -1,10 +1,20 @@
 // import Context file
-import { useAllSongs } from 'hooks/useAllSongs'
 import { useEffect, useRef, useState } from 'react'
+// context
 import { PlayerContext } from './PlayerContext'
+// hooks
+import { useAllSongs } from 'hooks/useAllSongs'
+// utils
+import {
+  defaultVolume,
+  getTrackDuration,
+  pauseTrack,
+  playTrack,
+  turnBooleanState,
+} from 'utils/helpers'
 
-const turnBooleanState = (state, updater) => updater(!state)
-const defaultVolume = '1' // number from 0 to 1
+// const duration = getTrackDuration(track.current) // string '00:00'
+// const totalSecs = Math.round(track.current?.duration)
 
 export const PlayerContextProvider = ({ children }) => {
   // AUDIO ELEMENT
@@ -12,6 +22,7 @@ export const PlayerContextProvider = ({ children }) => {
   // Songs List
   const songs = useAllSongs()
   /* ------------------ ################## ------------------  */
+  // console.log(track.current?.ended)
 
   // playing?
   const [isPlaying, setIsPlaying] = useState(false)
@@ -25,8 +36,19 @@ export const PlayerContextProvider = ({ children }) => {
     index: 1,
     song: '',
     src: '',
+    duration: '',
   })
+  const [percentSong, setPercentSong] = useState(0)
   /* ------------------ ################## ------------------  */
+
+  // sometimes we need to wait until full data is loaded on element so we listen that event so we can set the duration of the currentSong state
+  track.current?.addEventListener('loadedmetadata', (e) => {
+    setCurentSong({
+      ...currentSong,
+      duration: getTrackDuration(e.target),
+      duration_secs: Math.round(e.target.duration),
+    })
+  })
 
   useEffect(() => {
     if (songs) {
@@ -39,15 +61,32 @@ export const PlayerContextProvider = ({ children }) => {
       })
     }
   }, [songs])
+
+  // console.log(currentSong.duration_secs)
+  useEffect(() => {
+    if (isPlaying) {
+      const percentInterval = setInterval(() => {
+        setPercentSong(
+          Math.floor(
+            (track.current.currentTime * 100) / currentSong.duration_secs
+          )
+        )
+      }, 1000)
+      return () => {
+        return clearInterval(percentInterval)
+      }
+    }
+  }, [isPlaying])
   /* ------------------ ################## ------------------  */
 
   // CONTROLS
   // turn the player state (true o false) and pauses the audio play it
   const playPause = () => {
     turnBooleanState(isPlaying, setIsPlaying)
-    isPlaying ? track.current?.pause() : track.current?.play()
+    isPlaying ? pauseTrack(track.current) : playTrack(track.current)
     return undefined
   }
+
   const prev = (e) => {
     // console.log(e.detail) // veces seguidas que se recibe el evento de click
     if (track.current.currentTime > 0) {
@@ -98,10 +137,11 @@ export const PlayerContextProvider = ({ children }) => {
 
   const playerContextObject = {
     isPlaying,
-    // currentSong,
+    currentSong,
     playPause,
     prev,
     next,
+    percentSong,
     volume: {
       value: playerVolume,
       setVolume: handleVolume,
@@ -127,11 +167,17 @@ interface Song {
   volume: number (from 0 to 1)
   muted: boolean (false)
   src: string
+  currentSrc: string
   title: string
   ended: boolean (false)
   duration:number (ms)
   defaultMuted:boolean (false)
   autoplay: boolean (false)
+  loop: boolean (false)
+  currentTime: number (0) (ms)
+
+
+
   // format: track.current.src.split('.').pop()
   }
 */
