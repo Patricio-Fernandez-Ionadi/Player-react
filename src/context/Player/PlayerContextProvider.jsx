@@ -34,9 +34,6 @@ export const PlayerContextProvider = ({ children }) => {
   const [currentSong, setCurentSong] = useState({
     listPosition: 0,
     index: 1,
-    song: '',
-    src: '',
-    duration: '',
   })
   const [percentSong, setPercentSong] = useState(0)
   /* ------------------ ################## ------------------  */
@@ -45,14 +42,14 @@ export const PlayerContextProvider = ({ children }) => {
   track.current?.addEventListener('loadedmetadata', (e) => {
     setCurentSong({
       ...currentSong,
-      duration: getTrackDuration(e.target),
-      duration_secs: Math.round(e.target.duration),
+      duration: getTrackDuration(e.target), // --> string '00:00'
+      duration_secs: Math.round(e.target.duration), // --> number total secs
     })
   })
 
+  // when songs are ready sets the currentTrack state
   useEffect(() => {
     if (songs) {
-      // when songs are ready sets the currentTrack state
       setCurentSong({
         listPosition: 0,
         index: 1,
@@ -61,8 +58,10 @@ export const PlayerContextProvider = ({ children }) => {
       })
     }
   }, [songs])
+  /* ------------------ ################## ------------------  */
 
-  // console.log(currentSong.duration_secs)
+  // this effect changes the percentSong value for a progress bar at some info component
+  // still doesn't have the ability to control from outside of this Effect
   useEffect(() => {
     if (isPlaying) {
       const percentInterval = setInterval(() => {
@@ -72,9 +71,8 @@ export const PlayerContextProvider = ({ children }) => {
           )
         )
       }, 1000)
-      return () => {
-        return clearInterval(percentInterval)
-      }
+      // this return clears the interval to prevent consecutives effects that could be running simultaneously
+      return () => clearInterval(percentInterval)
     }
   }, [isPlaying])
   /* ------------------ ################## ------------------  */
@@ -87,6 +85,7 @@ export const PlayerContextProvider = ({ children }) => {
     return undefined
   }
 
+  // for now just reset the corrent song and after a sec play it again
   const prev = (e) => {
     // console.log(e.detail) // veces seguidas que se recibe el evento de click
     if (track.current.currentTime > 0) {
@@ -99,6 +98,7 @@ export const PlayerContextProvider = ({ children }) => {
     }
   }
 
+  // skip the current song, for now jus go foward until the list ends
   const next = () => {
     if (currentSong.index >= songs.length) {
       console.log('no se puede seguir subiendo')
@@ -120,7 +120,7 @@ export const PlayerContextProvider = ({ children }) => {
   }
 
   // VOLUME
-  // handles the track volume from 0 to 1
+  // recives a value from 0 to 100 as string and set the current volume for the song parsing it in a value from 0 to 1 as a number
   const handleVolume = (val) => {
     setPlayerVolume(Number(val) / 100)
     track.current.volume = playerVolume
@@ -135,6 +135,7 @@ export const PlayerContextProvider = ({ children }) => {
   }
   /* ------------------ ################## ------------------  */
 
+  // the context to be consumed for others components
   const playerContextObject = {
     isPlaying,
     currentSong,
