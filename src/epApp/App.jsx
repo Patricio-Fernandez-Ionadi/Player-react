@@ -2,6 +2,7 @@ import { PlayerContextProvider } from 'context'
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import styled, { css } from 'styled-components'
+import { colors } from 'utils/constants'
 import { Navbar, Player } from '../components'
 
 const MainContainer = styled.div`
@@ -13,7 +14,8 @@ const MainContainer = styled.div`
 
 const Content = styled.div`
   flex-grow 1;
-  background-color yellow;
+  background-color ${colors.dark};
+  color #fafafa;
   padding 10px;
 `
 
