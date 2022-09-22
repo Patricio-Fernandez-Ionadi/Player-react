@@ -22,7 +22,6 @@ export const PlayerContextProvider = ({ children }) => {
   // Songs List
   const songs = useAllSongs()
   /* ------------------ ################## ------------------  */
-  // console.log(track.current?.ended)
 
   // playing?
   const [isPlaying, setIsPlaying] = useState(false)
@@ -30,12 +29,14 @@ export const PlayerContextProvider = ({ children }) => {
   const [playerVolume, setPlayerVolume] = useState(defaultVolume)
   // is muted?
   const [muted, setMuted] = useState(false)
-  // current track (default is the first item from the list) (it updates when 'songs' from api are ready, it get setted in useEffect)
+  // current track (default in utils/helpers) (it updates when 'songs' from api are ready, it get setted in useEffect)
   const [currentSong, setCurentSong] = useState({
     listPosition: 0,
     index: 1,
   })
   const [percentSong, setPercentSong] = useState(0)
+
+  const [repeatList, setRepeatList] = useState(false)
   /* ------------------ ################## ------------------  */
 
   // sometimes we need to wait until full data is loaded on element so we listen that event so we can set the duration of the currentSong state
@@ -101,8 +102,23 @@ export const PlayerContextProvider = ({ children }) => {
   // skip the current song, for now jus go foward until the list ends
   const next = () => {
     if (currentSong.index >= songs.length) {
-      console.log('no se puede seguir subiendo')
-      return
+      if (repeatList) {
+        setCurentSong({
+          listPosition: 0,
+          index: 1,
+          song: songs[0].name,
+          src: songs[0].src,
+        })
+        if (isPlaying) {
+          setTimeout(() => {
+            playTrack(track.current)
+          }, 1000)
+        }
+      } else {
+        // disable next button
+        console.log('no se puede seguir subiendo')
+        return
+      }
     } else {
       setCurentSong((prev) => ({
         listPosition: prev.listPosition + 1,
@@ -113,7 +129,7 @@ export const PlayerContextProvider = ({ children }) => {
       }))
       if (isPlaying) {
         setTimeout(() => {
-          track.current.play()
+          playTrack(track.current)
         }, 1000)
       }
     }
@@ -133,23 +149,32 @@ export const PlayerContextProvider = ({ children }) => {
     track.current.muted = !muted
     return undefined
   }
+
+  // REPEAT
+  const turnRepeat = () => turnBooleanState(repeatList, setRepeatList)
+
   /* ------------------ ################## ------------------  */
 
   // the context to be consumed for others components
   const playerContextObject = {
     isPlaying,
     currentSong,
+    percentSong,
     playPause,
     prev,
     next,
-    percentSong,
+    turnRepeat,
+    mute: {
+      value: muted,
+      setMute: turnMute,
+    },
+    repeat: {
+      value: repeatList,
+      setRepeat: turnRepeat,
+    },
     volume: {
       value: playerVolume,
       setVolume: handleVolume,
-    },
-    mute: {
-      value: muted,
-      turn: turnMute,
     },
   }
 
@@ -169,7 +194,6 @@ interface Song {
   muted: boolean (false)
   src: string
   currentSrc: string
-  title: string
   ended: boolean (false)
   duration:number (ms)
   defaultMuted:boolean (false)
@@ -177,7 +201,7 @@ interface Song {
   loop: boolean (false)
   currentTime: number (0) (ms)
 
-
+  title: string
 
   // format: track.current.src.split('.').pop()
   }
