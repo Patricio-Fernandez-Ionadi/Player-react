@@ -4,6 +4,8 @@ export const ControlMute = () => {
   const { mute } = usePlayerContext()
 
   return (
-    <button onClick={mute.turn}>{mute.value ? <del>mute</del> : 'mute'}</button>
+    <button onClick={mute.setMute}>
+      {mute.value ? <del>mute</del> : 'mute'}
+    </button>
   )
 }
