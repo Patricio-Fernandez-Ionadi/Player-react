@@ -1,9 +1,10 @@
-import { PlayerContextProvider } from 'context'
-import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
+
+import { PlayerContextProvider } from 'context'
+import { Navbar } from '../components'
 import { colors } from 'utils/constants'
-import { Navbar, Player } from '../components'
+import { Player } from 'Player'
 
 const MainContainer = styled.div`
   height 100vh;
