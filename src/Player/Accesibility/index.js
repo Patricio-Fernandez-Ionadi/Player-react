@@ -1,3 +1,1 @@
-export * from './ControlMute'
-export * from './ControlRepeat'
-export * from './ControlVolume'
+export * from './Accesibility'
