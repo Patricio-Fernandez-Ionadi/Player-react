@@ -13,4 +13,6 @@ export const colors = {
   blue: '#2F89FC',
   grey: '#474744',
   grey_light: '#DADADA',
+  background: '#045757',
+  background_dark: '#044343',
 }
