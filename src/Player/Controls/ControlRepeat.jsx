@@ -43,7 +43,7 @@ export const ControlRepeat = () => {
   const { repeat } = usePlayerContext()
 
   return (
-    <Button onClick={repeat.setRepeat}>
+    <button onClick={repeat.setRepeat}>
       {repeat.value ? (
         <>
           <span className='overlay'></span>
@@ -52,6 +52,6 @@ export const ControlRepeat = () => {
       ) : (
         <RepeatOnIcon className='disabled' />
       )}
-    </Button>
+    </button>
   )
 }

@@ -1,6 +1,15 @@
 import { useEffect, useRef } from 'react'
 import { usePlayerContext } from 'context'
 
+import './style/index.css'
+import styled from 'styled-components'
+
+const Marker = styled.div`
+  && {
+    left: ${(props) => props.$volume};
+  }
+`
+
 export const ControlVolume = () => {
   // Input element
   const volumeControl = useRef(HTMLInputElement)
@@ -16,11 +25,18 @@ export const ControlVolume = () => {
   const hanldeVolumeChange = (e) => volume.setVolume(e.target.value)
 
   return (
-    <input
-      type='range'
-      ref={volumeControl}
-      onChange={hanldeVolumeChange}
-      alt='volume input'
-    />
+    <div className='volume-input-container'>
+      <Marker
+        className='marker'
+        $volume={`${Math.round(volume.value * 100)}px`}
+      />
+      <input
+        type='range'
+        className='volume-input'
+        ref={volumeControl}
+        onChange={hanldeVolumeChange}
+        alt='volume input'
+      />
+    </div>
   )
 }
