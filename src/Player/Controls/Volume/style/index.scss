@@ -1,0 +1,40 @@
+.volume-input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 20px;
+  overflow: hidden;
+  position: relative;
+  .marker {
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    background-color: #0d7377;
+  }
+  .volume-input {
+    appearance: none;
+    width: 100px;
+    height: 5px;
+    background-color: #00adb5;
+    &::-webkit-slider-thumb {
+      appearance: none;
+      width: 7px;
+      height: 7px;
+      position: relative;
+      top: -1px;
+      background: #00fff5;
+      cursor: pointer;
+    }
+    &::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 5px;
+      cursor: pointer;
+      transition: box-shadow 0.2s;
+    }
+
+    &:hover::-webkit-slider-runnable-track {
+      box-shadow: 0 0 5px 1px #fafafa;
+    }
+  }
+}
