@@ -13,7 +13,7 @@ export const VolumeIcon = () => {
     <>
       {vol > 70 ? (
         <VolumeUpIcon />
-      ) : vol > 40 ? (
+      ) : vol > 15 ? (
         <VolumeDownIcon />
       ) : vol > 0 ? (
         <VolumeMuteIcon />
