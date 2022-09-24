@@ -1,0 +1,15 @@
+@import '../../../../theme/index.scss';
+
+.overlay {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  box-shadow: 0 0 10px 0 $primary_light inset, 0 0 8px 0 $primary_light;
+}
+.active {
+  position: absolute;
+  z-index: 1;
+}
