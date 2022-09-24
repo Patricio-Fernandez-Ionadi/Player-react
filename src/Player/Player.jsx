@@ -3,8 +3,7 @@ import {
   ControlPrev,
   ControlNext,
   ControlRepeat,
-  ControlVolume,
-  ControlMute,
+  Volume,
 } from './Controls'
 import { SongInfo, Statusbar } from './Statusbar'
 
@@ -15,8 +14,7 @@ export const Player = () => {
     <div className='player'>
       <div className='volume-control-container'>
         <div className='volume-control-box'>
-          <ControlMute />
-          <ControlVolume />
+          <Volume />
         </div>
       </div>
 
