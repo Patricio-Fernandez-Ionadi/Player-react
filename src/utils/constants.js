@@ -1,4 +1,4 @@
-export const baseApiUri = 'http://localhost:3001/api'
+export const baseApiUri = 'https://protected-springs-12776.herokuapp.com/api'
 
 export const colors = {
   primary_light: '#00FFF5',
