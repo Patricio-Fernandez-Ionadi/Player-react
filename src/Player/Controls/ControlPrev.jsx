@@ -1,14 +1,15 @@
-import React from 'react'
+// external
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious'
 
+// own
 import { usePlayerContext } from 'context'
-import { StyledButton } from 'theme'
+import { StyledPlayerButton } from 'theme'
 
 export const ControlPrev = () => {
   const { prev } = usePlayerContext()
   return (
-    <StyledButton onClick={prev} aria-label='prev button'>
+    <StyledPlayerButton onClick={prev} aria-label='prev button'>
       <SkipPreviousIcon />
-    </StyledButton>
+    </StyledPlayerButton>
   )
 }

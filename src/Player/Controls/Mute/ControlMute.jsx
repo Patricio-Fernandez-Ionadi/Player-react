@@ -1,16 +1,20 @@
+// external
 import VolumeOffIcon from '@mui/icons-material/VolumeOff'
 
+// own
+// context
 import { usePlayerContext } from 'context'
+// components
 import { VolumeIcon } from '../Volume'
-
-import { StyledButton } from 'theme'
+// theme
+import { StyledPlayerButton } from 'theme'
 
 export const ControlMute = () => {
   const { mute } = usePlayerContext()
 
   return (
-    <StyledButton onClick={mute.setMute} aria-label='mute button'>
+    <StyledPlayerButton onClick={mute.setMute} aria-label='mute button'>
       {mute.value ? <VolumeOffIcon /> : <VolumeIcon />}
-    </StyledButton>
+    </StyledPlayerButton>
   )
 }

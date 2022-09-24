@@ -1,13 +1,15 @@
+// external
 import SkipNextIcon from '@mui/icons-material/SkipNext'
 
+// own
 import { usePlayerContext } from 'context'
-import { StyledButton } from 'theme'
+import { StyledPlayerButton } from 'theme'
 
 export const ControlNext = () => {
   const { next } = usePlayerContext()
   return (
-    <StyledButton onClick={next} aria-label='next button'>
+    <StyledPlayerButton onClick={next} aria-label='next button'>
       <SkipNextIcon />
-    </StyledButton>
+    </StyledPlayerButton>
   )
 }
