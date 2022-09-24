@@ -1,9 +1,8 @@
 import { usePlayerContext } from 'context'
 
 import RepeatOnIcon from '@mui/icons-material/RepeatOn'
-
+import { colors } from 'utils/constants'
 import { StyledButton } from 'theme'
-import './style/index.css'
 
 export const ControlRepeat = () => {
   const { repeat } = usePlayerContext()
@@ -11,10 +10,7 @@ export const ControlRepeat = () => {
   return (
     <StyledButton onClick={repeat.setRepeat}>
       {repeat.value ? (
-        <>
-          <span className='overlay'></span>
-          <RepeatOnIcon className='active' />
-        </>
+        <RepeatOnIcon style={{ color: `${colors.primary_light}` }} />
       ) : (
         <RepeatOnIcon />
       )}
