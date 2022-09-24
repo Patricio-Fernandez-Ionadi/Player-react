@@ -5,23 +5,23 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: $dark;
 }
 
 .main-container-app {
-  max-height: 100vh;
-  height: 100vh;
-  width: 100vw;
+  max-height: $vh;
+  height: $vh;
+  width: $vw;
   display: flex;
   flex-direction: column;
   .navigation-container-app {
-    height: 60px;
+    height: $navigation-size;
     width: $vw;
-    background-color: yellow;
+    background-color: $background_dark;
   }
   .content-container-app {
     flex-grow: 1;
-    background-color: $background;
-    color: #fafafa;
+    background-color: $white;
     padding: 10px;
   }
 }
@@ -33,7 +33,7 @@
   .main-container-app {
     flex-direction: row;
     .navigation-container-app {
-      width: $navigation-width;
+      width: $navigation-size;
       height: $vh;
     }
   }
