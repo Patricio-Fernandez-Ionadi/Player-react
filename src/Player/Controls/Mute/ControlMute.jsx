@@ -9,7 +9,7 @@ export const ControlMute = () => {
   const { mute } = usePlayerContext()
 
   return (
-    <StyledButton onClick={mute.setMute}>
+    <StyledButton onClick={mute.setMute} aria-label='mute button'>
       {mute.value ? <VolumeOffIcon /> : <VolumeIcon />}
     </StyledButton>
   )

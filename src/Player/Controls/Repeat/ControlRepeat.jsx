@@ -8,7 +8,7 @@ export const ControlRepeat = () => {
   const { repeat } = usePlayerContext()
 
   return (
-    <StyledButton onClick={repeat.setRepeat}>
+    <StyledButton onClick={repeat.setRepeat} aria-label='enable repeat button'>
       {repeat.value ? (
         <RepeatOnIcon style={{ color: `${colors.primary_light}` }} />
       ) : (

@@ -7,7 +7,7 @@ import PauseIcon from '@mui/icons-material/Pause'
 export const ControlPlayPause = () => {
   const { playPause, isPlaying } = usePlayerContext()
   return (
-    <StyledButton onClick={playPause}>
+    <StyledButton onClick={playPause} aria-label='play/pause button'>
       {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
     </StyledButton>
   )

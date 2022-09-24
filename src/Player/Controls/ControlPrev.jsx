@@ -7,7 +7,7 @@ import { StyledButton } from 'theme'
 export const ControlPrev = () => {
   const { prev } = usePlayerContext()
   return (
-    <StyledButton onClick={prev}>
+    <StyledButton onClick={prev} aria-label='prev button'>
       <SkipPreviousIcon />
     </StyledButton>
   )
