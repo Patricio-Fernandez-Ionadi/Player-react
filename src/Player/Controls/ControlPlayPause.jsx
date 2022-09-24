@@ -1,6 +1,14 @@
 import { usePlayerContext } from 'context'
+import { StyledButton } from 'theme'
+
+import PlayArrowIcon from '@mui/icons-material/PlayArrow'
+import PauseIcon from '@mui/icons-material/Pause'
 
 export const ControlPlayPause = () => {
   const { playPause, isPlaying } = usePlayerContext()
-  return <button onClick={playPause}>{isPlaying ? 'pause' : 'play'}</button>
+  return (
+    <StyledButton onClick={playPause}>
+      {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
+    </StyledButton>
+  )
 }
