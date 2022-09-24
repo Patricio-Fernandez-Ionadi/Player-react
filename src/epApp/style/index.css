@@ -1,8 +1,28 @@
+:export {
+  full: 100%;
+  nav_size: 60px;
+  primary_light: #00fff5;
+  primary: #00adb5;
+  primary_dark: #0d7377;
+  dark: #323232;
+  darken: #323232;
+  black: #100f0f;
+  white: #eeeeee;
+  succes: #c4fb6d;
+  error: #ff2e63;
+  blue: #2f89fc;
+  grey: #474744;
+  grey_light: #dadada;
+  background: #045757;
+  background_dark: #044343;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #323232;
 }
 
 .main-container-app {
@@ -15,12 +35,11 @@
 .main-container-app .navigation-container-app {
   height: 60px;
   width: 100vw;
-  background-color: yellow;
+  background-color: #044343;
 }
 .main-container-app .content-container-app {
   flex-grow: 1;
-  background-color: #045757;
-  color: #fafafa;
+  background-color: #eeeeee;
   padding: 10px;
 }
 
