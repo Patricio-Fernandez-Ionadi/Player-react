@@ -27,6 +27,7 @@ export const PlayerContextProvider = ({ children }) => {
   const [isPlaying, setIsPlaying] = useState(false)
   // volume
   const [playerVolume, setPlayerVolume] = useState(defaultVolume)
+  const [volumePanelOpen, setVolumePanelOpen] = useState(false)
   // is muted?
   const [muted, setMuted] = useState(false)
   // current track (default in utils/helpers) (it updates when 'songs' from api are ready, it get setted in useEffect)
@@ -157,6 +158,8 @@ export const PlayerContextProvider = ({ children }) => {
 
   // the context to be consumed for others components
   const playerContextObject = {
+    currentTrack: track.current,
+
     isPlaying,
     currentSong,
     percentSong,
@@ -175,6 +178,11 @@ export const PlayerContextProvider = ({ children }) => {
     volume: {
       value: playerVolume,
       setVolume: handleVolume,
+      volumePanel: {
+        value: volumePanelOpen,
+        open: () => setVolumePanelOpen(true),
+        close: () => setVolumePanelOpen(false),
+      },
     },
   }
 
