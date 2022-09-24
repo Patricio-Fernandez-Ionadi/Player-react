@@ -3,9 +3,9 @@ import { colors } from 'utils/constants'
 
 export const StyledButton = styled.button`
   background: ${colors.background};
-  width: 30px;
+  width: 40px;
   padding: 5px;
-  height: 30px;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
