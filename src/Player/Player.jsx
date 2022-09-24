@@ -1,4 +1,3 @@
-import { usePlayerContext } from 'context'
 import {
   ControlPlayPause,
   ControlPrev,
