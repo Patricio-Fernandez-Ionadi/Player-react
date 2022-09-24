@@ -21,6 +21,7 @@ export const ControlVolume = () => {
     <div className='volume-input-container'>
       <input
         alt='volume input'
+        aria-label='volume input'
         className='volume-input'
         max='100'
         min='0'
