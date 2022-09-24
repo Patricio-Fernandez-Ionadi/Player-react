@@ -1,3 +1,3 @@
 # Music player - React
 
-### See Project in [malacara.netlify.app](https://malacara.netlify.app/)
+### See the project in [malacara.netlify.app](https://malacara.netlify.app/)
