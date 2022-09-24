@@ -12,7 +12,7 @@ export const colors = {
   error: '#FF2E63',
   blue: '#2F89FC',
   grey: '#474744',
-  grey_light: '#DADADA',
+  grey_light: '#aaadb0',
   background: '#045757',
   background_dark: '#044343',
 }
