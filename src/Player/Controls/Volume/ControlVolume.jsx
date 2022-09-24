@@ -7,15 +7,21 @@ export const ControlVolume = () => {
   // Input element
   const volumeControl = useRef(HTMLInputElement)
   // context
-  const { volume } = usePlayerContext()
+  const { volume, mute } = usePlayerContext()
 
-  // sets the default value for the volume to 100% at the moment when app starts
+  // sets the default value for the volume to 100% at the moment when app starts or uses the current value of state
   useEffect(() => {
-    volumeControl ? (volumeControl.current.value = '100') : null
+    volumeControl
+      ? (volumeControl.current.value = `${volume.value * 100}` || '100')
+      : null
   }, [])
 
   // sets the volume % in the context when user changes its value
-  const hanldeVolumeChange = (e) => volume.setVolume(e.target.value)
+  // if muted set mute false
+  const hanldeVolumeChange = (e) => {
+    volume.setVolume(e.target.value)
+    if (mute.value) mute.setMute()
+  }
 
   return (
     <div className='volume-input-container'>
