@@ -2,8 +2,10 @@
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious'
 
 // own
+// context
 import { usePlayerContext } from 'context'
-import { StyledPlayerButton } from 'theme'
+// theme
+import { StyledPlayerButton } from 'Player/style/styled'
 
 export const ControlPrev = () => {
   const { prev } = usePlayerContext()

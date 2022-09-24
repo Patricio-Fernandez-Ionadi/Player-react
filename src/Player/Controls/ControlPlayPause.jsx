@@ -3,8 +3,10 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 import PauseIcon from '@mui/icons-material/Pause'
 
 // own
+// context
 import { usePlayerContext } from 'context'
-import { StyledPlayerButton } from 'theme'
+// theme
+import { StyledPlayerButton } from 'Player/style/styled'
 
 export const ControlPlayPause = () => {
   const { playPause, isPlaying } = usePlayerContext()
