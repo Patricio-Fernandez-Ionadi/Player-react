@@ -1,8 +1,8 @@
 # Music player - React
 
-### See the project in [malacara.netlify.app](https://malacara.netlify.app/)
+### Ver el proyecto en [malacara.netlify.app](https://malacara.netlify.app/)
 
-last update `commit f7ec75bfbcf62ce60989512af5948f090204f8ec`
+ultimo build `commit f7ec75bfbcf62ce60989512af5948f090204f8ec`
 
 Actualmente trabajando en: estilos del reproductor para movil y desktop
 
@@ -18,3 +18,18 @@ Reproductor de canciones en un contexto global de la app para que desde cualquie
 - Pasar a la siguiente cancion o volver a la anterior
 - Play / pause
 - Visor de status de la cancion en reproductor
+
+## Dependencias
+
+- @emotion/react: 11.10.4,
+- @emotion/styled: 11.10.4,
+- @mui/icons-material: 5.10.6,
+- @mui/material: 5.10.6,
+- react: 18.2.0,
+- react-dom: 18.2.0,
+- react-redux: 8.0.4,
+- react-router-dom: 6.4.0,
+- react-scripts: 5.0.1,
+- redux-thunk: 2.4.1,
+- styled-components: 5.3.5
+- - redux-devtools-extension: 2.13.9 (dev)
