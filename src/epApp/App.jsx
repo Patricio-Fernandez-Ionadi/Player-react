@@ -1,39 +1,20 @@
 import { Route, Routes } from 'react-router-dom'
-import styled from 'styled-components'
+
+import './style/index.css'
 
 import { PlayerContextProvider } from 'context'
 import { Navbar } from '../components'
-import { colors } from 'utils/constants'
 import { Player } from 'Player'
-
-const MainContainer = styled.div`
-  height 100vh;
-  max-height 100vh;
-  width 100vw;
-  display flex;
-`
-
-const Content = styled.div`
-  flex-grow 1;
-  background-color ${colors.dark};
-  color #fafafa;
-  padding 10px;
-`
-
-const StyledNavigation = styled.div`
-  width 50px;
-  height 100%;
-`
 
 export const App = () => {
   return (
     <>
-      <MainContainer>
-        <StyledNavigation>
+      <div className='main-container-app'>
+        <nav className='navigation-container-app'>
           <Navbar />
-        </StyledNavigation>
+        </nav>
 
-        <Content>
+        <div className='content-container-app'>
           <PlayerContextProvider>
             <Player />
           </PlayerContextProvider>
@@ -45,8 +26,8 @@ export const App = () => {
             <Route path='/login' element={<h1>Login</h1>} />
             <Route path='/register' element={<h1>Register</h1>} />
           </Routes>
-        </Content>
-      </MainContainer>
+        </div>
+      </div>
     </>
   )
 }

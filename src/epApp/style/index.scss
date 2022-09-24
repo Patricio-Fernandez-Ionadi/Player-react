@@ -1,0 +1,40 @@
+@import '../../theme/index.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main-container-app {
+  max-height: 100vh;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  .navigation-container-app {
+    height: 60px;
+    width: $vw;
+    background-color: yellow;
+  }
+  .content-container-app {
+    flex-grow: 1;
+    background-color: $background;
+    color: #fafafa;
+    padding: 10px;
+  }
+}
+
+// 760
+// 1040
+
+@media (min-width: $medium) {
+  .main-container-app {
+    flex-direction: row;
+    .navigation-container-app {
+      width: $navigation-width;
+      height: $vh;
+    }
+  }
+}
