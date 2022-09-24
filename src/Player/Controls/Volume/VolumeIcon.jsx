@@ -10,7 +10,7 @@ export const VolumeIcon = () => {
   let vol = Math.round(volume.value * 100)
 
   return (
-    <div>
+    <>
       {vol > 70 ? (
         <VolumeUpIcon />
       ) : vol > 40 ? (
@@ -20,6 +20,6 @@ export const VolumeIcon = () => {
       ) : (
         <VolumeMuteIcon />
       )}
-    </div>
+    </>
   )
 }
