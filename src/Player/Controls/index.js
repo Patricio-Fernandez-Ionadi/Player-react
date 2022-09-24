@@ -1,6 +1,6 @@
 export * from './ControlNext'
 export * from './ControlPlayPause'
 export * from './ControlPrev'
-export * from './ControlRepeat'
 export * from './Mute'
+export * from './Repeat'
 export * from './Volume'
