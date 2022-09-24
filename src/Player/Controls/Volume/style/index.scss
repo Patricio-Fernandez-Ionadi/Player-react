@@ -1,40 +1,43 @@
+$volume-width: 200px;
+$volume-height: 5px;
+$primary: #00fff5;
+$primary_dark: #00adb5;
+$black-shadow: #242424;
+$background: #0d7377;
+
 .volume-input-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100px;
-  height: 20px;
-  overflow: hidden;
-  position: relative;
+  height: 15px;
+  padding: 0 10px;
   .marker {
     position: absolute;
-    width: 100%;
-    height: 5px;
-    background-color: #0d7377;
+    width: $volume-width;
+    height: $volume-height;
+    z-index: -1;
   }
   .volume-input {
     appearance: none;
-    width: 100px;
-    height: 5px;
-    background-color: #00adb5;
+    width: $volume-width;
+    height: $volume-height;
+    background: $primary_dark;
+    outline: none;
+    overflow: hidden;
+    box-shadow: inset 0 0 2px $black-shadow;
     &::-webkit-slider-thumb {
       appearance: none;
-      width: 7px;
-      height: 7px;
-      position: relative;
-      top: -1px;
-      background: #00fff5;
+      width: $volume-height;
+      height: $volume-height;
+      background: $primary;
       cursor: pointer;
+      box-shadow: -107px 0 0 100px $primary;
     }
-    &::-webkit-slider-runnable-track {
-      width: 100%;
-      height: 5px;
-      cursor: pointer;
-      transition: box-shadow 0.2s;
-    }
-
-    &:hover::-webkit-slider-runnable-track {
-      box-shadow: 0 0 5px 1px #fafafa;
+    &:active {
+      &::-webkit-slider-thumb {
+        background: #fafafa;
+        box-shadow: -107px 0 0 100px #fafafa;
+      }
     }
   }
 }
