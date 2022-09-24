@@ -1,3 +1,4 @@
+// COLORS
 $primary_light: #00fff5;
 $primary: #00adb5;
 $primary_dark: #0d7377;
@@ -13,7 +14,20 @@ $grey_light: #dadada;
 $background: #045757;
 $background_dark: #044343;
 
+// Sizes
+$navigation-size: 60px;
+$full: 100%;
+$vw: 100vw;
+$vh: 100vh;
+
+// Mediaqueries
+$small: 320px;
+$medium: 740px;
+$large: 1040px;
+
 :export {
+  full: $full;
+  nav_size: $navigation-size;
   primary_light: $primary_light;
   primary: $primary;
   primary_dark: $primary_dark;
