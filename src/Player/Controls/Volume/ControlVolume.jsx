@@ -1,26 +1,32 @@
 import { useEffect, useRef } from 'react'
-import { usePlayerContext } from 'context'
 
+// context
+import { useDispatch, useSelector } from 'react-redux'
+import { turnMute, setVolume } from 'store'
+// styles
 import './style/index.css'
 
 export const ControlVolume = () => {
+  // store
+  const dispatch = useDispatch()
+  const { isMuted, html_audio, volume } = useSelector(({ player }) => player)
   // Input element
   const volumeControl = useRef(HTMLInputElement)
-  // context
-  const { volume, mute } = usePlayerContext()
 
   // sets the default value for the volume to 100% at the moment when app starts or uses the current value of state
   useEffect(() => {
     volumeControl
-      ? (volumeControl.current.value = `${volume.value * 100}` || '100')
+      ? (volumeControl.current.value = `${volume * 100}` || '100')
       : null
   }, [])
 
   // sets the volume % in the context when user changes its value
   // if muted set mute false
   const hanldeVolumeChange = (e) => {
-    volume.setVolume(e.target.value)
-    if (mute.value) mute.setMute()
+    dispatch(setVolume(e.target.value, html_audio))
+    if (isMuted) {
+      dispatch(turnMute(html_audio, isMuted))
+    }
   }
 
   return (

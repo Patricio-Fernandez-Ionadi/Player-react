@@ -1,23 +1,29 @@
 // extenal
 import RepeatOnIcon from '@mui/icons-material/RepeatOn'
 
-// own
 // context
-import { usePlayerContext } from 'context'
+import { useDispatch, useSelector } from 'react-redux'
 // theme
 import { StyledPlayerButton } from 'Player/style/styled'
 // utils
 import { colors } from 'utils/constants'
 
 export const ControlRepeat = () => {
-  const { repeat } = usePlayerContext()
+  const dispatch = useDispatch()
+  const { repeatAll } = useSelector(({ player }) => player)
+
+  const handleRepeatAll = () => {
+    dispatch({
+      type: 'SET_REPEAT_ALL',
+    })
+  }
 
   return (
     <StyledPlayerButton
-      onClick={repeat.setRepeat}
+      onClick={handleRepeatAll}
       aria-label='enable repeat button'
     >
-      {repeat.value ? (
+      {repeatAll ? (
         <RepeatOnIcon style={{ color: `${colors.primary_light}` }} />
       ) : (
         <RepeatOnIcon />

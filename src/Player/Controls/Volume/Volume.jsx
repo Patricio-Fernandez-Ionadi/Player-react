@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 
 // context
-import { usePlayerContext } from 'context'
+import { useSelector } from 'react-redux'
 // theme
 import { StyledPlayerButton } from 'Player/style/styled'
 import { MuteIcon } from './MuteIcon'
@@ -11,10 +11,11 @@ import { ControlVolume, VolumeIcon } from '.'
 import { ControlMute } from '../Mute'
 
 export const Volume = () => {
-  const { mute, volume } = usePlayerContext()
+  const { isMuted } = useSelector(({ player }) => player)
 
   const volumeButtonRef = useRef()
 
+  const [volumePanelOpen, setVolumePanelOpen] = useState(false)
   const [anchorEl, setAnchorEl] = useState(null)
   window.addEventListener('click', (e) => {
     if (
@@ -22,33 +23,32 @@ export const Volume = () => {
       !volumeButtonRef.current.contains(e.target)
     ) {
       setAnchorEl(null)
-      volume.volumePanel.close()
+      setVolumePanelOpen(false)
     } else {
       setAnchorEl(volumeButtonRef.current)
     }
   })
 
-  const handleVolumeControl = (e) => {
-    if (anchorEl && volume.volumePanel.value) {
-      volume.volumePanel.close()
+  const handleVolumeControl = () => {
+    if (anchorEl && volumePanelOpen) {
+      setVolumePanelOpen(false)
     } else {
-      volume.volumePanel.open()
+      setVolumePanelOpen(true)
     }
   }
 
   return (
     <>
-      {volume.volumePanel.value && <ControlMute />}
+      {volumePanelOpen && <ControlMute />}
       <StyledPlayerButton
         onClick={handleVolumeControl}
         aria-label='volume control button'
         type='button'
-        datatype='volumeButton'
         ref={volumeButtonRef}
       >
-        {mute.value ? <MuteIcon /> : <VolumeIcon />}
+        {isMuted ? <MuteIcon /> : <VolumeIcon />}
       </StyledPlayerButton>
-      {volume.volumePanel.value && <ControlVolume />}
+      {volumePanelOpen && <ControlVolume />}
     </>
   )
 }

@@ -1,11 +1,13 @@
-import { usePlayerContext } from 'context'
+import { useSelector } from 'react-redux'
 
 export const SongInfo = () => {
-  const { currentSong } = usePlayerContext()
+  // const { currentSong } = usePlayerContext()
+
+  const { currentSong } = useSelector(({ player }) => player)
 
   return (
     <p>
-      {currentSong.song} - <span>{currentSong.duration}</span>
+      {currentSong.name} - <span>{currentSong.duration}</span>
     </p>
   )
 }
