@@ -1,14 +1,21 @@
 import { Link } from 'react-router-dom'
+import './style/index.css'
 
 export const Navbar = () => {
   return (
-    <>
-      <div>
+    <ul className='navbar-list-container'>
+      <li className='navbar-list-element'>
         <Link to={'/'}>Inicio</Link>
-      </div>
-      <div>
-        <Link to={'/albums'}>Biblioteca</Link>
-      </div>
-    </>
+      </li>
+      <li className='navbar-list-element'>
+        <Link to={'/lista'}>Lista</Link>
+      </li>
+      <li className='navbar-list-element'>
+        <Link to={'/playlist'}>Playlist</Link>
+      </li>
+      <li className='navbar-list-element'>
+        <Link to={'/login'}>Login</Link>
+      </li>
+    </ul>
   )
 }
