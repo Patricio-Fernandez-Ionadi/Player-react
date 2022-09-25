@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 // context
 import { useDispatch, useSelector } from 'react-redux'
 import { setRefElement, setSongDuration } from 'store'
@@ -12,7 +12,7 @@ export const PlayerContextProvider = ({ children }) => {
   // consume store
   const songsStore = useSelector(({ player }) => player)
   const dispatch = useDispatch()
-  const { currentSong, isPlaying } = songsStore
+  const { currentSong } = songsStore
   /* ------------------ ################## ------------------  */
 
   // sometimes we need to wait until full data is loaded on element so we listen that event so we can set the duration of the currentSong state
@@ -26,22 +26,7 @@ export const PlayerContextProvider = ({ children }) => {
 
   // this effect changes the percentSong value for a progress bar at some info component
   // still doesn't have the ability to control from outside of this Effect
-  useEffect(() => {
-    if (isPlaying) {
-      const percentInterval = setInterval(() => {
-        if (currentSong.duration_sec) {
-          dispatch({
-            type: 'SET_PERCENT_PLAYED',
-            payload: Math.floor(
-              (track.current.currentTime * 100) / currentSong.duration_sec
-            ),
-          })
-        }
-      }, 1000)
-      // this return clears the interval to prevent consecutives effects that could be running simultaneously
-      return () => clearInterval(percentInterval)
-    }
-  }, [isPlaying, currentSong.duration_sec])
+
   /* ------------------ ################## ------------------  */
 
   // for now just reset the corrent song and after a sec play it again
