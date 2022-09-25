@@ -12,8 +12,11 @@ export const getTrackDuration = (audio) => {
   return `${mins}:${secsRest}`
 }
 
-// default value to be used in a state, i think it's irrelevant since is the default value property
-export const defaultVolume = '1' // number from 0 to 1
+// starts the track after 1 sec
+export const continuePlaying = (audio) =>
+  setTimeout(() => {
+    playTrack(audio)
+  }, 1000)
 
 // maybe these are useless functions but i made it to be sure that are making just one thing
 export const playTrack = (audio) => audio?.play()
