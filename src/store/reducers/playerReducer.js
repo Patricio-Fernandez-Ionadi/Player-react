@@ -1,6 +1,6 @@
 import { getAllSongs } from 'api/allSongs'
 
-const initialState_redux = {
+const initialState_player = {
   songs: [],
   isPlaying: false,
   isMuted: false,
@@ -50,6 +50,14 @@ export const setSongDuration = (stringTime, numSecs) => (dispatch) => {
     },
   })
 }
+export const setPercentPlayed = (html_audio, currentSong) => (dispatch) => {
+  dispatch({
+    type: 'SET_PERCENT_PLAYED',
+    payload: Math.floor(
+      (html_audio.currentTime * 100) / currentSong.duration_sec
+    ),
+  })
+}
 
 export const setVolume = (val, html_audio) => {
   const valueToSet = Number(val) / 100
@@ -73,7 +81,7 @@ export const startAgain = () => (dispatch) => {
   })
 }
 //
-export const playerReducer = (state = initialState_redux, action) => {
+export const playerReducer = (state = initialState_player, action) => {
   switch (action.type) {
     case 'SONGS_INIT': {
       return {
@@ -84,14 +92,12 @@ export const playerReducer = (state = initialState_redux, action) => {
           index: 1,
           src: action.payload[0].src,
           name: action.payload[0].name,
-          // duration: '',
-          // duration_sec: 0,
         },
       }
     }
-    case 'SET_CURRENT_SONG': {
-      return { ...state, currentSong: action.payload }
-    }
+    // case 'SET_CURRENT_SONG': {
+    //   return { ...state, currentSong: action.payload }
+    // }
     case 'TURN_PLAY_PAUSE': {
       return { ...state, isPlaying: !state.isPlaying }
     }
