@@ -1,14 +1,16 @@
 @import '../../theme/index.scss';
 
 .player {
-  width: 100%;
+  width: $full;
+  padding: $pad;
+  color: $white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: $background_dark;
   .volume-control-container {
-    width: 100%;
+    width: $full;
     max-width: 800px;
     display: flex;
     flex-direction: column;
@@ -20,7 +22,7 @@
     }
   }
   .comands-control-container {
-    width: 100%;
+    width: $full;
     max-width: 800px;
     display: flex;
     flex-direction: column;
@@ -29,13 +31,15 @@
     .status-box {
       display: flex;
       flex-direction: column;
-      width: 100%;
+      width: $full;
       justify-content: center;
       align-items: center;
     }
     .controls-box {
       display: flex;
-      gap: 5px;
+      justify-content: center;
+      align-items: center;
+      gap: $gap;
     }
   }
 }

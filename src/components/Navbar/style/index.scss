@@ -1,0 +1,15 @@
+@import '../../../theme/index.scss';
+
+.navbar-list-container {
+  background-color: yellow;
+  display: flex;
+  justify-content: center;
+  gap: $gap;
+  width: $full;
+  padding: $pad;
+  list-style: none;
+  .navbar-list-element {
+    background-color: red;
+    padding: $pad;
+  }
+}
