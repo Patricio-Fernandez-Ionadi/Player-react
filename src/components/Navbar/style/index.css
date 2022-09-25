@@ -18,15 +18,24 @@
 }
 
 .navbar-list-container {
-  background-color: yellow;
   display: flex;
-  justify-content: center;
   gap: 10px;
-  width: 100%;
-  padding: 5px 10px;
+  justify-content: center;
   list-style: none;
+  padding: 5px 10px;
+  width: 100%;
 }
 .navbar-list-container .navbar-list-element {
-  background-color: red;
+  flex: 1;
+}
+.navbar-list-container .navbar-list-element .navbar-list-link {
+  border-radius: 3px;
+  box-shadow: 0 -3px 8px -5px #eeeeee inset;
+  color: #eeeeee;
+  display: block;
+  height: 100%;
   padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
 }/*# sourceMappingURL=index.css.map */

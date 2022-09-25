@@ -27,17 +27,6 @@
   align-items: center;
   background-color: #044343;
 }
-.player .volume-control-container {
-  width: 100%;
-  max-width: 800px;
-  display: flex;
-  flex-direction: column;
-}
-.player .volume-control-container .volume-control-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .player .comands-control-container {
   width: 100%;
   max-width: 800px;

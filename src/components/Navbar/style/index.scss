@@ -1,15 +1,24 @@
 @import '../../../theme/index.scss';
 
 .navbar-list-container {
-  background-color: yellow;
   display: flex;
-  justify-content: center;
   gap: $gap;
-  width: $full;
-  padding: $pad;
+  justify-content: center;
   list-style: none;
+  padding: $pad;
+  width: $full;
   .navbar-list-element {
-    background-color: red;
-    padding: $pad;
+    flex: 1;
+    .navbar-list-link {
+      border-radius: 3px;
+      box-shadow: 0 -3px 8px -5px $white inset;
+      color: $white;
+      display: block;
+      height: $full;
+      padding: $pad;
+      text-align: center;
+      text-decoration: none;
+      width: $full;
+    }
   }
 }

@@ -1,42 +1,58 @@
+@import '../../../../theme/index.scss';
+
 $volume-width: 200px;
 $volume-height: 5px;
-$primary: #00fff5;
-$primary_dark: #00adb5;
 $black-shadow: #242424;
-$background: #0d7377;
 
-.volume-input-container {
+.volume-control-container {
+  width: $full;
+  max-width: 800px;
+  height: 30px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 15px;
-  padding: 0 10px;
-  .marker {
+  position: relative;
+  .volume-button {
     position: absolute;
-    width: $volume-width;
-    height: $volume-height;
-    z-index: -1;
+    left: 40px;
   }
-  .volume-input {
-    appearance: none;
-    width: $volume-width;
-    height: $volume-height;
-    background: $primary_dark;
-    outline: none;
-    overflow: hidden;
-    box-shadow: inset 0 0 2px $black-shadow;
-    &::-webkit-slider-thumb {
-      appearance: none;
-      width: $volume-height;
+  .volume-input-container {
+    position: absolute;
+    left: 120px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15px;
+    padding: $pad;
+    border-radius: 15px;
+    box-shadow: 0 0 5px 0 inset $white;
+    .marker {
+      position: absolute;
+      width: $volume-width;
       height: $volume-height;
-      background: $primary;
-      cursor: pointer;
-      box-shadow: -107px 0 0 100px $primary;
+      z-index: -1;
     }
-    &:active {
+    .volume-input {
+      appearance: none;
+      width: $volume-width;
+      height: $volume-height;
+      background: $primary_dark;
+      outline: none;
+      overflow: hidden;
+      box-shadow: inset 0 0 2px $black-shadow;
       &::-webkit-slider-thumb {
-        background: #fafafa;
-        box-shadow: -107px 0 0 100px #fafafa;
+        appearance: none;
+        width: $volume-height;
+        height: $volume-height;
+        background: $primary;
+        cursor: pointer;
+        box-shadow: -107px 0 0 100px $primary;
+      }
+      &:active {
+        &::-webkit-slider-thumb {
+          background: $white;
+          box-shadow: -107px 0 0 100px $white;
+        }
       }
     }
   }
