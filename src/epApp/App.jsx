@@ -1,12 +1,22 @@
 import { Route, Routes } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 
-import './style/index.css'
-
+// context
 import { PlayerContextProvider } from 'context'
-import { Navbar } from '../components'
+// components
+import { Navbar } from 'components'
 import { Player } from 'Player'
+// styles
+import './style/index.css'
+import { useEffect } from 'react'
+import { initSongs } from 'store'
 
 export const App = () => {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(initSongs())
+  }, [dispatch])
+
   return (
     <>
       <div className='main-container-app'>
