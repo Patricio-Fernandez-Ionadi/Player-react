@@ -7,7 +7,6 @@ import { playerReducer } from './reducers'
 
 const reducer = combineReducers({
   player: playerReducer,
-  // red2: reducerFile2 || {},
 })
 
 export const store = createStore(
