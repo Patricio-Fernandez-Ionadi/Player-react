@@ -12,12 +12,7 @@ import './style/index.css'
 export const Player = () => {
   return (
     <div className='player'>
-      <div className='volume-control-container'>
-        <div className='volume-control-box'>
-          <Volume />
-        </div>
-      </div>
-
+      <Volume />
       <div className='comands-control-container'>
         <div className='status-box'>
           <SongInfo />
