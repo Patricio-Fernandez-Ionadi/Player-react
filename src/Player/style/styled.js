@@ -3,7 +3,8 @@ import { colors } from 'utils/constants'
 
 export const StyledPlayerButton = styled.button`
   background: ${colors.background};
-  width: 60px;
+  width: 10em;
+  max-width: 70px;
   padding: 5px;
   height: 30px;
   display: flex;
