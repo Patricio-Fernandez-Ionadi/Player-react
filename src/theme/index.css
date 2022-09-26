@@ -1,6 +1,6 @@
 :export {
   full: 100%;
-  nav_size: 60px;
+  nav_size: 80px;
   primary_light: #00fff5;
   primary: #00adb5;
   primary_dark: #0d7377;
@@ -15,4 +15,42 @@
   grey_light: #aaadb0;
   background: #045757;
   background_dark: #044343;
+}
+
+.btn {
+  background: #045757;
+  width: 10em;
+  max-width: 70px;
+  padding: 5px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 10px;
+  color: inherit;
+  transition: background 0.2s;
+  position: relative;
+  box-shadow: 1px 1px 3px 0 #323232;
+}
+.btn:hover {
+  background: #0d7377;
+}
+
+.btn-active {
+  color: #00adb5;
+}
+
+.btn-disabled {
+  color: #aaadb0;
+}
+
+.btn-mute {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.btn-muted {
+  color: #ff2e63;
 }/*# sourceMappingURL=index.css.map */
