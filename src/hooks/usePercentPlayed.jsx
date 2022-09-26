@@ -12,7 +12,6 @@ export const usePercentPlayed = () => {
 
   const dispatchUpdatePercentPlayed = () => () => {
     if (html_audio && currentSong && isPlaying) {
-      console.log('dispatching')
       dispatch(setPercentPlayed(html_audio, currentSong))
     }
   }
