@@ -28,19 +28,12 @@ export const initSongs = () => async (dispatch) => {
     payload: songs,
   })
 }
-
-export const turnMute = (html_audio, isMuted) => (dispatch) => {
-  dispatch({ type: 'TURN_MUTE' })
-  html_audio.muted = !isMuted
-}
-
 export const setRefElement = (ref) => (dispatch) => {
   dispatch({
     type: 'SET_HTML_REF',
     payload: ref,
   })
 }
-
 export const setSongDuration = (stringTime, numSecs) => (dispatch) => {
   dispatch({
     type: 'SET_SONG_DURATION',
@@ -58,7 +51,11 @@ export const setPercentPlayed = (html_audio, currentSong) => (dispatch) => {
     ),
   })
 }
-
+//
+export const turnMute = (html_audio, isMuted) => (dispatch) => {
+  dispatch({ type: 'TURN_MUTE' })
+  html_audio.muted = !isMuted
+}
 export const setVolume = (val, html_audio) => {
   const valueToSet = Number(val) / 100
   return (dispatch) => {
@@ -69,6 +66,10 @@ export const setVolume = (val, html_audio) => {
     })
   }
 }
+export const setRepeat = () => (dispatch) =>
+  dispatch({
+    type: 'SET_REPEAT_ALL',
+  })
 //
 export const nextSong = () => (dispatch) => {
   dispatch({
