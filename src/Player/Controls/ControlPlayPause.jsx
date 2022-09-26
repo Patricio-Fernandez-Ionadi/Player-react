@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 import PauseIcon from '@mui/icons-material/Pause'
 
-// theme
-import { StyledPlayerButton } from 'Player/style/styled'
 // utils
 import { pauseTrack, playTrack } from 'utils/helpers'
 
@@ -18,8 +16,8 @@ export const ControlPlayPause = () => {
   }
 
   return (
-    <StyledPlayerButton onClick={playPause} aria-label='play/pause button'>
+    <button className='btn' onClick={playPause} aria-label='play/pause button'>
       {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
-    </StyledPlayerButton>
+    </button>
   )
 }

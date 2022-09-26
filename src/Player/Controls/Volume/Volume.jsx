@@ -3,9 +3,9 @@ import { useRef, useState } from 'react'
 // context
 import { useSelector } from 'react-redux'
 // theme
-import { StyledPlayerButton } from 'Player/style/styled'
 import { MuteIcon } from './MuteIcon'
 import './style/index.css'
+import '../../../theme/index.css'
 
 // components
 import { ControlVolume, VolumeIcon } from '.'
@@ -41,15 +41,15 @@ export const Volume = () => {
   return (
     <div className='volume-control-container'>
       {(volumePanelOpen || isMuted) && <ControlMute />}
-      <StyledPlayerButton
+      <button
         onClick={handleVolumeControl}
         aria-label='volume control button'
         type='button'
         ref={volumeButtonRef}
-        className='volume-button'
+        className='btn volume-button'
       >
         {isMuted ? <MuteIcon /> : <VolumeIcon />}
-      </StyledPlayerButton>
+      </button>
       {volumePanelOpen && <ControlVolume />}
     </div>
   )
