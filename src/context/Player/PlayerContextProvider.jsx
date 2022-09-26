@@ -22,10 +22,6 @@ export const PlayerContextProvider = ({ children }) => {
       setSongDuration(getTrackDuration(e.target), Math.round(e.target.duration))
     )
   })
-  /* ------------------ ################## ------------------  */
-
-  // this effect changes the percentSong value for a progress bar at some info component
-  // still doesn't have the ability to control from outside of this Effect
 
   /* ------------------ ################## ------------------  */
 
