@@ -17,6 +17,42 @@
   background_dark: #044343;
 }
 
+.btn {
+  background: transparent;
+  width: 10em;
+  max-width: 70px;
+  padding: 5px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  color: inherit;
+  transition: background 0.2s;
+  position: relative;
+}
+.btn:hover {
+  background: #0d7377;
+}
+
+.btn-active {
+  color: #00adb5;
+}
+
+.btn-disabled {
+  color: #aaadb0;
+}
+
+.btn-mute {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.btn-muted {
+  color: #ff2e63;
+}
+
 .navbar-list-container {
   display: flex;
   gap: 10px;
