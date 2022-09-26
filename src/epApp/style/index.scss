@@ -14,6 +14,9 @@
   display: flex;
   flex-direction: column;
   .navigation-container-app {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: $navigation-size;
     width: $vw;
     background-color: $background_dark;

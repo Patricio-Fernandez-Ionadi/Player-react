@@ -1,6 +1,6 @@
 :export {
   full: 100%;
-  nav_size: 60px;
+  nav_size: 80px;
   primary_light: #00fff5;
   primary: #00adb5;
   primary_dark: #0d7377;
@@ -32,7 +32,10 @@
   flex-direction: column;
 }
 .main-container-app .navigation-container-app {
-  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
   width: 100vw;
   background-color: #044343;
 }
@@ -47,7 +50,7 @@
     flex-direction: row;
   }
   .main-container-app .navigation-container-app {
-    width: 60px;
+    width: 80px;
     height: 100vh;
   }
 }/*# sourceMappingURL=index.css.map */
