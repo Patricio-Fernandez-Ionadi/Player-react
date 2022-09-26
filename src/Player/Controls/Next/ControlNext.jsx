@@ -4,8 +4,6 @@ import SkipNextIcon from '@mui/icons-material/SkipNext'
 // store
 import { useDispatch, useSelector } from 'react-redux'
 import { nextSong, startAgain } from 'store'
-// theme
-import './style/index.css'
 // utils
 import { continuePlaying } from 'utils/helpers'
 
@@ -20,9 +18,15 @@ export const ControlNext = () => {
 
   // skip the current song, if list is finished and repeat mode enabled starts again
   const next = () => {
-    if (currentSong.index + 1 === songs.length) {
-      if (repeatAll) setIsEnabled(true)
-      else setIsEnabled(false)
+    // this code only set the state to enable o disabled for styles of next button
+    if (repeatAll) {
+      setIsEnabled(true)
+    } else if (
+      !repeatAll &&
+      (currentSong.index + 1 === songs.length ||
+        currentSong.index === songs.length)
+    ) {
+      setIsEnabled(false)
     }
 
     if (currentSong.index >= songs.length) {
@@ -37,7 +41,7 @@ export const ControlNext = () => {
   }
 
   // autoplay if is possible
-  isPlaying && html_audio?.ended && isEnabled && next()
+  if (isPlaying && html_audio?.ended && isEnabled) next()
 
   return (
     <button
