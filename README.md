@@ -2,7 +2,7 @@
 
 ### Ver el proyecto en [malacara.netlify.app](https://malacara.netlify.app/)
 
-ultimo build `commit f7ec75bfbcf62ce60989512af5948f090204f8ec`
+ultimo build `commit adab50c8efd6c7a6b3ef75bf5e2e350fbf810e42`
 
 Actualmente trabajando en: estilos del reproductor para movil y desktop
 
