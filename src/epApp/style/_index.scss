@@ -1,0 +1,35 @@
+@import '../../theme/_variables.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main-container-app {
+  max-height: $vh;
+  height: $vh;
+  width: $vw;
+  display: flex;
+  flex-direction: column;
+  .content-container-app {
+    flex-grow: 1;
+    background-color: $white;
+    padding: 10px;
+  }
+}
+
+// 740
+// 1040
+
+@media (min-width: $medium) {
+  .main-container-app {
+    flex-direction: row;
+    .content-container-app {
+      max-width: calc($vw - 60px);
+      position: relative;
+      right: -60px;
+    }
+  }
+}
