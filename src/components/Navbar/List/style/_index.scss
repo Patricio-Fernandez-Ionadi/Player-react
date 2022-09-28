@@ -1,25 +1,32 @@
 .navbar-list-container {
-  display: flex;
   gap: $gap;
   list-style: none;
   padding: $pad;
   width: $full;
   height: $full;
   .navbar-list-element {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    .navbar-list-link {
-      height: 30px;
-      border-radius: 3px;
-      box-shadow: 0 -3px 8px -5px $white inset;
+    height: $list-element-height;
+    margin: 5px 0;
+    &:hover {
+      .navbar-list-link,
+      .navbar-list-icon {
+        text-shadow: 0 0 3px $primary_light;
+      }
+    }
+    .navbar-list-link,
+    .navbar-list-icon {
       color: $white;
-      display: block;
-      padding: $pad;
+      height: $button-height;
       text-align: center;
       text-decoration: none;
+      transition: text-shadow 0.2s;
+    }
+    .navbar-list-link {
       width: $full;
+    }
+    .navbar-list-icon {
+      width: 30px;
+      cursor: pointer;
     }
   }
 }
