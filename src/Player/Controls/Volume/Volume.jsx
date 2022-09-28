@@ -2,8 +2,6 @@
 import { useSelector } from 'react-redux'
 // theme
 import { MuteIcon } from './MuteIcon'
-import './style/index.css'
-import '../../../theme/index.css'
 
 // components
 import { ControlVolume, VolumeIcon } from '.'

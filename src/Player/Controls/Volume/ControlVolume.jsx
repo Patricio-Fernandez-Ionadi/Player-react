@@ -3,8 +3,6 @@ import { useEffect, useRef } from 'react'
 // context
 import { useDispatch, useSelector } from 'react-redux'
 import { turnMute, setVolume } from 'store'
-// styles
-import './style/index.css'
 
 export const ControlVolume = () => {
   // store
