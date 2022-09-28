@@ -35,13 +35,3 @@
     }
   }
 }
-
-@media (max-width: $medium) {
-  .navbar-list-container {
-    .navbar-list-element {
-      .non-mobile {
-        display: none;
-      }
-    }
-  }
-}
