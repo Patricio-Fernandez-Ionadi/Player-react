@@ -2,14 +2,10 @@ import { Menu } from './Menu'
 import { List } from './List'
 
 export const Navbar = ({ isopen }) => {
+  let openMenuClass = isopen ? ` menu-open` : ''
+
   return (
-    <nav
-      className={
-        isopen
-          ? `navigation-container-app menu-open`
-          : 'navigation-container-app'
-      }
-    >
+    <nav className={`navigation-container-app flex ${openMenuClass}`}>
       <Menu state={isopen} />
       <List />
     </nav>
