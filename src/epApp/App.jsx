@@ -12,7 +12,7 @@ import { Player } from 'Player'
 import '../theme/index.css'
 
 export const App = () => {
-  const [isOpen, setIsOpen] = useState()
+  const [isOpen, setIsOpen] = useState(false)
 
   const dispatch = useDispatch()
   useEffect(() => {
@@ -21,7 +21,7 @@ export const App = () => {
 
   const handleAppClick = (e) => {
     if (window.innerWidth > 739) {
-      if (!isOpen && e.clientX < 40 && e.clientY < 40) {
+      if (!isOpen && e.clientX < 60 && e.clientY < 50) {
         setIsOpen(true)
       } else if (isOpen) {
         setIsOpen(false)
