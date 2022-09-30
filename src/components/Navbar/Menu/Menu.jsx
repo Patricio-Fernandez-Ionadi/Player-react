@@ -2,13 +2,15 @@
 import MenuIcon from '@mui/icons-material/Menu'
 import CloseIcon from '@mui/icons-material/Close'
 
-// theme
+import { useMenuMobileContext } from 'context'
 
-export const Menu = ({ onevent, state }) => {
+export const Menu = () => {
+  const { turnMenu, isOpen } = useMenuMobileContext()
+
   return (
-    <div className='menu-button-container non-mobile'>
-      <button className='menu-button' onClick={onevent}>
-        {state ? <CloseIcon /> : <MenuIcon />}
+    <div className='navigation-right navigation-menu-container'>
+      <button className='menu-button' onClick={turnMenu}>
+        {isOpen ? <CloseIcon /> : <MenuIcon />}
       </button>
     </div>
   )
