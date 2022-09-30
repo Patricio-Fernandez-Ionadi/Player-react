@@ -5,12 +5,15 @@ import { Provider } from 'react-redux'
 import { store } from 'store'
 // components
 import { App } from './epApp'
+import { MenuMobileProvider } from 'context'
 
 export const AppRouter = () => {
   return (
     <BrowserRouter>
       <Provider store={store}>
-        <App />
+        <MenuMobileProvider>
+          <App />
+        </MenuMobileProvider>
       </Provider>
     </BrowserRouter>
   )
