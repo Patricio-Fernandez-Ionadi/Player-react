@@ -1,33 +1,29 @@
-.menu-button-container {
-  background-color: #fff;
-  width: $full;
-  height: calc($button-height + 20px);
-  padding: 10px 15px;
+.navigation-menu-container {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
   .menu-button {
     // neutralize
     background: transparent;
-    border: none;
+    // styile
     width: $button-height;
     height: $button-height;
     display: flex;
     justify-content: center;
     align-items: center;
-    // styile
-    color: $black;
+    color: $white;
     transition: background 0.2s;
     border-radius: 3px;
     &:active {
-      background: $primary;
+      background: $primary_dark;
     }
   }
 }
 
-@media (max-width: $medium) {
-  .menu-button-container {
-    &.non-mobile {
-      display: none;
-    }
-  }
-}
+// @media (max-width: $medium) {
+//   .menu-button-container {
+//     &.non-mobile {
+//       display: none;
+//     }
+//   }
+// }

@@ -1,21 +1,27 @@
-.navigation-container-app {
-  height: $navigation-height;
-  width: $vw;
+.navigation-container {
+  align-items: center;
   background-color: $primary;
   box-shadow: $shadow;
-}
-@media (min-width: $medium) {
-  .navigation-container-app {
-    flex-direction: column;
-    height: $vh;
-    left: -#{calc($menu-width - $navigation-width)};
-    min-width: $navigation-width;
-    position: absolute;
-    transition: left 0.2s;
-    width: $menu-width;
-    z-index: 1;
-    &.menu-open {
-      left: 0;
+  display: flex;
+  height: $full;
+  justify-content: center;
+  position: relative;
+  width: $full;
+  &.menu-open {
+    .navigation-center {
+      right: 0;
     }
+  }
+  .navigation-left {
+    flex: 1;
+  }
+  .navigation-right {
+    width: 100px;
+  }
+}
+
+@media (min-width: $medium) {
+  .navigation-container {
+    flex-direction: column;
   }
 }

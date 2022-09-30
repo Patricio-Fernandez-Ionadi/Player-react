@@ -1,31 +1,45 @@
 .navbar-list-container {
-  gap: $gap;
+  background-color: $primary_light;
   list-style: none;
   padding: $pad;
-  width: $full;
-  height: $full;
+
+  height: calc($vh - $navigation-height);
+  width: $navigation-width-mobile;
+
+  position: absolute;
+  top: $navigation-height;
+  right: -$navigation-width-mobile;
+  z-index: 1;
+
+  opacity: 0;
+  transition: all 0.4s;
+  &.menu-open {
+    opacity: 1;
+    right: 0;
+  }
   .navbar-list-element {
+    background-color: red;
     height: $list-element-height;
+
+    display: flex;
+
     margin: 5px 0;
-    &:hover {
-      .navbar-list-link,
-      .navbar-list-icon {
-        text-shadow: 0 0 3px $primary_light;
-      }
-    }
+
+    line-height: $list-element-height;
+
+    border-radius: 6px 25px 6px 25px;
+
     .navbar-list-link,
     .navbar-list-icon {
       color: $white;
-      height: $button-height;
-      text-align: center;
-      text-decoration: none;
-      transition: text-shadow 0.2s;
     }
     .navbar-list-link {
+      display: block;
+      padding-left: 10px;
       width: $full;
     }
     .navbar-list-icon {
-      width: 30px;
+      width: 60px;
       cursor: pointer;
     }
   }
@@ -33,12 +47,12 @@
 
 @media (min-width: $medium) {
   .navbar-list-container {
-    flex-direction: column;
-    justify-content: space-around;
-    .navbar-list-element {
-      .navbar-list-link {
-        padding: 5px 0;
-      }
-    }
+    transition: all 0s;
+    background: transparent;
+    width: $navigation-width;
+    opacity: 1;
+    position: relative;
+    top: 0;
+    left: 0;
   }
 }
