@@ -3,10 +3,6 @@ $full: 100%;
 $vw: 100vw;
 $vh: 100vh;
 
-$navigation-height: 60px;
-$navigation-width-mobile: 300px;
-$navigation-width: 180px;
-
 $button-height: 30px;
 
 $list-element-height: 50px;
@@ -14,3 +10,11 @@ $list-element-height: 50px;
 $pad: 5px 10px;
 $gap: 10px;
 $shadow: 0 0 3px 0 $black_light;
+
+// Navigation
+$navigation-height: 60px;
+$navigation-width-mobile: 300px;
+$navigation-width: 180px;
+
+// Player
+$player-mobile-height: 100px;
