@@ -23,5 +23,8 @@
 @media (min-width: $medium) {
   .navigation-container {
     flex-direction: column;
+    .navigation-right {
+      display: none;
+    }
   }
 }

@@ -1,31 +1,14 @@
-.player {
-  width: $full;
-  padding: $pad;
+.player-container {
+  height: $player-mobile-height;
   color: $white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   background-color: $primary_darken_dark;
-  .comands-control-container {
+  gap: $gap;
+  .comands-container,
+  .info-container {
     width: $full;
-    max-width: 800px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    .status-box {
-      display: flex;
-      flex-direction: column;
-      width: $full;
-      justify-content: center;
-      align-items: center;
-    }
-    .controls-box {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: $gap;
-    }
+  }
+  // .comands-container {}
+  .info-container {
+    gap: $gap;
   }
 }

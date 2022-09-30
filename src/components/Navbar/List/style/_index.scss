@@ -18,17 +18,15 @@
     right: 0;
   }
   .navbar-list-element {
-    background-color: red;
     height: $list-element-height;
+    margin: 5px 0;
+    line-height: $list-element-height;
 
     display: flex;
 
-    margin: 5px 0;
-
-    line-height: $list-element-height;
-
     border-radius: 6px 25px 6px 25px;
 
+    overflow: hidden;
     .navbar-list-link,
     .navbar-list-icon {
       color: $white;
