@@ -1,2 +1,2 @@
+export * from './MenuMobile'
 export * from './Player'
-export * from './index'
