@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
 // context
 import { PlayerContextProvider } from 'context'
+import { useMenuMobileContext } from 'context'
 import { initSongs } from 'store'
 // components
 import { Navbar } from 'components'
@@ -12,31 +13,27 @@ import { Player } from 'Player'
 import '../theme/index.css'
 
 export const App = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const { isOpen, turnMenu } = useMenuMobileContext()
 
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(initSongs())
   }, [dispatch])
 
-  const handleAppClick = (e) => {
-    if (window.innerWidth > 739) {
-      if (!isOpen && e.clientX < 60 && e.clientY < 50) {
-        setIsOpen(true)
-      } else if (isOpen) {
-        setIsOpen(false)
-      }
-    }
-  }
+  const handleAppClick = () => isOpen && turnMenu(false)
 
   return (
     <div className='main-container-app' onClick={handleAppClick}>
-      <Navbar isopen={isOpen} />
+      <header className='header-container-app'>
+        <Navbar />
+      </header>
 
-      <div className='content-container-app'>
+      <aside className='player-container-app'>
         <PlayerContextProvider>
           <Player />
         </PlayerContextProvider>
+      </aside>
+      <div className='body-container-app'>
         <Routes>
           {/* PRIVATE ROUTES */}
           <Route path='/' element={<h1>Inicio</h1>} />
