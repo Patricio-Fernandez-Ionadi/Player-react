@@ -9,22 +9,22 @@ const initialState_player = {
     index: 1,
     src: '',
     name: '',
-    duration: '',
+    duration: [0, 0],
     duration_sec: 0,
     percent_played: 0,
     time_left: 0,
   },
   volume: 1,
-  autoplay: false,
-  repeatAll: false,
+  // autoplay: false,
+  repeatAll: true,
   repeatOne: false,
   html_audio: null,
 }
 
-export const initSongs = () => async (dispatch) => {
+export const initPlayerState = () => async (dispatch) => {
   const songs = await getAllSongs()
   dispatch({
-    type: 'SONGS_INIT',
+    type: 'INIT_PLAYER_STATE',
     payload: songs,
   })
 }
@@ -34,15 +34,16 @@ export const setRefElement = (ref) => (dispatch) => {
     payload: ref,
   })
 }
-export const setSongDuration = (stringTime, numSecs) => (dispatch) => {
+export const setSongDuration = (minsSecs, numSecs) => (dispatch) => {
   dispatch({
     type: 'SET_SONG_DURATION',
     payload: {
-      duration: stringTime,
+      duration: minsSecs,
       duration_sec: numSecs,
     },
   })
 }
+
 export const setPercentPlayed = (html_audio, currentSong) => (dispatch) => {
   dispatch({
     type: 'SET_PERCENT_PLAYED',
@@ -84,21 +85,18 @@ export const startAgain = () => (dispatch) => {
 //
 export const playerReducer = (state = initialState_player, action) => {
   switch (action.type) {
-    case 'SONGS_INIT': {
+    case 'INIT_PLAYER_STATE': {
       return {
         ...state,
         songs: action.payload,
         currentSong: {
-          listPosition: 0,
-          index: 1,
+          ...state.currentSong,
           src: action.payload[0].src,
           name: action.payload[0].name,
+          percent_played: 0,
         },
       }
     }
-    // case 'SET_CURRENT_SONG': {
-    //   return { ...state, currentSong: action.payload }
-    // }
     case 'TURN_PLAY_PAUSE': {
       return { ...state, isPlaying: !state.isPlaying }
     }
