@@ -5,10 +5,11 @@ import { useDispatch } from 'react-redux'
 // context
 import { PlayerContextProvider } from 'context'
 import { useMenuMobileContext } from 'context'
-import { initSongs } from 'store'
+import { initPlayerState } from 'store'
 // components
 import { Navbar } from 'components'
 import { Player } from 'Player'
+import { Lorem800 } from 'components/Lorem800' // random component to create scroll (Temporary)
 // styles
 import '../theme/index.css'
 
@@ -17,7 +18,7 @@ export const App = () => {
 
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(initSongs())
+    dispatch(initPlayerState())
   }, [dispatch])
 
   const handleAppClick = () => isOpen && turnMenu(false)
@@ -39,7 +40,7 @@ export const App = () => {
           <Route path='/' element={<h1>Inicio</h1>} />
           <Route path='/playlist' element={<h1>Playlist</h1>} />
           {/* PUBLIC ROUTES */}
-          <Route path='/lista' element={<h1>Lista</h1>} />
+          <Route path='/lista' element={<Lorem800 />} />
           <Route path='/login' element={<h1>Login</h1>} />
           <Route path='/register' element={<h1>Register</h1>} />
         </Routes>
