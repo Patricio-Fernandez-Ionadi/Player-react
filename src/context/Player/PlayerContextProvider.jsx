@@ -1,42 +1,27 @@
 import { useRef } from 'react'
 // context
+import { PlayerContext } from './PlayerContext'
 import { useDispatch, useSelector } from 'react-redux'
 import { setRefElement, setSongDuration } from 'store'
-import { PlayerContext } from './PlayerContext'
-// utils
+
 import { getTrackDuration } from 'utils/helpers'
 
 export const PlayerContextProvider = ({ children }) => {
   // AUDIO ELEMENT
   const track = useRef()
   // consume store
-  const songsStore = useSelector(({ player }) => player)
   const dispatch = useDispatch()
-  const { currentSong } = songsStore
-  /* ------------------ ################## ------------------  */
+  const { currentSong } = useSelector(({ player }) => player)
 
+  /* ------------------ ################## ------------------  */
   // sometimes we need to wait until full data is loaded on element so we listen that event so we can set the duration of the currentSong state
-  track.current?.addEventListener('loadedmetadata', (e) => {
+  track.current?.addEventListener('loadedmetadata', () => {
+    const { timer, secs } = getTrackDuration(track.current)
     dispatch(setRefElement(track.current))
-    dispatch(
-      setSongDuration(getTrackDuration(e.target), Math.round(e.target.duration))
-    )
+    dispatch(setSongDuration(timer, secs))
   })
-
+  // console.log(currentSong)
   /* ------------------ ################## ------------------  */
-
-  // for now just reset the corrent song and after a sec play it again
-  // const prev = (e) => {
-  //   // console.log(e.detail) // veces seguidas que se recibe el evento de click
-  //   if (track.current.currentTime > 0) {
-  //     track.current.load()
-  //     if (isPlaying) {
-  //       setTimeout(() => {
-  //         track.current.play()
-  //       }, 1000)
-  //     }
-  //   }
-  // }
 
   return (
     <PlayerContext.Provider value={{}}>
