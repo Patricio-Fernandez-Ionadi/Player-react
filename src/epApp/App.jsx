@@ -1,25 +1,15 @@
-import { useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-
 // context
-import { PlayerContextProvider } from 'context'
 import { useMenuMobileContext } from 'context'
-import { initPlayerState } from 'store'
 // components
 import { Navbar } from 'components'
-import { Player } from 'Player'
 import { Lorem800 } from 'components/Lorem800' // random component to create scroll (Temporary)
 // styles
 import '../theme/index.css'
+import { Player } from 'Player'
 
 export const App = () => {
   const { isOpen, turnMenu } = useMenuMobileContext()
-
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(initPlayerState())
-  }, [dispatch])
 
   const handleAppClick = () => isOpen && turnMenu(false)
 
@@ -30,9 +20,7 @@ export const App = () => {
       </header>
 
       <aside className='player-container-app'>
-        <PlayerContextProvider>
-          <Player />
-        </PlayerContextProvider>
+        <Player />
       </aside>
       <div className='body-container-app'>
         <Routes>
