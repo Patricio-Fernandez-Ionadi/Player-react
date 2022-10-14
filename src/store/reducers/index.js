@@ -1,1 +1,1 @@
-export * from './playerReducer'
+export * from './_playerReducer'
