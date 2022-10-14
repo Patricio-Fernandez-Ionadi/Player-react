@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 
-import { useAllSongs } from 'hooks/useAllSongs'
 import { PlayerContext } from './context'
 
 import { PlayerC } from 'Player'
-import { useCurrentSong } from 'Player/hooks'
+import { useCurrentSong, useAllSongs } from 'Player/hooks'
 
 export const Player = () => {
   // ELEMENT
