@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 
 import { PlayerContext } from './context'
+import { useCurrentSong, useAllSongs } from 'Player/hooks'
 
 import { PlayerC } from 'Player'
-import { useCurrentSong, useAllSongs } from 'Player/hooks'
+import { continuePlaying } from 'utils/helpers'
 
 export const Player = () => {
   // ELEMENT
@@ -22,12 +23,21 @@ export const Player = () => {
     html_audio: track.current || {},
   })
 
-  const { load, index, current, nextIndex } = useCurrentSong(player)
+  const { load, index, current, nextIndex, prevIndex } = useCurrentSong(player)
 
   // Functions
   const nextSong = () => {
+    setIsLoadingPlayer(true)
     nextIndex()
+    player.isPlaying && continuePlaying(player.html_audio)
   }
+
+  const prevSong = () => {
+    setIsLoadingPlayer(true)
+    prevIndex()
+    player.isPlaying && continuePlaying(player.html_audio)
+  }
+
   const turnPlay = () => {
     setPlayer((player) => ({ ...player, isPlaying: !player.isPlaying }))
   }
@@ -65,6 +75,8 @@ export const Player = () => {
   useEffect(() => {
     if (load) {
       setIsLoadingPlayer(false)
+    } else {
+      setIsLoadingPlayer(true)
     }
   }, [load, isLoadingPlayer])
 
@@ -73,6 +85,7 @@ export const Player = () => {
     isLoadingPlayer,
     nextSong,
     turnPlay,
+    prevSong,
   }
 
   return (
