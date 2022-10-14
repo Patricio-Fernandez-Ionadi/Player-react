@@ -4,48 +4,60 @@ import { getTrackDuration } from 'utils/helpers'
 export const useCurrentSong = (player) => {
   const [songToPlay, setSongToPlay] = useState()
   const [songToPlayIndex, setSongToPlayIndex] = useState(0)
+  const [load, setLoad] = useState(false)
+
+  const { html_audio: audio, songs } = player
 
   const setSong = () => {
     setSongToPlay({
       index: songToPlayIndex,
       listPosition: songToPlayIndex + 1,
-      duration: getTrackDuration(player.html_audio).timer,
-      duration_sec: getTrackDuration(player.html_audio).secs,
-      percent_played:
-        (player.html_audio.currentTime * 100) /
-        getTrackDuration(player.html_audio).secs,
-      src: player.songs[songToPlayIndex].src,
-      name: player.songs[songToPlayIndex].name,
+      duration: getTrackDuration(audio).timer,
+      duration_sec: getTrackDuration(audio).secs,
+      percent_played: (audio.currentTime * 100) / getTrackDuration(audio).secs,
+      src: songs[songToPlayIndex].src,
+      name: songs[songToPlayIndex].name,
     })
   }
 
   useEffect(() => {
-    if (
-      player &&
-      player?.html_audio &&
-      player?.songs &&
-      player?.songs[songToPlayIndex]
-    ) {
-      player.html_audio.addEventListener('loadedmetadata', (e) => {
+    if (player && audio && songs && songs[songToPlayIndex]) {
+      audio.addEventListener('loadedmetadata', () => {
+        setLoad(true)
         setSong()
       })
     }
-  }, [
-    player,
-    player.html_audio,
-    // player.songs[0],
-    player.html_audio.src,
-    songToPlayIndex,
-  ])
+  }, [player, audio, songToPlayIndex])
 
   const nextIndex = () => {
-    setSongToPlayIndex((prev) => prev + 1)
+    setLoad(false)
+    if (songToPlayIndex + 1 === songs.length) {
+      if (player.repeatAll) {
+        setSongToPlayIndex(0)
+      }
+      return
+    } else {
+      setSongToPlayIndex((prev) => prev + 1)
+    }
+  }
+
+  const prevIndex = () => {
+    setLoad(false)
+    if (songToPlayIndex - 1 <= 0) {
+      if (player.repeatAll) {
+        setSongToPlayIndex(songs.length - 1)
+      }
+      return
+    } else {
+      setSongToPlayIndex((prev) => prev - 1)
+    }
   }
 
   return {
-    load: songToPlay ? true : false,
+    load,
     current: songToPlay,
     nextIndex,
+    prevIndex,
     index: songToPlayIndex,
   }
 }
