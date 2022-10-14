@@ -4,11 +4,15 @@ export const turnBooleanState = (state, updater) => updater(!state)
 // track utils
 
 // recives an audio element and returns as string the duration ('mins:secs')
-export const getTrackDuration = (audio) => {
-  const durationInSecs = Math.round(audio?.duration)
-  const mins = Math.floor(durationInSecs / 60)
-  const secsRest = durationInSecs % 60
-  return { timer: [mins, secsRest], secs: durationInSecs }
+export const getTrackDuration = (audio, times = 0) => {
+  times++
+  if (audio) {
+    const durationInSecs = Number(Math.round(audio.duration))
+    const mins = Number(Math.floor(durationInSecs / 60))
+    const secsRest = Number(durationInSecs % 60)
+    return { status: 200, timer: [mins, secsRest], secs: durationInSecs }
+  }
+  return { status: 404, timer: [undefined, undefined], secs: undefined }
 }
 
 // starts the track after 1 sec
