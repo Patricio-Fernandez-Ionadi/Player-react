@@ -1,8 +1,11 @@
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious'
+import { usePlayerContext } from 'Player/Context'
 
 export const ControlPrev = () => {
+  const { prevSong } = usePlayerContext()
+
   return (
-    <button className='btn' onClick={() => {}} aria-label='prev button'>
+    <button onClick={prevSong} className='btn' aria-label='prev button'>
       <SkipPreviousIcon />
     </button>
   )
