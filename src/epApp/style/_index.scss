@@ -1,34 +1,43 @@
 .main-container-app {
   display: grid;
-  grid-template-rows: $navigation-height auto 1fr;
+  grid-template-rows: auto 1fr;
   min-height: $vh;
+  position: relative;
+  padding-top: $navigation-height;
 
   .header-container-app {
-    grid-row: 1 / 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: $full;
   }
   .player-container-app {
-    grid-row: 2/3;
+    grid-row: 1 / 2;
   }
   .body-container-app {
+    grid-row: 2 / -1;
     background-color: $white;
+    padding: $body-padding;
   }
 }
 
 @media (min-width: $medium) {
   .main-container-app {
-    grid-template-columns: $navigation-width 1fr;
+    grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
+    padding-top: 0;
+    padding-left: $navigation-width;
     .header-container-app {
-      grid-row: 1 / -1;
-      grid-column: 1;
+      width: $navigation-width;
     }
     .player-container-app {
       grid-row: 1;
-      grid-column: 2;
+      grid-column: 1;
     }
     .body-container-app {
       grid-row: 2;
-      grid-column: 2;
+      grid-column: 1;
     }
   }
 }
