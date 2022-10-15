@@ -24,3 +24,7 @@ export const continuePlaying = (audio) =>
 // maybe these are useless functions but i made it to be sure that are making just one thing
 export const playTrack = (audio) => audio?.play()
 export const pauseTrack = (audio) => audio?.pause()
+
+export const getPercent = (value, from) => {
+  return (value * from) / 100
+}
