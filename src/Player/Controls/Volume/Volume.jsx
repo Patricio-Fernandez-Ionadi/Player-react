@@ -8,7 +8,7 @@ import { ControlVolume, VolumeIcon } from '.'
 import { ControlMute } from '../Mute'
 
 export const Volume = () => {
-  const { isMuted } = useSelector(({ player }) => player)
+  // const { isMuted } = useSelector(({ player }) => player)
 
   return (
     <div className='volume-control-container'>
@@ -18,7 +18,7 @@ export const Volume = () => {
         type='button'
         className='btn volume-button'
       >
-        {isMuted ? <MuteIcon /> : <VolumeIcon />}
+        {/* {false ? <MuteIcon /> : <VolumeIcon />} */}
       </button>
       <ControlVolume />
     </div>

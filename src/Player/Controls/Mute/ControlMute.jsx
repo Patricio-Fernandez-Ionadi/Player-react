@@ -7,16 +7,17 @@ import { turnMute } from 'store'
 
 export const ControlMute = () => {
   const dispatch = useDispatch()
-  const { html_audio, isMuted } = useSelector(({ player }) => player)
+  // const { html_audio, isMuted } = useSelector(({ player }) => player)
 
-  const handleMuteButton = () => {
-    dispatch(turnMute(html_audio, isMuted))
-  }
+  // const handleMuteButton = () => {
+  //   dispatch(turnMute(html_audio, isMuted))
+  // }
 
   return (
     <button
-      className={`${isMuted ? 'btn btn-mute btn-muted' : `btn btn-mute`}`}
-      onClick={handleMuteButton}
+      // className={`${isMuted ? 'btn btn-mute btn-muted' : `btn btn-mute`}`}
+      className='btn btn-mute'
+      // onClick={handleMuteButton}
       aria-label='mute button'
     >
       <VolumeOffIcon />
