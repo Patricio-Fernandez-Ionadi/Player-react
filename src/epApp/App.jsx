@@ -3,10 +3,10 @@ import { Route, Routes } from 'react-router-dom'
 import { useMenuMobileContext } from 'context'
 // components
 import { Navbar } from 'components'
-import { Lorem800 } from 'components/Lorem800' // random component to create scroll (Temporary)
 // styles
 import '../theme/index.css'
 import { Player } from 'Player'
+import { List } from 'pages'
 
 export const App = () => {
   const { isOpen, turnMenu } = useMenuMobileContext()
@@ -28,7 +28,7 @@ export const App = () => {
           <Route path='/' element={<h1>Inicio</h1>} />
           <Route path='/playlist' element={<h1>Playlist</h1>} />
           {/* PUBLIC ROUTES */}
-          <Route path='/lista' element={<Lorem800 />} />
+          <Route path='/lista' element={<List />} />
           <Route path='/login' element={<h1>Login</h1>} />
           <Route path='/register' element={<h1>Register</h1>} />
         </Routes>
