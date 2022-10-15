@@ -6,10 +6,13 @@
 @import '../epApp/style/_index.scss';
 
 // ##### Navbar #####
-@import '../components/Navbar/List/style/_index.scss';
+@import '../components/Navbar/NavbarList/style/_index.scss';
 @import '../components/Navbar/Logo/style/_index.scss';
 @import '../components/Navbar/Menu/style/index.scss';
 @import '../components/Navbar/style/_index.scss';
+
+// ##### Loading #####
+@import '../components/Loading/style/_index.scss';
 
 // ##### Player #####
 @import '../Player/style/_index.scss';
