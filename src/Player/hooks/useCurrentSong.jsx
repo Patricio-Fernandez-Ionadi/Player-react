@@ -43,7 +43,7 @@ export const useCurrentSong = (player) => {
 
   const prevIndex = () => {
     setLoad(false)
-    if (songToPlayIndex - 1 <= 0) {
+    if (songToPlayIndex - 1 < 0) {
       if (player.repeatAll) {
         setSongToPlayIndex(songs.length - 1)
       }
