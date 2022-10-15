@@ -25,6 +25,7 @@ export const continuePlaying = (audio) =>
 export const playTrack = (audio) => audio?.play()
 export const pauseTrack = (audio) => audio?.pause()
 
+// recives a percent value (0 to 100) and a total value to obtain the result
 export const getPercent = (value, from) => {
   return (value * from) / 100
 }
