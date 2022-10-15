@@ -3,4 +3,4 @@ package-lock.json
 build
 
 # random files
-src/components/Lorem800.jsx
+# src/components/Lorem800.jsx
