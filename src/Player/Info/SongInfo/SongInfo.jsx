@@ -7,5 +7,9 @@ export const SongInfo = () => {
 
   const { currentSong } = player
 
-  return <marquee behavoir='slide'>{currentSong.name}</marquee>
+  return (
+    <marquee style={{ maxWidth: '740px' }} behavoir='slide'>
+      {currentSong.name}
+    </marquee>
+  )
 }
