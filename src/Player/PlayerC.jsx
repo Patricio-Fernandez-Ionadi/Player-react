@@ -1,3 +1,4 @@
+import { Loading } from 'components'
 import { usePlayerContext } from './Context'
 
 import { ControlPlayPause, ControlPrev, ControlNext } from './Controls'
@@ -9,7 +10,7 @@ export const PlayerC = () => {
   return (
     <div className='player-container flex-col'>
       {isLoadingPlayer ? (
-        <h1>loading</h1>
+        <Loading />
       ) : (
         <>
           <div className='comands-container flex'>
