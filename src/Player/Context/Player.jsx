@@ -91,7 +91,7 @@ export const Player = () => {
   return (
     <PlayerContext.Provider value={playerContext}>
       <PlayerC />
-      <audio ref={track} src={trackList ? trackList[index]?.src : ''} />
+      <audio ref={track} src={trackList ? trackList[index].src : ''} />
     </PlayerContext.Provider>
   )
 }
