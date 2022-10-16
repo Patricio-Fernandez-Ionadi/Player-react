@@ -6,7 +6,7 @@ import { Navbar } from 'components'
 // styles
 import '../theme/index.css'
 import { Player } from 'Player'
-import { SongsList } from 'pages'
+import { ListPage } from 'pages'
 
 export const App = () => {
   const { isOpen, turnMenu } = useMenuMobileContext()
@@ -28,7 +28,7 @@ export const App = () => {
           <Route path='/' element={<h1>Inicio</h1>} />
           <Route path='/playlist' element={<h1>Playlist</h1>} />
           {/* PUBLIC ROUTES */}
-          <Route path='/lista' element={<SongsList />} />
+          <Route path='/lista' element={<ListPage />} />
           <Route path='/login' element={<h1>Login</h1>} />
           <Route path='/register' element={<h1>Register</h1>} />
         </Routes>
