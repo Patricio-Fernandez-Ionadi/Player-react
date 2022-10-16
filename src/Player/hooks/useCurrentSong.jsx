@@ -53,9 +53,14 @@ export const useCurrentSong = (player) => {
     }
   }
 
+  const setLoadFalse = () => {
+    setLoad(false)
+  }
+
   return {
     load,
     current: songToPlay,
+    setLoadFalse,
     nextIndex,
     prevIndex,
     index: songToPlayIndex,
