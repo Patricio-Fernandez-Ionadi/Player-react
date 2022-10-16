@@ -1,19 +1,21 @@
 import { useEffect, useRef, useState } from 'react'
 
 import { PlayerContext } from './context'
-import { useCurrentSong, useAllSongs } from 'Player/hooks'
+import { useCurrentSong } from 'Player/hooks'
 
 import { PlayerC } from 'Player'
 import { continuePlaying } from 'utils/helpers'
 
+import { useSelector } from 'react-redux'
 export const Player = () => {
   // ELEMENT
   const track = useRef()
-  const trackList = useAllSongs()
+
+  const songs = useSelector(({ playlist }) => playlist)
   // States
   const [isLoadingPlayer, setIsLoadingPlayer] = useState(true)
   const [player, setPlayer] = useState({
-    songs: trackList || [],
+    songs: songs || [],
     isPlaying: false,
     isMuted: false,
     volume: 1,
@@ -23,7 +25,8 @@ export const Player = () => {
     html_audio: track.current || {},
   })
 
-  const { load, index, current, nextIndex, prevIndex } = useCurrentSong(player)
+  const { load, index, current, nextIndex, prevIndex, setLoadFalse } =
+    useCurrentSong(player)
 
   // Functions
   const nextSong = () => {
@@ -54,8 +57,8 @@ export const Player = () => {
     }
   }
   const setSongs = () => {
-    if (trackList) {
-      setPlayer((player) => ({ ...player, songs: trackList }))
+    if (songs) {
+      setPlayer((player) => ({ ...player, songs }))
     }
   }
 
@@ -70,15 +73,22 @@ export const Player = () => {
 
   useEffect(() => {
     setSongs()
-  }, [trackList])
+  }, [songs])
 
   useEffect(() => {
-    if (load) {
+    if (!songs[0] && player.isPlaying) {
+      turnPlay()
+      setLoadFalse()
+    }
+  }, [songs])
+
+  useEffect(() => {
+    if (load && songs[0]) {
       setIsLoadingPlayer(false)
     } else {
       setIsLoadingPlayer(true)
     }
-  }, [load, isLoadingPlayer])
+  }, [load, isLoadingPlayer, songs])
 
   const playerContext = {
     player,
@@ -91,7 +101,10 @@ export const Player = () => {
   return (
     <PlayerContext.Provider value={playerContext}>
       <PlayerC />
-      <audio ref={track} src={trackList ? trackList[index].src : ''} />
+      <audio
+        ref={track}
+        src={songs ? (songs[0] ? songs[index].src : '') : ''}
+      />
     </PlayerContext.Provider>
   )
 }
