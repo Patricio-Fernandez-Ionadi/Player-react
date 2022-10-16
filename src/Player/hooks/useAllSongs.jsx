@@ -2,10 +2,10 @@ import { getAllSongs } from 'api/allSongs'
 import { useEffect, useState } from 'react'
 
 export const useAllSongs = () => {
-  const [state, setstate] = useState()
+  const [songs, setPlaylist] = useState()
   useEffect(() => {
-    getAllSongs().then((res) => setstate(res))
+    getAllSongs().then((res) => setPlaylist(res))
   }, [])
 
-  return state
+  return { songs }
 }
