@@ -2,7 +2,7 @@
 import MenuIcon from '@mui/icons-material/Menu'
 import CloseIcon from '@mui/icons-material/Close'
 
-import { useMenuMobileContext } from 'context'
+import { useMenuMobileContext } from 'app/context'
 
 export const Menu = () => {
   const { turnMenu, isOpen } = useMenuMobileContext()

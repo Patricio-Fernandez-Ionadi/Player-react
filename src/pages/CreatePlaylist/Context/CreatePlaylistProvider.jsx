@@ -2,7 +2,8 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { CreatePlaylistContext } from './context'
 
-import { useAllSongs } from 'hooks'
+import { useAllSongs } from '../hooks'
+
 import {
   addSongToPlaylist,
   removeSongFromPlaylist,

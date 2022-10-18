@@ -1,6 +1,4 @@
 import { Route, Routes } from 'react-router-dom'
-// styles
-import '../theme/index.css'
 import { CreatePlaylist, Playlist } from 'pages'
 
 export const AppRouter = () => {

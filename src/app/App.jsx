@@ -1,22 +1,20 @@
-import { useMenuMobileContext } from 'context'
+import { useMenuMobileContext } from 'app/context'
 
-import { Navbar } from 'components'
+import { Header } from './Header'
 import { Player } from 'Player'
+import { Content } from './Content'
 import { AppRouter } from 'router'
 
 export const App = () => {
   const { isOpen, turnMenu } = useMenuMobileContext()
   const closeMenu = () => isOpen && turnMenu(false)
-
   return (
     <div className='main-container-app' onClick={closeMenu}>
-      <header className='header-container-app'>
-        <Navbar />
-      </header>
+      <Header />
       <Player />
-      <div className='body-container-app'>
+      <Content>
         <AppRouter />
-      </div>
+      </Content>
     </div>
   )
 }

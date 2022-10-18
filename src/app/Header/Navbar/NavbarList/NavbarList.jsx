@@ -1,5 +1,5 @@
-import { useMenuMobileContext } from 'context'
-import { NavbarListElement } from '.'
+import { useMenuMobileContext } from 'app/context'
+import { NavbarListElement } from './NavbarListElement'
 
 export const NavbarList = () => {
   const { isOpen } = useMenuMobileContext()
