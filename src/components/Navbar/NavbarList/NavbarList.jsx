@@ -8,7 +8,7 @@ export const NavbarList = () => {
 
   return (
     <ul className={`navbar-list-container ${openMenuMobileClass}`}>
-      <NavbarListElement route='/lista' label='Lista' />
+      {/* <NavbarListElement route='/lista' label='Lista' /> */}
       <NavbarListElement route='/playlist' label='Playlist' />
     </ul>
   )
