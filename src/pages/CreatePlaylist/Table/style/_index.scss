@@ -1,27 +1,8 @@
-/* .table-container {
-  width: $full;
-  background-color: $primary;
-  .table {
-    // background: $;
-    color: $white;
-    padding: $pad;
-    width: $full;
-    max-width: $medium;
-    .thead {
-    }
-    .tbody {
-      background-color: $black;
-      .titem {
-      }
-    }
-    .tfoot {
-    }
-  }
-} */
-
 .table-container {
+  font-size: 14px;
   width: $full;
-  background-color: $white_dark;
+  // background-color: $white_dark;
+  border: 1px solid $white_dark;
   color: $black;
   border-radius: 15px;
   padding: $pad;
@@ -32,9 +13,18 @@
   }
 
   .thead {
-    justify-content: space-around;
     border-bottom: 1px solid #ccc;
     cursor: default;
+    .head-item {
+      flex: 1;
+      padding-left: 5px;
+      &:nth-child(1) {
+        max-width: 40px;
+      }
+      &:nth-last-child(1) {
+        max-width: 40px;
+      }
+    }
   }
   .table-body {
     .table-row {
@@ -46,8 +36,9 @@
         background-color: $primary;
       }
       .row-item {
+        padding-left: 5px;
         flex: 1;
-        text-align: center;
+        text-align: left;
         border-right: 1px solid #ccc;
         &:nth-child(1) {
           border-left: 1px solid #ccc;
@@ -58,11 +49,22 @@
           max-width: 40px;
         }
       }
-      &:nth-child(1) {
-        border-top: 1px solid #ccc;
-      }
     }
   }
-  .tfoot {
+  // .tfoot {
+  // }
+}
+
+@media (max-width: $medium) {
+  .table-container {
+    .table-body {
+      .table-row {
+        .row-item {
+          &:nth-child(2) {
+            border-left: 1px solid #ccc;
+          }
+        }
+      }
+    }
   }
 }
