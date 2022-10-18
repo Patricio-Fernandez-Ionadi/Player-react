@@ -3,13 +3,13 @@
 @import './components/_index.scss';
 
 // ##### app #####
-@import '../router/style/_index.scss';
+@import '../app/style/_index.scss';
 
 // ##### Navbar #####
-@import '../components/Navbar/NavbarList/style/_index.scss';
-@import '../components/Navbar/Logo/style/_index.scss';
-@import '../components/Navbar/Menu/style/index.scss';
-@import '../components/Navbar/style/_index.scss';
+@import '../app/Header/Navbar/NavbarList/style/_index.scss';
+@import '../app/Header/Navbar/Logo/style/_index.scss';
+@import '../app/Header/Navbar/Menu/style/index.scss';
+@import '../app/Header/Navbar/style/_index.scss';
 
 // ##### Loading #####
 @import '../components/Loading/style/_index.scss';
