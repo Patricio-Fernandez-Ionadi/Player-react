@@ -5,35 +5,29 @@ import { ControlPlayPause, ControlPrev, ControlNext } from './Controls'
 import { SongInfo, Statusbar } from './Info'
 
 export const PlayerC = () => {
-  const { isLoadingPlayer } = usePlayerContext()
+  const { isLoadingPlayer, player } = usePlayerContext()
 
   return (
     <div className='player-container flex-col'>
-      {isLoadingPlayer ? (
-        <Loading />
+      {player.songs[0] ? (
+        isLoadingPlayer ? (
+          <Loading />
+        ) : (
+          <>
+            <div className='comands-container flex'>
+              <ControlPrev />
+              <ControlPlayPause />
+              <ControlNext />
+            </div>
+            <div className='info-container flex-col'>
+              <SongInfo />
+              <Statusbar />
+            </div>
+          </>
+        )
       ) : (
-        <>
-          <div className='comands-container flex'>
-            <ControlPrev />
-            <ControlPlayPause />
-            <ControlNext />
-          </div>
-          <div className='info-container flex-col'>
-            <SongInfo />
-            <Statusbar />
-          </div>
-        </>
+        <p>Añande una playlist!</p>
       )}
     </div>
   )
 }
-
-// setSongToPlay({
-//   listPosition: 0,
-//   index: 1,
-//   duration: timer,
-//   duration_sec: secs,
-//   percent_played: 0,
-//   src: `${trackList[0]?.src}`,
-//   name: `${trackList[0]?.name}`,
-// })

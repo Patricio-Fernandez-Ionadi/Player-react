@@ -1,18 +1,16 @@
 import { useEffect, useRef, useState } from 'react'
+import { useSelector } from 'react-redux'
 
 import { PlayerContext } from './context'
 import { useCurrentSong } from 'Player/hooks'
 
-import { PlayerC } from 'Player'
 import { continuePlaying } from 'utils/helpers'
 
-import { useSelector } from 'react-redux'
-export const Player = () => {
+export const PlayerProvider = ({ children }) => {
   // ELEMENT
   const track = useRef()
-
-  const songs = useSelector(({ playlist }) => playlist)
   // States
+  const { currentPlaylist: songs } = useSelector(({ playlist }) => playlist)
   const [isLoadingPlayer, setIsLoadingPlayer] = useState(true)
   const [player, setPlayer] = useState({
     songs: songs || [],
@@ -90,6 +88,7 @@ export const Player = () => {
     }
   }, [load, isLoadingPlayer, songs])
 
+  // Context
   const playerContext = {
     player,
     isLoadingPlayer,
@@ -100,7 +99,7 @@ export const Player = () => {
 
   return (
     <PlayerContext.Provider value={playerContext}>
-      <PlayerC />
+      {children}
       <audio
         ref={track}
         src={songs ? (songs[0] ? songs[index].src : '') : ''}
