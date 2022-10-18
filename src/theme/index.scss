@@ -3,7 +3,7 @@
 @import './components/_index.scss';
 
 // ##### app #####
-@import '../epApp/style/_index.scss';
+@import '../router/style/_index.scss';
 
 // ##### Navbar #####
 @import '../components/Navbar/NavbarList/style/_index.scss';
@@ -22,7 +22,7 @@
 // ##### Pages #####
 
 // ListPage
-@import '../pages/ListPage/Table/style/_index.scss';
+@import '../pages/CreatePlaylist/Table/style/_index.scss';
 // @import '';
 // @import '';
 // @import '';
