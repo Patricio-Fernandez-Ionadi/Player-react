@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom'
+import { AllPlaylists } from './AllPlaylists'
+import { CurrentPlaylist } from './CurrentPlaylist'
 import { useLocalStoragePlaylists } from './hooks/useLocalStoragePlaylists'
 
 export const Playlist = () => {
@@ -18,12 +20,9 @@ export const Playlist = () => {
   } else {
     return (
       <section>
-        <h2>Playlist</h2>
-        <ul>
-          {playlists.map((e) => {
-            return <li key={e.name}>{e.name}</li>
-          })}
-        </ul>
+        <CurrentPlaylist />
+        <AllPlaylists />
+
         <h3>Crear nueva lista</h3>
         <button>
           <Link to='/lista'>crear nueva lista</Link>
