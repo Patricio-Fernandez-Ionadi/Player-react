@@ -4,7 +4,10 @@ const plr = {
     name: '',
     songs: [],
   },
-  currentPlaylist: [],
+  currentPlaylist: {
+    name: '',
+    songs: [],
+  },
 }
 
 export const playlistReducer = (state = plr, action) => {
@@ -58,6 +61,12 @@ export const playlistReducer = (state = plr, action) => {
         playlists: action.payload,
       }
     // --------------------------------------------------------------
+    case 'SET_CURRENT_PLAYLIST':
+      return {
+        ...state,
+        currentPlaylist: action.payload,
+      }
+    // --------------------------------------------------------------
     default:
       return state
   }
@@ -102,3 +111,9 @@ export const getLsPlaylists = () => (dispatch) => {
     payload: playlistsFromLocalStorage,
   })
 }
+
+export const setCurrentPlaylist = (pl) => (dispatch) =>
+  dispatch({
+    type: 'SET_CURRENT_PLAYLIST',
+    payload: pl,
+  })
