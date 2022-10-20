@@ -10,9 +10,11 @@ export const PlayerProvider = ({ children }) => {
   // ELEMENT
   const track = useRef()
   // States
-  const { currentPlaylist: songs } = useSelector(({ playlist }) => playlist)
+  const { currentPlaylist } = useSelector(({ playlist }) => playlist)
+  const { songs, name } = currentPlaylist
   const [isLoadingPlayer, setIsLoadingPlayer] = useState(true)
   const [player, setPlayer] = useState({
+    playlistName: name,
     songs: songs || [],
     isPlaying: false,
     isMuted: false,
