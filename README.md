@@ -2,7 +2,7 @@
 
 ### Ver el proyecto en [malacara.netlify.app](https://malacara.netlify.app/)
 
-ultimo build `commit 2bedc4cb826beb795138d8174e48ea49a519190f` 16/10/22
+ultimo build `commit 5ddaf7803306fc6af9a639b86212d5f856bfd3dd` 16/10/22
 
 Actualmente trabajando en: estilos del reproductor para movil y desktop
 
@@ -33,3 +33,11 @@ Reproductor de canciones en un contexto global de la app para que desde cualquie
 - redux-thunk: 2.4.1,
 - styled-components: 5.3.5
 - - redux-devtools-extension: 2.13.9 (dev)
+
+## Recordatorios
+
+- al seleccionar una lista de reproduccion no se actualiza el index de la lista previa ni se reproduce aunque el estado se mantenga en isPlaying
+- en cada PlaylistCard dentro de los detalles hacer que sean links a esa cancion en esa lista
+- en PlaylistCard el button "ver mas" aun esa bajo consideracion
+
+- render de vista de current playlist sin funcionamiento
