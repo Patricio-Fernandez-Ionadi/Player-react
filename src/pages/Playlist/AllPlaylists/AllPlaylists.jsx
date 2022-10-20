@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux'
+import { PlaylistCard } from './PlaylistCard'
 
 export const AllPlaylists = () => {
   const { playlists } = useSelector(({ playlist }) => playlist)
@@ -6,11 +7,11 @@ export const AllPlaylists = () => {
   return (
     <>
       <h2>Todas las playlists</h2>
-      <ul>
+      <div className='all-playlists-container'>
         {playlists.map((e) => {
-          return <li key={e.name}>{e.name}</li>
+          return <PlaylistCard key={e.name} pl={e} />
         })}
-      </ul>
+      </div>
     </>
   )
 }
