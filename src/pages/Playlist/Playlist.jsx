@@ -20,13 +20,12 @@ export const Playlist = () => {
   } else {
     return (
       <section>
-        <CurrentPlaylist />
-        <AllPlaylists />
-
         <h3>Crear nueva lista</h3>
         <button>
           <Link to='/lista'>crear nueva lista</Link>
         </button>
+        <CurrentPlaylist />
+        <AllPlaylists />
       </section>
     )
   }
