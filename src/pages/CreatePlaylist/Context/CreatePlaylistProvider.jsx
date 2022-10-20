@@ -38,7 +38,7 @@ export const CreatePlaylistProvider = ({ children }) => {
     if (isEmptyList || isEmptyName || isExistentPlaylist) {
       console.log('tenes que agregar items o ponerle un nombre')
     } else {
-      dispatch(savePlaylist(newPlaylist))
+      dispatch(savePlaylist(newPlaylist, playlists))
     }
   }
 

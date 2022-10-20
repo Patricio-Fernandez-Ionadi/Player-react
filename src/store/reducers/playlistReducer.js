@@ -35,7 +35,10 @@ export const playlistReducer = (state = plr, action) => {
     case 'SAVE_NEW_PLAYLIST': {
       return {
         ...state,
-        newPlaylist: [],
+        newPlaylist: {
+          name: '',
+          songs: [],
+        },
         playlists: [...state.playlists, action.payload],
       }
     }
@@ -47,6 +50,12 @@ export const playlistReducer = (state = plr, action) => {
           ...state.newPlaylist,
           name: action.payload,
         },
+      }
+    // --------------------------------------------------------------
+    case 'GET_PLAYLISTS_FROM_LOCALSTORAGE':
+      return {
+        ...state,
+        playlists: action.payload,
       }
     // --------------------------------------------------------------
     default:
@@ -68,7 +77,9 @@ export const removeSongFromPlaylist = (song) => (dispatch) => {
   })
 }
 
-export const savePlaylist = (newPlaylist) => (dispatch) => {
+export const savePlaylist = (newPlaylist, playlists) => (dispatch) => {
+  localStorage.setItem('playlists', JSON.stringify([...playlists, newPlaylist]))
+
   dispatch({
     type: 'SAVE_NEW_PLAYLIST',
     payload: newPlaylist,
@@ -79,5 +90,15 @@ export const setPlaylistName = (name) => (dispatch) => {
   dispatch({
     type: 'SET_PLAYLIST_NAME',
     payload: name,
+  })
+}
+
+export const getLsPlaylists = () => (dispatch) => {
+  const playlistsFromLocalStorage =
+    JSON.parse(localStorage.getItem('playlists')) || []
+
+  dispatch({
+    type: 'GET_PLAYLISTS_FROM_LOCALSTORAGE',
+    payload: playlistsFromLocalStorage,
   })
 }

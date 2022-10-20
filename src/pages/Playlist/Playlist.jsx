@@ -1,10 +1,10 @@
-import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { useLocalStoragePlaylists } from './hooks/useLocalStoragePlaylists'
 
 export const Playlist = () => {
-  const { playlists } = useSelector(({ playlist }) => playlist)
+  const playlists = useLocalStoragePlaylists()
 
-  if (!playlists[0]) {
+  if (!playlists) {
     return (
       <section>
         <h2>Playlist</h2>
@@ -24,6 +24,10 @@ export const Playlist = () => {
             return <li key={e.name}>{e.name}</li>
           })}
         </ul>
+        <h3>Crear nueva lista</h3>
+        <button>
+          <Link to='/lista'>crear nueva lista</Link>
+        </button>
       </section>
     )
   }
