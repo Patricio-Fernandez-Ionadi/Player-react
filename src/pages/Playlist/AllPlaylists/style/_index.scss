@@ -1,0 +1,10 @@
+.all-playlists-container {
+  width: $full;
+  min-height: 300px;
+  background-color: lightblue;
+  display: grid;
+  grid-template-columns: 1fr;
+  place-items: center;
+  gap: $gap;
+  padding: $pad;
+}
