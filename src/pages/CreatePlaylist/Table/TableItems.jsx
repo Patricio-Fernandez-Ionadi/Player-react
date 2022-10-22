@@ -1,18 +1,29 @@
+import { useState } from 'react'
 import { useCreatePlaylist } from '../Context'
 
 const TableRow = ({ song }) => {
   const { name, artist, album } = song.e
   const { toggleSong, checkSong } = useCreatePlaylist()
 
+  const [oneClick, setOneClick] = useState(false)
+
+  const handleOneClickRow = (e) => {
+    setOneClick(!oneClick)
+    toggleSong(song.e)
+  }
+
+  const songIndex = song.i + 1
+
   return (
-    <div className='table-row flex'>
-      <div className='non-mobile row-item'>{++song.i}</div>
+    <div
+      className={`table-row flex ${checkSong(song.e) ? 'clicked-once' : ''}`}
+      onClick={handleOneClickRow}
+    >
+      <div className='non-mobile row-item'>{songIndex}</div>
       <div className='row-item'>{name}</div>
       <div className='non-mobile row-item'>{album}</div>
       <div className='row-item'>{artist}</div>
-      <div className='row-item' onClick={() => toggleSong(song.e)}>
-        {checkSong(song.e) ? '-' : '+'}
-      </div>
+      <div className='row-item'>{checkSong(song.e) ? '-' : '+'}</div>
     </div>
   )
 }
