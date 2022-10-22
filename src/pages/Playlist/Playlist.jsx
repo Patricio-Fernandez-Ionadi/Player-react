@@ -1,7 +1,8 @@
-import { Link } from 'react-router-dom'
-import { AllPlaylists } from './AllPlaylists'
-import { CurrentPlaylist } from './CurrentPlaylist'
 import { useLocalStoragePlaylists } from './hooks/useLocalStoragePlaylists'
+
+import { AddPlaylistButton } from './components'
+import { CurrentPlaylist } from './CurrentPlaylist'
+import { AllPlaylists } from './AllPlaylists'
 
 export const Playlist = () => {
   const playlists = useLocalStoragePlaylists()
@@ -11,19 +12,15 @@ export const Playlist = () => {
       <section>
         <h2>Playlist</h2>
         <h3>Crea una lista de reproducción</h3>
-        <button>
-          <Link to='/lista'>crear nueva lista</Link>
-        </button>
+        <AddPlaylistButton />
         <p>no hay playlist</p>
       </section>
     )
   } else {
     return (
       <section>
-        <h3>Crear nueva lista</h3>
-        <button>
-          <Link to='/lista'>crear nueva lista</Link>
-        </button>
+        <AddPlaylistButton />
+        <h2>Playlists</h2>
         <CurrentPlaylist />
         <AllPlaylists />
       </section>
