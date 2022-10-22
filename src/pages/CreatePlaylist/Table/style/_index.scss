@@ -1,15 +1,29 @@
 .table-container {
   font-size: 14px;
   width: $full;
-  // background-color: $white_dark;
   border: 1px solid $white_dark;
   color: $black;
-  border-radius: 15px;
+  border-radius: 5px;
+  box-shadow: $shadow-light;
   padding: $pad;
   .thead,
   .table-body,
   .tfoot {
     width: $full;
+  }
+
+  // Column sizes
+  .thead .head-item,
+  .table-body .table-row .row-item {
+    &:nth-child(1) {
+      max-width: 40px;
+    }
+    &:nth-child(4) {
+      max-width: 80px;
+    }
+    &:nth-child(5) {
+      max-width: 20px;
+    }
   }
 
   .thead {
@@ -18,12 +32,6 @@
     .head-item {
       flex: 1;
       padding-left: 5px;
-      &:nth-child(1) {
-        max-width: 40px;
-      }
-      &:nth-last-child(1) {
-        max-width: 40px;
-      }
     }
   }
   .table-body {
@@ -35,24 +43,26 @@
       &:hover {
         background-color: $primary;
       }
+      &.clicked-once {
+        background-color: $primary;
+      }
       .row-item {
         padding-left: 5px;
         flex: 1;
         text-align: left;
         border-right: 1px solid #ccc;
+        height: 30px;
+        line-height: 30px;
+        overflow: hidden;
         &:nth-child(1) {
           border-left: 1px solid #ccc;
-          max-width: 40px;
         }
-        &:nth-last-child(1) {
+        &:nth-child(5) {
           background-color: $primary_light;
-          max-width: 40px;
         }
       }
     }
   }
-  // .tfoot {
-  // }
 }
 
 @media (max-width: $medium) {
