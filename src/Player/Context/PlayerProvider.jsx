@@ -13,16 +13,17 @@ export const PlayerProvider = ({ children }) => {
   const { currentPlaylist } = useSelector(({ playlist }) => playlist)
   const { songs, name } = currentPlaylist
   const [isLoadingPlayer, setIsLoadingPlayer] = useState(true)
+
   const [player, setPlayer] = useState({
     playlistName: name,
-    songs: songs || [],
+    songs,
     isPlaying: false,
     isMuted: false,
     volume: 1,
     autoplay: true,
     repeatAll: true,
     repeatOne: false,
-    html_audio: track.current || {},
+    html_audio: track.current,
   })
 
   const { load, index, current, nextIndex, prevIndex, setLoadFalse } =
