@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom'
-import QuestionMarkIcon from '@mui/icons-material/QuestionMark'
+import QueueMusicIcon from '@mui/icons-material/QueueMusic'
 
 export const NavbarListElementLinkIcon = ({ route }) => {
   return (
     <Link className='navbar-list-icon non-mobile flex' type='button' to={route}>
-      <QuestionMarkIcon />
+      <QueueMusicIcon />
     </Link>
   )
 }
