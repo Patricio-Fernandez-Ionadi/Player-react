@@ -10,6 +10,7 @@ import {
   setPlaylistName,
   savePlaylist,
 } from 'store'
+import { removeAllSongsFromNewPlaylist } from 'store'
 
 export const CreatePlaylistProvider = ({ children }) => {
   const dispatch = useDispatch()
@@ -27,13 +28,14 @@ export const CreatePlaylistProvider = ({ children }) => {
       ? dispatch(removeSongFromPlaylist(song))
       : dispatch(addSongToPlaylist(song))
 
-  const isEmptyList = newPlaylist.songs.length === 0
-  const isEmptyName = newPlaylist.name === ''
-  const isExistentPlaylist = playlists.includes(newPlaylist)
-
   // playlist name
   const setName = (name) => dispatch(setPlaylistName(name))
 
+  const isFullList = newPlaylist.songs?.length === songs?.length
+  const isEmptyList = newPlaylist.songs.length === 0
+  const isEmptyName = newPlaylist.name === ''
+  const isExistentPlaylist = playlists.includes(newPlaylist)
+  // checks if the playlist info is correct to be saved
   const createPlaylistRequest = () => {
     if (isEmptyList || isEmptyName || isExistentPlaylist) {
       console.log('tenes que agregar items o ponerle un nombre')
@@ -42,15 +44,32 @@ export const CreatePlaylistProvider = ({ children }) => {
     }
   }
 
+  // creating a new playlist you can add all songs or remove it
+  const toggleAllSongs = () => {
+    if (isFullList) {
+      dispatch(removeAllSongsFromNewPlaylist())
+    } else {
+      for (let song of songs) {
+        if (!checkSong(song)) {
+          dispatch(addSongToPlaylist(song))
+        }
+      }
+    }
+
+    // dispatch(toggleAllSongs(songs))
+  }
+
   // Context
   const createPlaylistContext = {
     songs,
     isEmptyList,
+    isFullList,
     isEmptyName,
     setName,
     checkSong,
     toggleSong,
     createPlaylistRequest,
+    toggleAllSongs,
   }
 
   return (
