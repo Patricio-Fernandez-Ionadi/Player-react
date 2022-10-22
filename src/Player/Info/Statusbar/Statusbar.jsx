@@ -4,7 +4,7 @@ import { getPercent } from 'utils/helpers'
 
 export const Statusbar = () => {
   const { player, nextSong } = usePlayerContext()
-  const { currentSong, html_audio, isPlaying } = player
+  const { currentSong, audio, isPlaying } = player
 
   const [percentPlayed, setPercentPlayed] = useState(0)
 
@@ -13,7 +13,7 @@ export const Statusbar = () => {
     if (isPlaying) {
       interval = setInterval(() => {
         let percent_played = Math.round(
-          (html_audio.currentTime * 100) / currentSong.duration_sec
+          (audio.currentTime * 100) / currentSong.duration_sec
         )
         setPercentPlayed(percent_played)
       }, 1000)
@@ -24,10 +24,10 @@ export const Statusbar = () => {
   const handleChange = (e) => {
     let value = Number(e.target.value)
     setPercentPlayed(value)
-    html_audio.currentTime = getPercent(value, currentSong.duration_sec)
+    audio.currentTime = getPercent(value, currentSong.duration_sec)
   }
 
-  if (html_audio.ended) nextSong()
+  if (audio.ended) nextSong()
 
   return (
     <input
