@@ -12,5 +12,13 @@ export const NameInput = () => {
     setPlaylistName(value)
     setName(value)
   }
-  return <input type='text' onChange={handleNameChange} value={playlistName} />
+  return (
+    <input
+      className='createplaylist-name-input'
+      type='text'
+      onChange={handleNameChange}
+      value={playlistName}
+      placeholder='Nombre de la playlist'
+    />
+  )
 }

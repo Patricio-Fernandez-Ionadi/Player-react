@@ -1,0 +1,18 @@
+.createplaylist-name-input {
+  width: $full;
+  border-radius: 3px;
+  border: none;
+  height: 30px;
+  padding-left: 15px;
+  background-color: transparent;
+  margin-bottom: 15px;
+  transition: $fast;
+  &:focus {
+    box-shadow: $shadow-light;
+    outline: none;
+    font-size: 1.2em;
+  }
+  &:placeholder-shown {
+    font-style: italic;
+  }
+}
