@@ -21,30 +21,15 @@ export const PlayerProvider = ({ children }) => {
     isMuted: false,
     volume: 1,
     autoplay: true,
-    repeatAll: true,
+    repeatAll: false,
     repeatOne: false,
     audio: track.current,
+    lastSong: false,
+    firstSong: true,
   })
 
   const { load, index, song, nextIndex, prevIndex, setLoadFalse } =
     useCurrentSong(player)
-
-  // Functions
-  const nextSong = () => {
-    setIsLoadingPlayer(true)
-    nextIndex()
-    player.isPlaying && continuePlaying(player.audio)
-  }
-
-  const prevSong = () => {
-    setIsLoadingPlayer(true)
-    prevIndex()
-    player.isPlaying && continuePlaying(player.audio)
-  }
-
-  const turnPlay = () => {
-    setPlayer((player) => ({ ...player, isPlaying: !player.isPlaying }))
-  }
 
   // Helpers
   const setCurrentSong = () => {
@@ -62,10 +47,49 @@ export const PlayerProvider = ({ children }) => {
       setPlayer((player) => ({ ...player, songs }))
     }
   }
+  const handleIndexInPlayer = () => {
+    if (!player.repeatAll) {
+      if (index === 0) {
+        // first song
+        setPlayer((player) => ({ ...player, firstSong: true }))
+      } else if (index > 0 && index + 1 < songs.length) {
+        // middle
+        setPlayer((player) => ({
+          ...player,
+          firstSong: false,
+          lastSong: false,
+        }))
+      } else if (index + 1 === songs.length) {
+        // last song
+        setPlayer((player) => ({ ...player, lastSong: true }))
+      }
+    }
+  }
+
+  // Functions
+  const nextSong = () => {
+    handleIndexInPlayer()
+    setIsLoadingPlayer(true)
+    nextIndex()
+
+    player.isPlaying && continuePlaying(player.audio)
+  }
+
+  const prevSong = () => {
+    handleIndexInPlayer()
+    setIsLoadingPlayer(true)
+    prevIndex()
+    player.isPlaying && continuePlaying(player.audio)
+  }
+
+  const turnPlay = () => {
+    setPlayer((player) => ({ ...player, isPlaying: !player.isPlaying }))
+  }
 
   // Effect
   useEffect(() => {
     setCurrentSong()
+    handleIndexInPlayer()
   }, [song])
 
   useEffect(() => {
