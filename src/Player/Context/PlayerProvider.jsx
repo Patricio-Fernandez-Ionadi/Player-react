@@ -21,11 +21,11 @@ export const PlayerProvider = ({ children }) => {
     isMuted: false,
     volume: 1,
     autoplay: true,
-    repeatAll: false,
+    repeatAll: true,
     repeatOne: false,
     audio: track.current,
     lastSong: false,
-    firstSong: true,
+    firstSong: false,
   })
 
   const { load, index, song, nextIndex, prevIndex, setLoadFalse } =
