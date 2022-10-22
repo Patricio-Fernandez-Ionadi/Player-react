@@ -8,11 +8,11 @@ import { usePlayerContext } from 'Player/Context'
 
 export const ControlPlayPause = () => {
   const { player, turnPlay } = usePlayerContext()
-  const { isPlaying, html_audio } = player
+  const { isPlaying, audio } = player
 
   const playPause = () => {
     turnPlay()
-    isPlaying ? pauseTrack(html_audio) : playTrack(html_audio)
+    isPlaying ? pauseTrack(audio) : playTrack(audio)
   }
 
   return (
