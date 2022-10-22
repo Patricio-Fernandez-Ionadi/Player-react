@@ -6,7 +6,7 @@ export const useCurrentSong = (player) => {
   const [songToPlayIndex, setSongToPlayIndex] = useState(0)
   const [load, setLoad] = useState(false)
 
-  const { html_audio: audio, songs } = player
+  const { audio, songs, repeatAll } = player
 
   const setSong = () => {
     setSongToPlay({
@@ -29,10 +29,14 @@ export const useCurrentSong = (player) => {
     }
   }, [player, audio, songToPlayIndex])
 
+  const lastSongIndex = songs.length - 1
+  const isLastSong = songToPlayIndex + 1 === songs.length
+  const isFirstSong = songToPlayIndex - 1 < 0
+
   const nextIndex = () => {
     setLoad(false)
-    if (songToPlayIndex + 1 === songs.length) {
-      if (player.repeatAll) {
+    if (isLastSong) {
+      if (repeatAll) {
         setSongToPlayIndex(0)
       }
       return
@@ -43,9 +47,9 @@ export const useCurrentSong = (player) => {
 
   const prevIndex = () => {
     setLoad(false)
-    if (songToPlayIndex - 1 < 0) {
-      if (player.repeatAll) {
-        setSongToPlayIndex(songs.length - 1)
+    if (isFirstSong) {
+      if (repeatAll) {
+        setSongToPlayIndex(lastSongIndex)
       }
       return
     } else {
@@ -59,10 +63,10 @@ export const useCurrentSong = (player) => {
 
   return {
     load,
-    current: songToPlay,
+    song: songToPlay,
+    index: songToPlayIndex,
     setLoadFalse,
     nextIndex,
     prevIndex,
-    index: songToPlayIndex,
   }
 }
