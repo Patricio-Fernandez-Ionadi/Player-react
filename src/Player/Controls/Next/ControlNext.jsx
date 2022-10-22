@@ -1,20 +1,15 @@
-import { useState } from 'react'
-// external
 import SkipNextIcon from '@mui/icons-material/SkipNext'
 
-// utils
 import { usePlayerContext } from 'Player/Context'
 
 export const ControlNext = () => {
-  const { nextSong } = usePlayerContext()
-
-  const [isEnabled, setIsEnabled] = useState(true)
+  const { nextSong, player } = usePlayerContext()
 
   return (
     <button
-      onClick={nextSong}
+      onClick={player.lastSong ? () => {} : nextSong}
       aria-label='next button'
-      className={`${isEnabled ? 'btn' : 'btn btn-disabled'}`}
+      className={`btn ${player.lastSong ? 'btn-disabled' : ''}`}
     >
       <SkipNextIcon />
     </button>
