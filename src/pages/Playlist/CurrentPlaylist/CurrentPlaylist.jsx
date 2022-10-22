@@ -7,7 +7,7 @@ export const CurrentPlaylist = () => {
     <div>
       {currentPlaylist.songs[0] ? (
         <>
-          <h2>Seleccionada: {currentPlaylist.name}</h2>
+          <h2>{currentPlaylist.name}</h2>
           <ul>
             {currentPlaylist.songs.map((e) => {
               return <li key={e.name}>{e.name}</li>
