@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux'
 import { setCurrentPlaylist } from 'store'
+import { PlaylistCardDetail } from './PlaylistCardDetail'
 import { PlaylistCardHeader } from './PlaylistCardHeader'
 
 export const PlaylistCard = ({ pl }) => {
@@ -33,15 +34,10 @@ export const PlaylistCard = ({ pl }) => {
       onTouchStart={doubleTouch}
     >
       <PlaylistCardHeader name={pl.name} />
-      <ul>
-        <li>{pl.songs[0]?.name}</li>
-        <li>{pl.songs[1]?.name}</li>
-        <li>{pl.songs[2]?.name}</li>
-        <li>...</li>
-      </ul>
-      <button type='button' className='btn'>
+      <PlaylistCardDetail playlist={pl} />
+      {/* <button type='button' className='btn'>
         ver mas
-      </button>
+      </button> */}
     </div>
   )
 }
