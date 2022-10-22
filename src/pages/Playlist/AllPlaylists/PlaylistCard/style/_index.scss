@@ -1,9 +1,12 @@
 .playlist-card {
   background-color: white;
   min-height: 100px;
+  max-width: 200px;
+  border-radius: 3px;
   width: $full;
   &-header {
-    background-color: yellow;
+    // background-color: yellow;
+    border-bottom: 1px solid $white_dark;
     height: 35px;
     line-height: 35px;
     text-align: center;
