@@ -23,23 +23,23 @@ export const PlayerProvider = ({ children }) => {
     autoplay: true,
     repeatAll: true,
     repeatOne: false,
-    html_audio: track.current,
+    audio: track.current,
   })
 
-  const { load, index, current, nextIndex, prevIndex, setLoadFalse } =
+  const { load, index, song, nextIndex, prevIndex, setLoadFalse } =
     useCurrentSong(player)
 
   // Functions
   const nextSong = () => {
     setIsLoadingPlayer(true)
     nextIndex()
-    player.isPlaying && continuePlaying(player.html_audio)
+    player.isPlaying && continuePlaying(player.audio)
   }
 
   const prevSong = () => {
     setIsLoadingPlayer(true)
     prevIndex()
-    player.isPlaying && continuePlaying(player.html_audio)
+    player.isPlaying && continuePlaying(player.audio)
   }
 
   const turnPlay = () => {
@@ -48,13 +48,13 @@ export const PlayerProvider = ({ children }) => {
 
   // Helpers
   const setCurrentSong = () => {
-    if (current) {
-      setPlayer((player) => ({ ...player, currentSong: current }))
+    if (song) {
+      setPlayer((player) => ({ ...player, currentSong: song }))
     }
   }
   const setHtmlAudio = () => {
     if (track.current) {
-      setPlayer((player) => ({ ...player, html_audio: track.current }))
+      setPlayer((player) => ({ ...player, audio: track.current }))
     }
   }
   const setSongs = () => {
@@ -66,7 +66,7 @@ export const PlayerProvider = ({ children }) => {
   // Effect
   useEffect(() => {
     setCurrentSong()
-  }, [current])
+  }, [song])
 
   useEffect(() => {
     setHtmlAudio()
@@ -74,9 +74,6 @@ export const PlayerProvider = ({ children }) => {
 
   useEffect(() => {
     setSongs()
-  }, [songs])
-
-  useEffect(() => {
     if (!songs[0] && player.isPlaying) {
       turnPlay()
       setLoadFalse()
