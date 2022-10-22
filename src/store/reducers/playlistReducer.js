@@ -67,6 +67,15 @@ export const playlistReducer = (state = plr, action) => {
         currentPlaylist: action.payload,
       }
     // --------------------------------------------------------------
+    case 'REMOVE_ALL_SONGS_FROM_NEW_PLAYLIST':
+      return {
+        ...state,
+        newPlaylist: {
+          ...state.newPlaylist,
+          songs: [],
+        },
+      }
+    // --------------------------------------------------------------
     default:
       return state
   }
@@ -117,3 +126,6 @@ export const setCurrentPlaylist = (pl) => (dispatch) =>
     type: 'SET_CURRENT_PLAYLIST',
     payload: pl,
   })
+
+export const removeAllSongsFromNewPlaylist = () => (dispatch) =>
+  dispatch({ type: 'REMOVE_ALL_SONGS_FROM_NEW_PLAYLIST' })
