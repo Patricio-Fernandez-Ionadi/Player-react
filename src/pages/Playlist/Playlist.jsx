@@ -9,7 +9,7 @@ export const Playlist = () => {
 
   if (!playlists) {
     return (
-      <section>
+      <section className='view'>
         <h2>Playlist</h2>
         <h3>Crea una lista de reproducción</h3>
         <AddPlaylistButton />
@@ -18,7 +18,7 @@ export const Playlist = () => {
     )
   } else {
     return (
-      <section>
+      <section className='view'>
         <AddPlaylistButton />
         <h2>Playlists</h2>
         <CurrentPlaylist />

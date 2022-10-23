@@ -1,0 +1,7 @@
+.view {
+  padding: $container-padding;
+  & h2 {
+    text-align: center;
+    margin: 30px auto;
+  }
+}
