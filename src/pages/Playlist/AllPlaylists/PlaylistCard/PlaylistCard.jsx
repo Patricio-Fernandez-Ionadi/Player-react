@@ -16,7 +16,6 @@ export const PlaylistCard = ({ pl }) => {
         expired = e.timeStamp + 400
       } else if (e.timeStamp <= expired) {
         // remove the default of this event ( Zoom )
-        // e.preventDefault()
         handleSelectPlaylist()
         // then reset the variable for other "double Touches" event
         expired = null
@@ -30,14 +29,11 @@ export const PlaylistCard = ({ pl }) => {
   return (
     <div
       className='playlist-card'
-      onDoubleClick={handleSelectPlaylist}
-      onTouchStart={doubleTouch}
+      onClick={handleSelectPlaylist}
+      // onTouchStart={doubleTouch}
     >
       <PlaylistCardHeader name={pl.name} />
       <PlaylistCardDetail playlist={pl} />
-      {/* <button type='button' className='btn'>
-        ver mas
-      </button> */}
     </div>
   )
 }
