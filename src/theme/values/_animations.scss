@@ -2,4 +2,17 @@ $shadow: 0 0 3px 0 $black_light;
 $shadow-light: 0 0 5px 0 $white_dark;
 $shadow-light-large: 1px 1px 8px 0 $white_dark;
 
+$elevation: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%),
+  0px 1px 3px 0px rgb(0 0 0 / 12%);
+$elevation-2: 0px 3px 1px -2px rgb(0 0 0 / 20%),
+  0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+$elevation-3: 0px 3px 3px -2px rgb(0 0 0 / 20%),
+  0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
+$elevation-4: 0px 2px 4px -1px rgb(0 0 0 / 20%),
+  0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+$elevation-6: 0px 3px 5px -1px rgb(0 0 0 / 20%),
+  0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%);
+$elevation-8: 0px 5px 5px -3px rgb(0 0 0 / 20%),
+  0px 8px 10px 1px rgb(0 0 0 / 14%), 0px 3px 14px 2px rgb(0 0 0 / 12%);
+
 $fast: 0.2s ease;
