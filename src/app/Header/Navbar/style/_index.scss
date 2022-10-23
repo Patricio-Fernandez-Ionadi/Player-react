@@ -1,6 +1,6 @@
 .navigation-container {
+  @include useThemeBg($primary, $primary_darken_dark);
   align-items: center;
-  background-color: $primary;
   box-shadow: $shadow;
   display: flex;
   height: $full;

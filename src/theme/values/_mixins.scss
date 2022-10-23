@@ -1,0 +1,18 @@
+@mixin useThemeText {
+  transition: color $fast;
+  &.light {
+    color: $black;
+  }
+  &.dark {
+    color: $white;
+  }
+}
+@mixin useThemeBg($lightc: transparent, $darkc: transparent) {
+  transition: background $fast;
+  &.light {
+    background: $lightc;
+  }
+  &.dark {
+    background: $darkc;
+  }
+}

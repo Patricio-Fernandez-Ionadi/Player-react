@@ -5,25 +5,17 @@
   .menu-button {
     // neutralize
     background: transparent;
-    // styile
+    // style
     width: $button-height;
     height: $button-height;
     display: flex;
     justify-content: center;
     align-items: center;
-    // color: $white;
     transition: background 0.2s;
     border-radius: 3px;
+    @include useThemeText;
     &:active {
       background: $primary_dark;
     }
   }
 }
-
-// @media (max-width: $medium) {
-//   .menu-button-container {
-//     &.non-mobile {
-//       display: none;
-//     }
-//   }
-// }

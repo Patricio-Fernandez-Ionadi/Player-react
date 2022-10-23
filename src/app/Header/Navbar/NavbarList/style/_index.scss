@@ -1,5 +1,5 @@
 .navbar-list-container {
-  background-color: $primary_light;
+  @include useThemeBg($primary_light, $primary_darken);
   list-style: none;
   padding: $pad;
 
@@ -14,6 +14,7 @@
   opacity: 0;
   transition: all 0.4s;
   &.menu-open {
+    top: $navigation-height;
     opacity: 1;
     right: 0;
   }
@@ -21,35 +22,34 @@
     height: $list-element-height;
     margin: 5px 0;
     line-height: $list-element-height;
-
-    display: flex;
+    padding: $pad;
 
     border-radius: 6px 25px 6px 25px;
+    box-shadow: $shadow-light;
 
     overflow: hidden;
+    cursor: pointer;
     .navbar-list-link,
     .navbar-list-icon {
-      color: $black;
+      @include useThemeText;
     }
     .navbar-list-link {
-      font-weight: bold;
       letter-spacing: 1px;
-      font-size: 1.8em;
+      font-size: 1.2em;
       display: block;
-      padding-left: 10px;
       width: $full;
+      padding-left: 10px;
     }
     .navbar-list-icon {
-      width: 60px;
-      cursor: pointer;
+      position: relative;
+      top: 4px;
     }
   }
 }
 
 @media (min-width: $medium) {
   .navbar-list-container {
-    transition: all 0s;
-    background: transparent;
+    @include useThemeBg();
     width: $navigation-width;
     opacity: 1;
     position: relative;
