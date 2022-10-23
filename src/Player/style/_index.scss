@@ -7,9 +7,14 @@
   .comands-container,
   .info-container {
     width: $full;
-  }
-  // .comands-container {}
-  .info-container {
     gap: $gap;
   }
+  .comands-container {
+    .play-button {
+      & svg {
+        font-size: 2.5em;
+      }
+    }
+  }
+  // .info-container {}
 }
