@@ -1,9 +1,13 @@
 .all-playlists-container {
   width: $full;
-  min-height: 300px;
   display: grid;
   grid-template-columns: 1fr;
   place-items: center;
   gap: $gap;
-  padding: $pad;
+}
+
+@media (min-width: $medium) {
+  .all-playlists-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }

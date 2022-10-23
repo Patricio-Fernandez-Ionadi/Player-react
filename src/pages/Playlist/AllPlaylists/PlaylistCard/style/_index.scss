@@ -1,14 +1,27 @@
 .playlist-card {
   background-color: white;
   min-height: 100px;
-  max-width: 200px;
-  border-radius: 3px;
   width: $full;
+  padding: $pad;
+  border-radius: 3px;
+  box-shadow: $shadow-light-large;
+  transition: transform $fast;
+  &:hover {
+    transform: scale(1.05);
+  }
   &-header {
-    // background-color: yellow;
     border-bottom: 1px solid $white_dark;
     height: 35px;
     line-height: 35px;
     text-align: center;
+  }
+  &-detail {
+    list-style: none;
+    padding: 0;
+    &-item {
+      &:hover {
+        color: $primary;
+      }
+    }
   }
 }
