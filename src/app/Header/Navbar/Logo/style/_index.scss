@@ -1,7 +1,6 @@
 .navigation-logo {
   height: $navigation-height;
   line-height: $navigation-height;
-  padding: 0 0 0 10px;
   &-link {
     @include useThemeText;
   }
