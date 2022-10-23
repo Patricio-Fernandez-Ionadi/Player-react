@@ -7,14 +7,17 @@ import { MenuMobileProvider } from 'app/context'
 import { App } from './App'
 
 import '../theme/index.css'
+import { ThemeProvider } from './context/Theme'
 
 export const Core = () => {
   return (
     <BrowserRouter>
       <Provider store={store}>
-        <MenuMobileProvider>
-          <App />
-        </MenuMobileProvider>
+        <ThemeProvider>
+          <MenuMobileProvider>
+            <App />
+          </MenuMobileProvider>
+        </ThemeProvider>
       </Provider>
     </BrowserRouter>
   )
