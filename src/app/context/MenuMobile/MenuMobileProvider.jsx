@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { MenuMobileContext } from './MenuMobileContext'
+import { MenuMobileContext } from './context'
 
 export const MenuMobileProvider = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false)
