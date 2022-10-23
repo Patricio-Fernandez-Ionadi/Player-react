@@ -75,6 +75,14 @@ a {
   color: #f44336;
 }
 
+.view {
+  padding: 10px 20px;
+}
+.view h2 {
+  text-align: center;
+  margin: 30px auto;
+}
+
 .main-container-app {
   display: grid;
   grid-template-rows: auto 1fr;
@@ -95,7 +103,6 @@ a {
 .main-container-app .body-container-app {
   grid-row: 2/-1;
   background-color: #f5f5f5;
-  padding: 5px 10px;
 }
 
 @media (min-width: 769px) {
@@ -113,13 +120,12 @@ a {
     grid-column: 1;
   }
   .main-container-app .body-container-app {
-    padding: 10px 40px;
     grid-row: 2;
     grid-column: 1;
   }
 }
 .navbar-list-container {
-  background-color: #5cdfe7;
+  transition: background 0.2s ease;
   list-style: none;
   padding: 5px 10px;
   height: calc(100vh - 60px);
@@ -131,7 +137,14 @@ a {
   opacity: 0;
   transition: all 0.4s;
 }
+.navbar-list-container.light {
+  background: #5cdfe7;
+}
+.navbar-list-container.dark {
+  background: #006064;
+}
 .navbar-list-container.menu-open {
+  top: 60px;
   opacity: 1;
   right: 0;
 }
@@ -139,36 +152,50 @@ a {
   height: 50px;
   margin: 5px 0;
   line-height: 50px;
-  display: flex;
+  padding: 5px 10px;
   border-radius: 6px 25px 6px 25px;
+  box-shadow: 0 0 5px 0 #c2c2c2;
   overflow: hidden;
+  cursor: pointer;
 }
 .navbar-list-container .navbar-list-element .navbar-list-link,
 .navbar-list-container .navbar-list-element .navbar-list-icon {
+  transition: color 0.2s ease;
+}
+.navbar-list-container .navbar-list-element .navbar-list-link.light,
+.navbar-list-container .navbar-list-element .navbar-list-icon.light {
   color: #212121;
 }
+.navbar-list-container .navbar-list-element .navbar-list-link.dark,
+.navbar-list-container .navbar-list-element .navbar-list-icon.dark {
+  color: #f5f5f5;
+}
 .navbar-list-container .navbar-list-element .navbar-list-link {
-  font-weight: bold;
   letter-spacing: 1px;
-  font-size: 1.8em;
+  font-size: 1.2em;
   display: block;
-  padding-left: 10px;
   width: 100%;
+  padding-left: 10px;
 }
 .navbar-list-container .navbar-list-element .navbar-list-icon {
-  width: 60px;
-  cursor: pointer;
+  position: relative;
+  top: 4px;
 }
 
 @media (min-width: 769px) {
   .navbar-list-container {
-    transition: all 0s;
-    background: transparent;
+    transition: background 0.2s ease;
     width: 180px;
     opacity: 1;
     position: relative;
     top: 0;
     left: 0;
+  }
+  .navbar-list-container.light {
+    background: transparent;
+  }
+  .navbar-list-container.dark {
+    background: transparent;
   }
 }
 .navigation-logo {
@@ -177,7 +204,13 @@ a {
   padding: 0 0 0 10px;
 }
 .navigation-logo-link {
+  transition: color 0.2s ease;
+}
+.navigation-logo-link.light {
   color: #212121;
+}
+.navigation-logo-link.dark {
+  color: #f5f5f5;
 }
 
 .navigation-menu-container {
@@ -194,20 +227,33 @@ a {
   align-items: center;
   transition: background 0.2s;
   border-radius: 3px;
+  transition: color 0.2s ease;
+}
+.navigation-menu-container .menu-button.light {
+  color: #212121;
+}
+.navigation-menu-container .menu-button.dark {
+  color: #f5f5f5;
 }
 .navigation-menu-container .menu-button:active {
   background: #007d85;
 }
 
 .navigation-container {
+  transition: background 0.2s ease;
   align-items: center;
-  background-color: #00adb5;
   box-shadow: 0 0 3px 0 #484848;
   display: flex;
   height: 100%;
   justify-content: center;
   position: relative;
   width: 100%;
+}
+.navigation-container.light {
+  background: #00adb5;
+}
+.navigation-container.dark {
+  background: #00363a;
 }
 .navigation-container.menu-open .navigation-center {
   right: 0;
@@ -292,7 +338,7 @@ a {
   color: #f5f5f5;
   background-color: #00363a;
   gap: 10px;
-  padding: 10px 40px;
+  padding: 10px 20px;
 }
 .player-container .comands-container,
 .player-container .info-container {
@@ -479,24 +525,39 @@ a {
 
 .all-playlists-container {
   width: 100%;
-  min-height: 300px;
   display: grid;
   grid-template-columns: 1fr;
   place-items: center;
   gap: 10px;
-  padding: 5px 10px;
 }
 
+@media (min-width: 769px) {
+  .all-playlists-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 .playlist-card {
   background-color: white;
   min-height: 100px;
-  max-width: 200px;
-  border-radius: 3px;
   width: 100%;
+  padding: 5px 10px;
+  border-radius: 3px;
+  box-shadow: 1px 1px 8px 0 #c2c2c2;
+  transition: transform 0.2s ease;
+}
+.playlist-card:hover {
+  transform: scale(1.05);
 }
 .playlist-card-header {
   border-bottom: 1px solid #c2c2c2;
   height: 35px;
   line-height: 35px;
   text-align: center;
+}
+.playlist-card-detail {
+  list-style: none;
+  padding: 0;
+}
+.playlist-card-detail-item:hover {
+  color: #00adb5;
 }/*# sourceMappingURL=index.css.map */
