@@ -1,10 +1,10 @@
 export const PlaylistCardDetail = ({ playlist }) => {
   return (
-    <ul>
-      <li>{playlist.songs[0]?.name}</li>
-      <li>{playlist.songs[1]?.name}</li>
-      <li>{playlist.songs[2]?.name}</li>
-      <li>...</li>
+    <ul className='playlist-card-detail'>
+      <li className='playlist-card-detail-item'>{playlist.songs[0]?.name}</li>
+      <li className='playlist-card-detail-item'>{playlist.songs[1]?.name}</li>
+      <li className='playlist-card-detail-item'>{playlist.songs[2]?.name}</li>
+      <li className='playlist-card-detail-item'>...</li>
     </ul>
   )
 }
