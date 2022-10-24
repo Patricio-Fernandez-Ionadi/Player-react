@@ -5,14 +5,15 @@
 // ##### app #####
 @import '../app/style/_index.scss';
 
+// ##### Components #####
+@import '../components/Loading/style/_index.scss';
+@import '../components/ToggleTheme/style/_index.scss';
+
 // ##### Navbar #####
 @import '../app/Header/Navbar/NavbarList/style/_index.scss';
 @import '../app/Header/Navbar/Logo/style/_index.scss';
 @import '../app/Header/Navbar/Menu/style/index.scss';
 @import '../app/Header/Navbar/style/_index.scss';
-
-// ##### Loading #####
-@import '../components/Loading/style/_index.scss';
 
 // ##### Player #####
 @import '../Player/style/_index.scss';
@@ -21,9 +22,12 @@
 
 // ##### Pages #####
 
-// ListPage
+// CreatePlaylist
+@import '../pages/CreatePlaylist/style/_index.scss';
 @import '../pages/CreatePlaylist/Table/style/_index.scss';
 @import '../pages/CreatePlaylist/Name/style/_index.scss';
+
+// Playlists
 @import '../pages/Playlist/AllPlaylists/style/_index.scss';
 @import '../pages/Playlist/AllPlaylists/PlaylistCard/style/_index.scss';
 // @import '';

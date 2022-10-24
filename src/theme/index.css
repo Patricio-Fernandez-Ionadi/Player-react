@@ -1,12 +1,11 @@
 * {
   margin: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Geneva, Verdana, sans-serif;
 }
 
 #root {
   max-width: 100vw;
-  overflow: hidden;
 }
 
 button {
@@ -18,6 +17,12 @@ button {
 
 a {
   text-decoration: none;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .flex {
@@ -38,41 +43,61 @@ a {
     display: none;
   }
 }
+.createplaylist-name-input:focus {
+  box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.2), 0px 3px 4px 0px rgba(0, 0, 0, 0.14), 0px 1px 8px 0px rgba(0, 0, 0, 0.12);
+}
+
+.playlist-card {
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+}
+
+.new-playlist-form {
+  box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
 .btn {
+  padding: 5px 10px;
+  border-radius: 3px;
+  transition: all 0.2s ease;
+  min-height: 30px;
+  font-size: 16px;
+}
+.btn:hover {
+  background-color: #00b2ba;
+}
+.btn.primary {
+  background-color: #00adb5;
+}
+.btn.disabled {
+  background-color: #8e8e8e;
+}
+.btn.error {
+  background-color: #f44336;
+}
+.btn svg {
+  font-size: 14px;
+}
+
+.btn-muted {
+  color: #f44336;
+}
+
+.btn-player {
   background: transparent;
-  width: 10em;
-  max-width: 70px;
   padding: 5px;
   height: 30px;
+  width: 30px;
   border: none;
-  border-radius: 10px;
+  border-radius: 50%;
   color: inherit;
   transition: background 0.2s;
   transition: box-shadow 0.2s;
   position: relative;
   outline: none;
 }
-.btn:hover {
+.btn-player:hover {
   box-shadow: 0 0 3px 0 #c2c2c2;
   background: #006064;
-}
-
-.btn-active {
-  color: #00adb5;
-}
-
-.btn-disabled {
-  color: #8e8e8e;
-}
-
-.btn-mute {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-}
-
-.btn-muted {
-  color: #f44336;
 }
 
 .view {
@@ -85,10 +110,11 @@ a {
 
 .main-container-app {
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto 1fr auto;
   min-height: 100vh;
   position: relative;
   padding-top: 60px;
+  background-color: #f5f5f5;
 }
 .main-container-app .header-container-app {
   position: fixed;
@@ -101,14 +127,16 @@ a {
   grid-row: 1/2;
 }
 .main-container-app .body-container-app {
-  grid-row: 2/-1;
-  background-color: #f5f5f5;
+  grid-row: 2/3;
+}
+.main-container-app .footer-container-app {
+  grid-row: 3/-1;
 }
 
 @media (min-width: 769px) {
   .main-container-app {
     grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
+    grid-template-rows: auto 1fr auto;
     padding-top: 0;
     padding-left: 180px;
   }
@@ -123,7 +151,77 @@ a {
     grid-row: 2;
     grid-column: 1;
   }
+  .main-container-app .footer-container-app {
+    grid-row: 3;
+    grid-column: 1;
+  }
 }
+.loader {
+  width: 48px;
+  height: 48px;
+  display: block;
+  margin: 15px auto;
+  position: relative;
+  color: #00adb5;
+  box-sizing: border-box;
+  -webkit-animation: rotation 1s linear infinite;
+          animation: rotation 1s linear infinite;
+}
+
+.loader::after,
+.loader::before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 50%;
+  left: 50%;
+  transform: scale(0.5) translate(0, 0);
+  background-color: #00adb5;
+  border-radius: 50%;
+  -webkit-animation: animloader 1s infinite ease-in-out;
+          animation: animloader 1s infinite ease-in-out;
+}
+
+.loader::before {
+  background-color: #f5f5f5;
+  transform: scale(0.5) translate(-48px, -48px);
+}
+
+@-webkit-keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes animloader {
+  50% {
+    transform: scale(1) translate(-50%, -50%);
+  }
+}
+@keyframes animloader {
+  50% {
+    transform: scale(1) translate(-50%, -50%);
+  }
+}
+.toggle-thee-input {
+  border: none;
+  background: transparent;
+  display: none;
+}
+
 .navbar-list-container {
   transition: background 0.2s ease;
   list-style: none;
@@ -199,6 +297,7 @@ a {
 .navigation-logo {
   height: 60px;
   line-height: 60px;
+  padding-left: 20px;
 }
 .navigation-logo-link {
   transition: color 0.2s ease;
@@ -210,18 +309,10 @@ a {
   color: #f5f5f5;
 }
 
-.navigation-menu-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .navigation-menu-container .menu-button {
   background: transparent;
   width: 30px;
   height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   transition: background 0.2s;
   border-radius: 3px;
   transition: color 0.2s ease;
@@ -270,66 +361,6 @@ a {
     display: none;
   }
 }
-.loader {
-  width: 48px;
-  height: 48px;
-  display: block;
-  margin: 15px auto;
-  position: relative;
-  color: #00adb5;
-  box-sizing: border-box;
-  -webkit-animation: rotation 1s linear infinite;
-          animation: rotation 1s linear infinite;
-}
-
-.loader::after,
-.loader::before {
-  content: "";
-  box-sizing: border-box;
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  top: 50%;
-  left: 50%;
-  transform: scale(0.5) translate(0, 0);
-  background-color: #00adb5;
-  border-radius: 50%;
-  -webkit-animation: animloader 1s infinite ease-in-out;
-          animation: animloader 1s infinite ease-in-out;
-}
-
-.loader::before {
-  background-color: #f5f5f5;
-  transform: scale(0.5) translate(-48px, -48px);
-}
-
-@-webkit-keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-@-webkit-keyframes animloader {
-  50% {
-    transform: scale(1) translate(-50%, -50%);
-  }
-}
-@keyframes animloader {
-  50% {
-    transform: scale(1) translate(-50%, -50%);
-  }
-}
 .player-container {
   height: 100px;
   color: #f5f5f5;
@@ -341,6 +372,10 @@ a {
 .player-container .info-container {
   width: 100%;
   gap: 10px;
+}
+.player-container .comands-container .play-button {
+  width: 40px;
+  height: 40px;
 }
 .player-container .comands-container .play-button svg {
   font-size: 2.5em;
@@ -429,13 +464,16 @@ a {
   box-shadow: -769px 0 0 769px #f5f5f5;
 }
 
+.new-playlist-form {
+  padding: 5px 10px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
 .table-container {
   font-size: 14px;
   width: 100%;
-  border: 1px solid #c2c2c2;
   color: #212121;
-  border-radius: 5px;
-  box-shadow: 0 0 5px 0 #c2c2c2;
   padding: 5px 10px;
 }
 .table-container .thead,
@@ -453,15 +491,20 @@ a {
 }
 .table-container .thead .head-item:nth-child(5),
 .table-container .table-body .table-row .row-item:nth-child(5) {
-  max-width: 20px;
+  max-width: 30px;
+  padding: 0;
 }
 .table-container .thead {
   border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
   cursor: default;
 }
 .table-container .thead .head-item {
   flex: 1;
   padding-left: 5px;
+}
+.table-container .thead .head-item svg {
+  font-size: 14px;
 }
 .table-container .table-body .table-row {
   width: 100%;
@@ -487,9 +530,6 @@ a {
 .table-container .table-body .table-row .row-item:nth-child(1) {
   border-left: 1px solid #ccc;
 }
-.table-container .table-body .table-row .row-item:nth-child(5) {
-  background-color: #5cdfe7;
-}
 
 @media (max-width: 769px) {
   .table-container .table-body .table-row .row-item:nth-child(2) {
@@ -501,15 +541,14 @@ a {
   border-radius: 3px;
   border: none;
   height: 30px;
-  padding-left: 15px;
+  padding-left: 10px;
   background-color: transparent;
   margin-bottom: 15px;
   transition: 0.2s ease;
 }
 .createplaylist-name-input:focus {
-  box-shadow: 0 0 5px 0 #c2c2c2;
   outline: none;
-  font-size: 1.2em;
+  font-size: 1em;
 }
 .createplaylist-name-input:-moz-placeholder-shown {
   font-style: italic;
@@ -540,7 +579,6 @@ a {
   width: 100%;
   padding: 5px 10px;
   border-radius: 3px;
-  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
   transition: transform 0.2s ease;
 }
 .playlist-card:hover {
