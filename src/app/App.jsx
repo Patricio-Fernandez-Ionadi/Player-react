@@ -4,6 +4,7 @@ import { Header } from './Header'
 import { Player } from 'Player'
 import { Content } from './Content'
 import { AppRouter } from 'router'
+import { Footer } from './Footer'
 
 export const App = () => {
   const { isOpen, turnMenu } = useMenuMobileContext()
@@ -15,6 +16,7 @@ export const App = () => {
       <Content>
         <AppRouter />
       </Content>
+      <Footer />
     </div>
   )
 }
