@@ -4,8 +4,8 @@
   width: $full;
   padding: $pad;
   border-radius: 3px;
-  box-shadow: $elevation-6;
   transition: transform $fast;
+  @include elevate(6);
   &:hover {
     transform: scale(1.05);
   }

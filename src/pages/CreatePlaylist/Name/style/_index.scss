@@ -3,14 +3,14 @@
   border-radius: 3px;
   border: none;
   height: 30px;
-  padding-left: 15px;
+  padding-left: $pad-lr;
   background-color: transparent;
   margin-bottom: 15px;
   transition: $fast;
   &:focus {
-    box-shadow: $shadow-light;
+    @include elevate(3);
     outline: none;
-    font-size: 1.2em;
+    font-size: 1em;
   }
   &:placeholder-shown {
     font-style: italic;
