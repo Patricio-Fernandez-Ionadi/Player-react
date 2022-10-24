@@ -1,11 +1,37 @@
 .btn {
+  @extend %flex-row-center;
+  padding: $pad;
+  border-radius: 3px;
+  transition: all $fast;
+  min-height: $button-height;
+  font-size: 16px;
+  &:hover {
+    background-color: lighten($primary, 1);
+  }
+  &.primary {
+    background-color: $primary;
+  }
+  &.disabled {
+    background-color: $grey_light;
+  }
+  &.error {
+    background-color: $error;
+  }
+  & svg {
+    font-size: 14px;
+  }
+}
+.btn-muted {
+  color: $error;
+}
+
+.btn-player {
   background: transparent;
-  width: 10em;
-  max-width: 70px;
   padding: 5px;
   height: $button-height;
+  width: $button-height;
   border: none;
-  border-radius: 10px;
+  border-radius: 50%;
   color: inherit;
   transition: background 0.2s;
   transition: box-shadow 0.2s;
@@ -15,18 +41,4 @@
     box-shadow: 0 0 3px 0 $white_dark;
     background: $primary_darken;
   }
-}
-.btn-active {
-  color: $primary;
-}
-.btn-disabled {
-  color: $grey_light;
-}
-.btn-mute {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-}
-.btn-muted {
-  color: $error;
 }
