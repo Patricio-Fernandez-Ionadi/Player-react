@@ -1,0 +1,28 @@
+.toggle-theme-input {
+  appearance: none;
+  background-color: #fff;
+  width: 25px;
+  height: 8px;
+  margin: 0;
+  position: relative;
+  border-radius: 4px;
+  background-color: $primary_darken_dark;
+  &:after {
+    transition: all $fast;
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -8px;
+    width: 16px;
+    height: 16px;
+    background-color: $primary_dark;
+    border-radius: 50%;
+  }
+  &.active {
+    background-color: $primary;
+    &:after {
+      background-color: $primary_light;
+      left: 15px;
+    }
+  }
+}
