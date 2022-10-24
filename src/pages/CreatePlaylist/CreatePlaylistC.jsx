@@ -9,7 +9,7 @@ export const CreatePlaylistC = () => {
     <>
       <h2>Crea tu playlist</h2>
       {songs ? (
-        <div>
+        <div className='new-playlist-form'>
           <NameInput />
           <Table />
         </div>

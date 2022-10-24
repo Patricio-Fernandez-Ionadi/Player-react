@@ -1,0 +1,6 @@
+.new-playlist-form {
+  padding: $pad;
+  background-color: #fff;
+  border-radius: 5px;
+  @include elevate(8);
+}
