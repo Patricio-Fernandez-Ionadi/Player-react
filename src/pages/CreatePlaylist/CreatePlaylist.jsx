@@ -4,9 +4,9 @@ import { CreatePlaylistC } from './CreatePlaylistC'
 export const CreatePlaylist = () => {
   return (
     <CreatePlaylistProvider>
-      <section>
+      <article>
         <CreatePlaylistC />
-      </section>
+      </article>
     </CreatePlaylistProvider>
   )
 }
