@@ -1,5 +1,8 @@
 import { useState } from 'react'
+
 import { useCreatePlaylist } from '../Context'
+
+import { Button } from 'components'
 
 const TableRow = ({ song }) => {
   const { name, artist, album } = song.e
@@ -7,23 +10,25 @@ const TableRow = ({ song }) => {
 
   const [oneClick, setOneClick] = useState(false)
 
-  const handleOneClickRow = (e) => {
+  const handleOneClickRow = () => {
     setOneClick(!oneClick)
     toggleSong(song.e)
   }
 
   const songIndex = song.i + 1
 
+  const selectedRow = checkSong(song.e) ? 'clicked-once' : ''
+
   return (
     <div
-      className={`table-row flex ${checkSong(song.e) ? 'clicked-once' : ''}`}
+      className={`table-row flex ${selectedRow}`}
       onClick={handleOneClickRow}
     >
       <div className='non-mobile row-item'>{songIndex}</div>
       <div className='row-item'>{name}</div>
       <div className='non-mobile row-item'>{album}</div>
       <div className='row-item'>{artist}</div>
-      <div className='row-item'>{checkSong(song.e) ? '-' : '+'}</div>
+      <Button styles='row-item' toggle={checkSong(song.e)} primary />
     </div>
   )
 }

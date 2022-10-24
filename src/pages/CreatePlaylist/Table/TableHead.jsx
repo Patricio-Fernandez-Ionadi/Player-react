@@ -1,5 +1,7 @@
+import { Button } from 'components'
 import { useState } from 'react'
 import { useCreatePlaylist } from '../Context'
+
 export const TableHead = () => {
   const { toggleAllSongs, isFullList } = useCreatePlaylist()
 
@@ -16,9 +18,12 @@ export const TableHead = () => {
       <div className='head-item'>Nombre</div>
       <div className='non-mobile head-item'>Album</div>
       <div className='head-item'>Artista</div>
-      <div className='head-item' onClick={handleToggle}>
-        {toggle || !isFullList ? '+' : '-'}
-      </div>
+      <Button
+        styles='head-item'
+        onclick={handleToggle}
+        toggle={isFullList}
+        primary
+      />
     </div>
   )
 }
