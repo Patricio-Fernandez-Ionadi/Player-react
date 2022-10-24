@@ -1,22 +1,3 @@
-* {
-  margin: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-#root {
-  max-width: 100vw;
-  overflow: hidden;
-}
-button {
-  border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-a {
-  text-decoration: none;
-}
-
 .flex {
   display: flex;
   justify-content: center;
