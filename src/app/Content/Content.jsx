@@ -1,3 +1,3 @@
 export const Content = ({ children }) => {
-  return <div className='body-container-app'>{children}</div>
+  return <section className='body-container-app view'>{children}</section>
 }
