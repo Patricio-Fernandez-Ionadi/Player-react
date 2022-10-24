@@ -7,7 +7,7 @@ export const ControlPrev = () => {
   return (
     <button
       onClick={player.firstSong ? () => {} : prevSong}
-      className={`btn ${player.firstSong ? 'btn-disabled' : ''}`}
+      className={`btn-player ${player.firstSong ? 'btn-disabled' : ''}`}
       aria-label='prev button'
     >
       <SkipPreviousIcon />

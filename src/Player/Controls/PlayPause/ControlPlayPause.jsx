@@ -17,7 +17,7 @@ export const ControlPlayPause = () => {
 
   return (
     <button
-      className='btn play-button'
+      className='btn-player play-button'
       onClick={playPause}
       aria-label='play/pause button'
     >

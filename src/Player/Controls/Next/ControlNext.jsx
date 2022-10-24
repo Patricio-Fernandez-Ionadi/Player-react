@@ -9,7 +9,7 @@ export const ControlNext = () => {
     <button
       onClick={player.lastSong ? () => {} : nextSong}
       aria-label='next button'
-      className={`btn ${player.lastSong ? 'btn-disabled' : ''}`}
+      className={`btn-player ${player.lastSong ? 'btn-disabled' : ''}`}
     >
       <SkipNextIcon />
     </button>
