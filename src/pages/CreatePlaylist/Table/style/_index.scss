@@ -1,7 +1,6 @@
 .table-container {
   font-size: 14px;
   width: $full;
-  color: $black;
   padding: $pad;
   .thead,
   .table-body,
@@ -17,6 +16,7 @@
     }
     &:nth-child(4) {
       max-width: 80px;
+      border-right: none;
     }
     &:nth-child(5) {
       max-width: 30px;
@@ -25,7 +25,7 @@
   }
 
   .thead {
-    border-bottom: 1px solid #ccc;
+    // border-bottom: 1px solid #ccc;
     padding-bottom: $gap;
     cursor: default;
     .head-item {
@@ -45,6 +45,11 @@
       &.clicked-once {
         background-color: $primary;
       }
+      &:nth-child(1) {
+        border-top: 1px solid #ccc;
+        border-radius: 3px 3px 0 0;
+      }
+
       .row-item {
         padding-left: 5px;
         flex: 1;
