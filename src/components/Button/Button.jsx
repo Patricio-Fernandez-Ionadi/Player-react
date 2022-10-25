@@ -2,7 +2,7 @@ import AddIcon from '@mui/icons-material/Add'
 import RemoveIcon from '@mui/icons-material/Remove'
 
 export const Button = (props) => {
-  const { children, styles } = props
+  const { children, styles, theme } = props
 
   // event
   const { onclick } = props
@@ -22,10 +22,11 @@ export const Button = (props) => {
   // prettier-ignore
   const finalStyles = `
     btn 
-    ${styles ? styles : ''} 
     ${primary ? 'primary' : ''} 
     ${disabled ? 'disabled' : ''}
-    ${error ? 'error' : ''} 
+    ${error ? 'error' : ''}
+    ${theme? theme: ''}
+    ${styles ? styles : ''} 
   `
 
   if (toggle !== undefined) {

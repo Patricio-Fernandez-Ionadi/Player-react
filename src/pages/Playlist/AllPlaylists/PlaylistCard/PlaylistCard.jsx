@@ -1,14 +1,17 @@
+import { useThemeContext } from 'app/context'
 import { useDispatch } from 'react-redux'
 import { setCurrentPlaylist } from 'store'
 import { PlaylistCardDetail } from './PlaylistCardDetail'
 import { PlaylistCardHeader } from './PlaylistCardHeader'
 
 export const PlaylistCard = ({ pl }) => {
+  const { theme } = useThemeContext()
   const dispatch = useDispatch()
   const handleSelectPlaylist = () => {
     dispatch(setCurrentPlaylist(pl))
   }
 
+  /*   
   let expired
   let doubleTouch = (e) => {
     if (e.touches.length === 1) {
@@ -24,11 +27,12 @@ export const PlaylistCard = ({ pl }) => {
         expired = e.timeStamp + 400
       }
     }
-  }
+  } 
+  */
 
   return (
     <div
-      className='playlist-card'
+      className={`playlist-card ${theme}`}
       onClick={handleSelectPlaylist}
       // onTouchStart={doubleTouch}
     >

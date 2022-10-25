@@ -1,22 +1,26 @@
+import { useThemeContext } from 'app/context'
 import { useSelector } from 'react-redux'
 
 export const CurrentPlaylist = () => {
+  const { theme } = useThemeContext()
   const { currentPlaylist } = useSelector(({ playlist }) => playlist)
 
+  if (!currentPlaylist.songs[0]) {
+    return <span />
+  }
+
   return (
-    <div>
-      {currentPlaylist.songs[0] ? (
-        <>
-          <h2>{currentPlaylist.name}</h2>
-          <ul>
-            {currentPlaylist.songs.map((e) => {
-              return <li key={e.name}>{e.name}</li>
-            })}
-          </ul>
-        </>
-      ) : (
-        <span></span>
-      )}
+    <div className='current-playlist-container'>
+      <h3>{currentPlaylist.name}</h3>
+      <ul className={`current-playlist-list paper ${theme}`}>
+        {currentPlaylist.songs.map((e, i) => {
+          return (
+            <li key={e.name}>
+              {++i} - {e.name}
+            </li>
+          )
+        })}
+      </ul>
     </div>
   )
 }
