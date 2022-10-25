@@ -1,6 +1,6 @@
-import React from 'react'
 import { PlayerProvider } from './Context'
 import { PlayerC } from './PlayerC'
+
 export const Player = () => {
   return (
     <PlayerProvider>
