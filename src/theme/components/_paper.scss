@@ -1,0 +1,6 @@
+.paper {
+  padding: $pad;
+  border-radius: 5px;
+  @include elevate(8);
+  @include useThemeBg($white_light, $black);
+}
