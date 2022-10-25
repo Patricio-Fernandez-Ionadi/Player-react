@@ -1,11 +1,11 @@
 import { Route, Routes } from 'react-router-dom'
-import { CreatePlaylist, Playlist } from 'pages'
+import { CreatePlaylist, Inicio, Playlist } from 'pages'
 
 export const AppRouter = () => {
   return (
     <Routes>
       {/* PRIVATE ROUTES */}
-      <Route path='/' element={<h1>Inicio</h1>} />
+      <Route path='/' element={<Inicio />} />
       <Route path='/playlist' element={<Playlist />} />
       <Route path='/lista' element={<CreatePlaylist />} />
       {/* PUBLIC ROUTES */}
