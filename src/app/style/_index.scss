@@ -21,6 +21,11 @@
   .footer-container-app {
     grid-row: 3 / -1;
   }
+  // ----
+  .footer-container-app {
+    @include useThemeBg($primary, $primary_darken_dark);
+    @include useThemeText;
+  }
 }
 
 @media (min-width: $medium) {
