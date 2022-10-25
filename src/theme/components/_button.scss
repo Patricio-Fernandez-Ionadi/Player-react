@@ -5,6 +5,7 @@
   transition: all $fast;
   min-height: $button-height;
   font-size: 16px;
+  @include useThemeText;
   &:hover {
     background-color: lighten($primary, 1);
   }
@@ -18,11 +19,13 @@
     background-color: $error;
   }
   & svg {
-    font-size: 14px;
+    font-size: inherit;
   }
-}
-.btn-muted {
-  color: $error;
+  & a {
+    @extend %flex-row-center;
+    gap: $gap;
+    color: inherit;
+  }
 }
 
 .btn-player {
