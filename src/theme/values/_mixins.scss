@@ -1,11 +1,17 @@
 // Dark mode
-@mixin useThemeText {
+@mixin useThemeText($lightc: $black, $darkc: $white) {
   transition: color $fast;
   &.light {
-    color: $black;
+    color: $lightc;
+    & a {
+      color: $lightc;
+    }
   }
   &.dark {
-    color: $white;
+    color: $darkc;
+    & a {
+      color: $darkc;
+    }
   }
 }
 @mixin useThemeBg($lightc: transparent, $darkc: transparent) {
