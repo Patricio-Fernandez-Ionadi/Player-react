@@ -1,27 +1,25 @@
-import { useLocalStoragePlaylists } from './hooks/useLocalStoragePlaylists'
+import { useLocalStoragePlaylists } from 'hooks'
 
 import { AddPlaylistButton } from './components'
 import { CurrentPlaylist } from './CurrentPlaylist'
 import { AllPlaylists } from './AllPlaylists'
-import { Button } from 'components'
 
 export const Playlist = () => {
   const playlists = useLocalStoragePlaylists()
 
-  if (!playlists) {
+  if (!playlists[0]) {
     return (
       <article>
-        <h2>Playlist</h2>
-        <h3>Crea una lista de reproducción</h3>
+        <h2>Crea tu primer lista de reproducción</h2>
         <AddPlaylistButton />
-        <p>no hay playlist</p>
+        <p>no hay listas de reproducción creadas, ¡haz la tuya!</p>
       </article>
     )
   } else {
     return (
       <article>
         <AddPlaylistButton />
-        <h2>Playlists</h2>
+        <h2>Listas creadas</h2>
         <CurrentPlaylist />
         <AllPlaylists />
       </article>
