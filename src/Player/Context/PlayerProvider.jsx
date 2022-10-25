@@ -21,6 +21,7 @@ export const PlayerProvider = ({ children }) => {
     isMuted: false,
     volume: 1,
     autoplay: true,
+    shuffle: false,
     repeatAll: true,
     repeatOne: false,
     audio: track.current,
@@ -70,7 +71,7 @@ export const PlayerProvider = ({ children }) => {
   const nextSong = () => {
     handleIndexInPlayer()
     setIsLoadingPlayer(true)
-    nextIndex()
+    nextIndex(player.shuffle)
 
     player.isPlaying && continuePlaying(player.audio)
   }
@@ -84,6 +85,10 @@ export const PlayerProvider = ({ children }) => {
 
   const turnPlay = () => {
     setPlayer((player) => ({ ...player, isPlaying: !player.isPlaying }))
+  }
+
+  const shuffle = () => {
+    setPlayer((player) => ({ ...player, shuffle: !player.shuffle }))
   }
 
   // Effect
@@ -119,6 +124,7 @@ export const PlayerProvider = ({ children }) => {
     nextSong,
     turnPlay,
     prevSong,
+    shuffle,
   }
 
   return (

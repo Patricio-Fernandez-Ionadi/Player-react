@@ -33,8 +33,14 @@ export const useCurrentSong = (player) => {
   const isLastSong = songToPlayIndex + 1 === songs.length
   const isFirstSong = songToPlayIndex - 1 < 0
 
-  const nextIndex = () => {
+  const nextIndex = (shuffle) => {
     setLoad(false)
+
+    if (shuffle) {
+      setSongToPlayIndex(Math.floor(Math.random() * songs.length))
+      return
+    }
+
     if (isLastSong) {
       if (repeatAll) {
         setSongToPlayIndex(0)
