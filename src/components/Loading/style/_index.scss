@@ -21,6 +21,7 @@
   background-color: $primary;
   border-radius: 50%;
   animation: animloader 1s infinite ease-in-out;
+  box-shadow: $shadow;
 }
 .loader::before {
   background-color: $white;
