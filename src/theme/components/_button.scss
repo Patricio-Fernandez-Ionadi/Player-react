@@ -1,5 +1,6 @@
 .btn {
   @extend %flex-row-center;
+  color: inherit;
   padding: $pad;
   border-radius: 3px;
   transition: all $fast;
@@ -11,6 +12,9 @@
   }
   &.primary {
     background-color: $primary;
+    &.highlight {
+      animation: lighting 2.5s infinite;
+    }
   }
   &.disabled {
     background-color: $grey_light;
@@ -18,13 +22,15 @@
   &.error {
     background-color: $error;
   }
+  &.success {
+    background-color: $success;
+  }
   & svg {
     font-size: inherit;
   }
   & a {
     @extend %flex-row-center;
     gap: $gap;
-    color: inherit;
   }
 }
 
@@ -43,5 +49,17 @@
   &:hover {
     box-shadow: 0 0 3px 0 $white_dark;
     background: $primary_darken;
+  }
+}
+
+@keyframes lighting {
+  0% {
+    background-color: $primary;
+  }
+  50% {
+    background-color: lighten($primary, 10);
+  }
+  100% {
+    background-color: $primary;
   }
 }
