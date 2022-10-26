@@ -32,9 +32,15 @@ export const CreatePlaylistProvider = ({ children }) => {
   const setName = (name) => dispatch(setPlaylistName(name))
 
   const isFullList = newPlaylist.songs?.length === songs?.length
+
   const isEmptyList = newPlaylist.songs.length === 0
   const isEmptyName = newPlaylist.name === ''
-  const isExistentPlaylist = playlists.includes(newPlaylist)
+  const isExistentPlaylist = Boolean(
+    playlists.filter(
+      (e) => e.name.toLowerCase() === newPlaylist.name.toLowerCase()
+    )[0]
+  )
+
   // checks if the playlist info is correct to be saved
   const createPlaylistRequest = () => {
     if (isEmptyList || isEmptyName || isExistentPlaylist) {
@@ -63,8 +69,9 @@ export const CreatePlaylistProvider = ({ children }) => {
   const createPlaylistContext = {
     songs,
     isEmptyList,
-    isFullList,
     isEmptyName,
+    isFullList,
+    isExistentPlaylist,
     setName,
     checkSong,
     toggleSong,
