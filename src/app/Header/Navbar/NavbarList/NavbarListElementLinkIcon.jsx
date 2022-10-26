@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import QueueMusicIcon from '@mui/icons-material/QueueMusic'
 import { useThemeContext } from 'app/context'
 
-export const NavbarListElementLinkIcon = ({ route }) => {
+export const NavbarListElementLinkIcon = ({ route, icon }) => {
   const { theme } = useThemeContext()
   return (
     <Link
@@ -10,7 +10,7 @@ export const NavbarListElementLinkIcon = ({ route }) => {
       type='button'
       to={route}
     >
-      <QueueMusicIcon />
+      {icon}
     </Link>
   )
 }
