@@ -25,12 +25,14 @@
   }
 
   .thead {
-    // border-bottom: 1px solid #ccc;
     padding-bottom: $gap;
     cursor: default;
     .head-item {
       flex: 1;
       padding-left: 5px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: lowercase;
     }
   }
   .table-body {
@@ -39,8 +41,9 @@
       border-bottom: 1px solid #ccc;
       cursor: pointer;
       transition: background-color $fast;
-      &:hover {
-        background-color: $primary;
+      &:hover,
+      &.clicked-once:hover {
+        background-color: $primary_light;
       }
       &.clicked-once {
         background-color: $primary;
