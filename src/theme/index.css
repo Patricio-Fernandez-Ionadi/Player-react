@@ -17,6 +17,7 @@ button {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 .btn a, .btn {
@@ -43,19 +44,16 @@ a {
     display: none;
   }
 }
-.createplaylist-name-input:focus {
-  box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.2), 0px 3px 4px 0px rgba(0, 0, 0, 0.14), 0px 1px 8px 0px rgba(0, 0, 0, 0.12);
-}
-
 .playlist-card {
   box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
 }
 
-.new-playlist-form, .paper {
+.paper {
   box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
 
 .btn {
+  color: inherit;
   padding: 5px 10px;
   border-radius: 3px;
   transition: all 0.2s ease;
@@ -81,18 +79,24 @@ a {
 .btn.primary {
   background-color: #00adb5;
 }
+.btn.primary.highlight {
+  -webkit-animation: lighting 2.5s infinite;
+          animation: lighting 2.5s infinite;
+}
 .btn.disabled {
   background-color: #8e8e8e;
 }
 .btn.error {
   background-color: #f44336;
 }
+.btn.success {
+  background-color: #66bb6a;
+}
 .btn svg {
   font-size: inherit;
 }
 .btn a {
   gap: 10px;
-  color: inherit;
 }
 
 .btn-player {
@@ -113,6 +117,29 @@ a {
   background: #006064;
 }
 
+@-webkit-keyframes lighting {
+  0% {
+    background-color: #00adb5;
+  }
+  50% {
+    background-color: #00dee8;
+  }
+  100% {
+    background-color: #00adb5;
+  }
+}
+
+@keyframes lighting {
+  0% {
+    background-color: #00adb5;
+  }
+  50% {
+    background-color: #00dee8;
+  }
+  100% {
+    background-color: #00adb5;
+  }
+}
 .view {
   padding: 10px 20px;
   transition: background 0.2s ease;
@@ -153,76 +180,6 @@ a {
   background: #212121;
 }
 
-.main-container-app {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  min-height: 100vh;
-  position: relative;
-  padding-top: 60px;
-  background-color: #f5f5f5;
-}
-.main-container-app .header-container-app {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10;
-  width: 100%;
-}
-.main-container-app .player-container-app {
-  grid-row: 1/2;
-}
-.main-container-app .body-container-app {
-  grid-row: 2/3;
-}
-.main-container-app .footer-container-app {
-  grid-row: 3/-1;
-}
-.main-container-app .footer-container-app {
-  transition: background 0.2s ease;
-  transition: color 0.2s ease;
-}
-.main-container-app .footer-container-app.light {
-  background: #00adb5;
-}
-.main-container-app .footer-container-app.dark {
-  background: #00363a;
-}
-.main-container-app .footer-container-app.light {
-  color: #212121;
-}
-.main-container-app .footer-container-app.light a {
-  color: #212121;
-}
-.main-container-app .footer-container-app.dark {
-  color: #f5f5f5;
-}
-.main-container-app .footer-container-app.dark a {
-  color: #f5f5f5;
-}
-
-@media (min-width: 769px) {
-  .main-container-app {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr auto;
-    padding-top: 0;
-    padding-left: 180px;
-  }
-  .main-container-app .header-container-app {
-    width: 180px;
-  }
-  .main-container-app .player-container-app {
-    grid-row: 1;
-    grid-column: 1;
-  }
-  .main-container-app .body-container-app {
-    grid-row: 2;
-    grid-column: 1;
-  }
-  .main-container-app .footer-container-app {
-    grid-row: 3;
-    grid-column: 1;
-  }
-}
 .loader {
   width: 48px;
   height: 48px;
@@ -315,6 +272,99 @@ a {
   left: 17px;
 }
 
+.tooltip {
+  position: relative;
+}
+.tooltip .tooltip-span {
+  position: absolute;
+  top: -34px;
+  left: 0;
+  background-color: #c2c2c2;
+  padding: 5px 10px;
+  font-size: 14px;
+  border: 1px solid #8e8e8e;
+  border-radius: 3px;
+  opacity: 0;
+  -webkit-clip-path: polygon(50% 100%, 50% 100%, 50% 100%, 50% 100%);
+          clip-path: polygon(50% 100%, 50% 100%, 50% 100%, 50% 100%);
+  transition: all 0.2s ease;
+}
+.tooltip.active .tooltip-span {
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+          clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  opacity: 1;
+}
+
+.main-container-app {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  position: relative;
+  padding-top: 60px;
+  background-color: #f5f5f5;
+}
+.main-container-app .header-container-app {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+}
+.main-container-app .player-container-app {
+  grid-row: 1/2;
+}
+.main-container-app .body-container-app {
+  grid-row: 2/3;
+}
+.main-container-app .footer-container-app {
+  grid-row: 3/-1;
+}
+.main-container-app .footer-container-app {
+  transition: background 0.2s ease;
+  transition: color 0.2s ease;
+}
+.main-container-app .footer-container-app.light {
+  background: #00adb5;
+}
+.main-container-app .footer-container-app.dark {
+  background: #00363a;
+}
+.main-container-app .footer-container-app.light {
+  color: #212121;
+}
+.main-container-app .footer-container-app.light a {
+  color: #212121;
+}
+.main-container-app .footer-container-app.dark {
+  color: #f5f5f5;
+}
+.main-container-app .footer-container-app.dark a {
+  color: #f5f5f5;
+}
+
+@media (min-width: 769px) {
+  .main-container-app {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    padding-top: 0;
+    padding-left: 180px;
+  }
+  .main-container-app .header-container-app {
+    width: 180px;
+  }
+  .main-container-app .player-container-app {
+    grid-row: 1;
+    grid-column: 1;
+  }
+  .main-container-app .body-container-app {
+    grid-row: 2;
+    grid-column: 1;
+  }
+  .main-container-app .footer-container-app {
+    grid-row: 3;
+    grid-column: 1;
+  }
+}
 .navbar-list-container {
   transition: background 0.2s ease;
   list-style: none;
@@ -594,11 +644,6 @@ a {
   box-shadow: -769px 0 0 769px #f5f5f5;
 }
 
-.new-playlist-form {
-  padding: 5px 10px;
-  border-radius: 5px;
-}
-
 .table-container {
   font-size: 14px;
   width: 100%;
@@ -630,6 +675,9 @@ a {
 .table-container .thead .head-item {
   flex: 1;
   padding-left: 5px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: lowercase;
 }
 .table-container .table-body .table-row {
   width: 100%;
@@ -637,8 +685,8 @@ a {
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
-.table-container .table-body .table-row:hover {
-  background-color: #00adb5;
+.table-container .table-body .table-row:hover, .table-container .table-body .table-row.clicked-once:hover {
+  background-color: #5cdfe7;
 }
 .table-container .table-body .table-row.clicked-once {
   background-color: #00adb5;
@@ -666,13 +714,13 @@ a {
   }
 }
 .createplaylist-name-input {
+  color: inherit;
   width: 100%;
-  border-radius: 3px;
   border: none;
+  border-radius: 3px;
   height: 30px;
   padding-left: 10px;
   background-color: transparent;
-  margin-bottom: 15px;
   transition: 0.2s ease;
 }
 .createplaylist-name-input:focus {
@@ -687,6 +735,10 @@ a {
 }
 .createplaylist-name-input:placeholder-shown {
   font-style: italic;
+}
+.createplaylist-name-input.error {
+  background-color: #f6675d;
+  color: #212121;
 }
 
 .all-playlists-container {
