@@ -1,0 +1,24 @@
+.tooltip {
+  position: relative;
+  .tooltip-span {
+    position: absolute;
+    top: calc(-14px - ($pad-tb * 2) - $gap);
+    left: 0;
+
+    background-color: $white_dark;
+    padding: $pad;
+    font-size: 14px;
+    border: 1px solid $grey_light;
+    border-radius: 3px;
+
+    opacity: 0;
+    clip-path: polygon(50% 100%, 50% 100%, 50% 100%, 50% 100%);
+    transition: all $fast;
+  }
+  &.active {
+    .tooltip-span {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      opacity: 1;
+    }
+  }
+}
