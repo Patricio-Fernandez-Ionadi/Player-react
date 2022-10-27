@@ -8,10 +8,13 @@ export const Button = (props) => {
   const { onclick } = props
 
   // styles
-  const { primary, error, disabled } = props
+  const { primary, error, disabled, success } = props
 
   // type
   const { toggle } = props
+
+  // animations
+  const { highlight } = props
 
   const handleClick = (e) => {
     if (onclick) {
@@ -19,13 +22,14 @@ export const Button = (props) => {
     }
   }
 
-  // prettier-ignore
   const finalStyles = `
     btn 
     ${primary ? 'primary' : ''} 
     ${disabled ? 'disabled' : ''}
     ${error ? 'error' : ''}
-    ${theme? theme: ''}
+    ${success ? 'success' : ''}
+    ${highlight ? 'highlight' : ''}
+    ${theme ? theme : ''}
     ${styles ? styles : ''} 
   `
 
