@@ -52,94 +52,6 @@ a {
   box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
 
-.btn {
-  color: inherit;
-  padding: 5px 10px;
-  border-radius: 3px;
-  transition: all 0.2s ease;
-  min-height: 30px;
-  font-size: 16px;
-  transition: color 0.2s ease;
-}
-.btn.light {
-  color: #212121;
-}
-.btn.light a {
-  color: #212121;
-}
-.btn.dark {
-  color: #f5f5f5;
-}
-.btn.dark a {
-  color: #f5f5f5;
-}
-.btn:hover {
-  background-color: #00b2ba;
-}
-.btn.primary {
-  background-color: #00adb5;
-}
-.btn.primary.highlight {
-  -webkit-animation: lighting 2.5s infinite;
-          animation: lighting 2.5s infinite;
-}
-.btn.disabled {
-  background-color: #8e8e8e;
-}
-.btn.error {
-  background-color: #f44336;
-}
-.btn.success {
-  background-color: #66bb6a;
-}
-.btn svg {
-  font-size: inherit;
-}
-.btn a {
-  gap: 10px;
-}
-
-.btn-player {
-  background: transparent;
-  padding: 5px;
-  height: 30px;
-  width: 30px;
-  border: none;
-  border-radius: 50%;
-  color: inherit;
-  transition: background 0.2s;
-  transition: box-shadow 0.2s;
-  position: relative;
-  outline: none;
-}
-.btn-player:hover {
-  box-shadow: 0 0 3px 0 #c2c2c2;
-  background: #006064;
-}
-
-@-webkit-keyframes lighting {
-  0% {
-    background-color: #00adb5;
-  }
-  50% {
-    background-color: #00dee8;
-  }
-  100% {
-    background-color: #00adb5;
-  }
-}
-
-@keyframes lighting {
-  0% {
-    background-color: #00adb5;
-  }
-  50% {
-    background-color: #00dee8;
-  }
-  100% {
-    background-color: #00adb5;
-  }
-}
 .view {
   padding: 10px 20px;
   transition: background 0.2s ease;
@@ -180,67 +92,6 @@ a {
   background: #212121;
 }
 
-.loader {
-  width: 48px;
-  height: 48px;
-  display: block;
-  margin: 15px auto;
-  position: relative;
-  color: #00adb5;
-  box-sizing: border-box;
-  -webkit-animation: rotation 1s linear infinite;
-          animation: rotation 1s linear infinite;
-}
-
-.loader::after,
-.loader::before {
-  content: "";
-  box-sizing: border-box;
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  top: 50%;
-  left: 50%;
-  transform: scale(0.5) translate(0, 0);
-  background-color: #00adb5;
-  border-radius: 50%;
-  -webkit-animation: animloader 1s infinite ease-in-out;
-          animation: animloader 1s infinite ease-in-out;
-  box-shadow: 0 0 3px 0 #484848;
-}
-
-.loader::before {
-  background-color: #f5f5f5;
-  transform: scale(0.5) translate(-48px, -48px);
-}
-
-@-webkit-keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-@-webkit-keyframes animloader {
-  50% {
-    transform: scale(1) translate(-50%, -50%);
-  }
-}
-@keyframes animloader {
-  50% {
-    transform: scale(1) translate(-50%, -50%);
-  }
-}
 .toggle-theme-input {
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -293,6 +144,157 @@ a {
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
           clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   opacity: 1;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  display: block;
+  margin: 15px auto;
+  position: relative;
+  color: #00adb5;
+  box-sizing: border-box;
+  -webkit-animation: rotation 1s linear infinite;
+          animation: rotation 1s linear infinite;
+}
+@-webkit-keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader::after,
+.loader::before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 50%;
+  left: 50%;
+  transform: scale(0.5) translate(0, 0);
+  background-color: #00adb5;
+  border-radius: 50%;
+  -webkit-animation: animloader 1s infinite ease-in-out;
+          animation: animloader 1s infinite ease-in-out;
+  box-shadow: 0 0 3px 0 #484848;
+}
+
+.loader::before {
+  background-color: #f5f5f5;
+  transform: scale(0.5) translate(-48px, -48px);
+}
+
+@-webkit-keyframes animloader {
+  50% {
+    transform: scale(1) translate(-50%, -50%);
+  }
+}
+
+@keyframes animloader {
+  50% {
+    transform: scale(1) translate(-50%, -50%);
+  }
+}
+.btn {
+  color: inherit;
+  padding: 5px 10px;
+  border-radius: 3px;
+  transition: all 0.2s ease;
+  min-height: 30px;
+  font-size: 16px;
+  transition: color 0.2s ease;
+}
+.btn.light {
+  color: #212121;
+}
+.btn.light a {
+  color: #212121;
+}
+.btn.dark {
+  color: #f5f5f5;
+}
+.btn.dark a {
+  color: #f5f5f5;
+}
+.btn:hover {
+  background-color: #00b2ba;
+}
+.btn.primary {
+  color: #212121;
+  background-color: #00adb5;
+}
+.btn.primary.highlight {
+  -webkit-animation: lighting 2.5s infinite;
+          animation: lighting 2.5s infinite;
+}
+@-webkit-keyframes lighting {
+  0% {
+    background-color: #00adb5;
+  }
+  50% {
+    background-color: #00dee8;
+  }
+  100% {
+    background-color: #00adb5;
+  }
+}
+@keyframes lighting {
+  0% {
+    background-color: #00adb5;
+  }
+  50% {
+    background-color: #00dee8;
+  }
+  100% {
+    background-color: #00adb5;
+  }
+}
+.btn.disabled {
+  background-color: #8e8e8e;
+  color: #212121;
+}
+.btn.error {
+  color: #212121;
+  background-color: #f44336;
+}
+.btn.success {
+  background-color: #66bb6a;
+}
+.btn svg {
+  font-size: inherit;
+}
+.btn a {
+  gap: 10px;
+}
+
+.btn-player {
+  background: transparent;
+  padding: 5px;
+  height: 30px;
+  width: 30px;
+  border: none;
+  border-radius: 50%;
+  color: inherit;
+  transition: background 0.2s;
+  transition: box-shadow 0.2s;
+  position: relative;
+  outline: none;
+}
+.btn-player:hover {
+  box-shadow: 0 0 3px 0 #c2c2c2;
+  background: #006064;
 }
 
 .main-container-app {
@@ -755,12 +757,12 @@ a {
   }
 }
 .playlist-card {
-  min-height: 100px;
+  min-height: 130px;
   width: 100%;
   padding: 5px 10px;
   border-radius: 3px;
-  transition: transform 0.2s ease;
   transition: background 0.2s ease;
+  transition: transform 0.2s ease;
 }
 .playlist-card.light {
   background: #fff;
@@ -783,6 +785,7 @@ a {
 }
 .playlist-card-detail-item:hover {
   color: #00adb5;
+  cursor: pointer;
 }
 
 .current-playlist-list {
