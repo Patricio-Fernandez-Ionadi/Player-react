@@ -34,10 +34,11 @@ Reproductor de canciones en un contexto global de la app para que desde cualquie
 - styled-components: 5.3.5
 - - redux-devtools-extension: 2.13.9 (dev)
 
+## Actualmente en:
+
+PlaylistCard, PlaylistDetail, PlaylistRoute
+
 ## Recordatorios
 
 - al seleccionar una lista de reproduccion no se actualiza el index de la lista previa ni se reproduce aunque el estado se mantenga en isPlaying
 - en cada PlaylistCard dentro de los detalles hacer que sean links a esa cancion en esa lista
-- en PlaylistCard el button "ver mas" aun esa bajo consideracion
-
-- render de vista de current playlist sin funcionamiento
