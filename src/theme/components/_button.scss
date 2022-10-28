@@ -11,15 +11,18 @@
     background-color: lighten($primary, 1);
   }
   &.primary {
+    color: $black;
     background-color: $primary;
     &.highlight {
-      animation: lighting 2.5s infinite;
+      @include useHighlight;
     }
   }
   &.disabled {
     background-color: $grey_light;
+    color: $black;
   }
   &.error {
+    color: $black;
     background-color: $error;
   }
   &.success {
@@ -49,17 +52,5 @@
   &:hover {
     box-shadow: 0 0 3px 0 $white_dark;
     background: $primary_darken;
-  }
-}
-
-@keyframes lighting {
-  0% {
-    background-color: $primary;
-  }
-  50% {
-    background-color: lighten($primary, 10);
-  }
-  100% {
-    background-color: $primary;
   }
 }
