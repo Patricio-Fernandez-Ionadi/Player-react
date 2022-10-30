@@ -2,7 +2,7 @@
   position: relative;
   .tooltip-span {
     position: absolute;
-    top: calc(-14px - ($pad-tb * 2) - $gap);
+    top: calc(-28px - ($pad-tb * 3) - $gap);
     left: 0;
 
     background-color: $white_dark;
