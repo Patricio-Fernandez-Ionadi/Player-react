@@ -1,24 +1,28 @@
-import { useThemeContext } from 'app/context'
 import { useDispatch } from 'react-redux'
+
+import { useThemeContext } from 'app/context'
 import { setCurrentPlaylist } from 'store'
+
 import { PlaylistCardDetail } from './PlaylistCardDetail'
 import { PlaylistCardHeader } from './PlaylistCardHeader'
 
 export const PlaylistCard = ({ pl }) => {
   const { theme } = useThemeContext()
+
   const dispatch = useDispatch()
+
   const handleSelectPlaylist = () => {
+    console.log('seleccionando playlist')
     dispatch(setCurrentPlaylist(pl))
   }
 
-  /*   
   let expired
-  let doubleTouch = (e) => {
+  const doubleTouch = (e) => {
     if (e.touches.length === 1) {
       if (!expired) {
         expired = e.timeStamp + 400
       } else if (e.timeStamp <= expired) {
-        // remove the default of this event ( Zoom )
+        // execute double touch event
         handleSelectPlaylist()
         // then reset the variable for other "double Touches" event
         expired = null
@@ -27,14 +31,13 @@ export const PlaylistCard = ({ pl }) => {
         expired = e.timeStamp + 400
       }
     }
-  } 
-  */
+  }
 
   return (
     <div
       className={`playlist-card ${theme}`}
-      onClick={handleSelectPlaylist}
-      // onTouchStart={doubleTouch}
+      onTouchStart={doubleTouch}
+      onDoubleClick={handleSelectPlaylist}
     >
       <PlaylistCardHeader name={pl.name} />
       <PlaylistCardDetail playlist={pl} />
