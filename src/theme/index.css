@@ -128,7 +128,7 @@ a {
 }
 .tooltip .tooltip-span {
   position: absolute;
-  top: -34px;
+  top: -53px;
   left: 0;
   background-color: #c2c2c2;
   padding: 5px 10px;
@@ -782,10 +782,6 @@ a {
 .playlist-card-detail {
   list-style: none;
   padding: 0;
-}
-.playlist-card-detail-item:hover {
-  color: #00adb5;
-  cursor: pointer;
 }
 
 .current-playlist-list {
