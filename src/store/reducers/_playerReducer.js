@@ -1,10 +1,10 @@
 const initialState_player = {
-  songs: [],
   isPlaying: false,
   isMuted: false,
   volume: 1,
-  // currentSong: {},
-  // autoplay: false,
+  shuffle: false,
+  currentSong: {},
+  autoplay: true,
   repeatAll: true,
   repeatOne: false,
   html_audio: null,
