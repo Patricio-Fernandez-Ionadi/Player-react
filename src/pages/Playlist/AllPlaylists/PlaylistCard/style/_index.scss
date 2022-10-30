@@ -1,11 +1,11 @@
 .playlist-card {
-  min-height: 100px;
+  min-height: 130px;
   width: $full;
   padding: $pad;
   border-radius: 3px;
-  transition: transform $fast;
   @include elevate(6);
   @include useThemeBg($white_light, $primary_dark);
+  transition: transform $fast;
   &:hover {
     transform: scale(1.05);
   }
@@ -18,10 +18,5 @@
   &-detail {
     list-style: none;
     padding: 0;
-    &-item {
-      &:hover {
-        color: $primary;
-      }
-    }
   }
 }
