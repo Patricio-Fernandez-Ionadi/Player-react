@@ -1,0 +1,16 @@
+@import '../Controls/style/_index.scss';
+@import '../Auxiliar/style/_index.scss';
+@import '../MainControls/style/_index.scss';
+
+.player-container {
+  color: $white;
+  gap: $gap;
+  padding: $container-padding;
+  @include useThemeBg($primary_darken_dark, $black);
+  .comands-container,
+  .info-container,
+  .auxiliar-container {
+    width: $full;
+    gap: $gap;
+  }
+}

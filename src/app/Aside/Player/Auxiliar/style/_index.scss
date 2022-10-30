@@ -1,0 +1,13 @@
+.auxiliar-container {
+  & .auxiliar-control {
+    min-height: 20px;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: transparent;
+    color: $white;
+    &.active {
+      background-color: $primary_dark;
+    }
+  }
+}

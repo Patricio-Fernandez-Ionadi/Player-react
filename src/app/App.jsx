@@ -1,7 +1,7 @@
 import { useMenuMobileContext } from 'app/context'
 
 import { Header } from './Header'
-import { Player } from 'Player'
+import { Player } from 'app/Aside/Player'
 import { Content } from './Content'
 import { AppRouter } from 'router'
 import { Footer } from './Footer'

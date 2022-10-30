@@ -12,29 +12,13 @@
 @import '../app/Header/Navbar/style/_index.scss';
 
 // ##### Aside #####
-@import '../Player/style/_index.scss';
-@import '../Player/Controls/Volume/style/_index.scss';
-@import '../Player/Info/Statusbar/style/_index.scss';
+@import '../app/Aside/style/_index.scss';
 
 // ##### Content #####
-
 // CreatePlaylist
 @import '../pages/CreatePlaylist/style/_index.scss';
-@import '../pages/CreatePlaylist/Table/style/_index.scss';
-@import '../pages/CreatePlaylist/Name/style/_index.scss';
-
 // Playlists
-@import '../pages/Playlist/AllPlaylists/style/_index.scss';
-@import '../pages/Playlist/AllPlaylists/PlaylistCard/style/_index.scss';
-@import '../pages/Playlist/CurrentPlaylist/style/_index.scss';
-// @import '';
-// @import '';
-// @import '';
-// @import '';
-// @import '';
-// @import '';
-// @import '';
-// @import '';
-// @import '';
-// @import '';
-// @import '';
+@import '../pages/Playlist/style/_index.scss';
+
+// ##### Footer #####
+@import '../app/Footer/style/_index.scss';

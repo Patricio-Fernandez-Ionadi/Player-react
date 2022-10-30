@@ -18,5 +18,14 @@
   &-detail {
     list-style: none;
     padding: 0;
+    &-item {
+      &:nth-last-child(1) {
+        cursor: pointer;
+        transition: color $fast;
+        &:hover {
+          color: $primary;
+        }
+      }
+    }
   }
 }
