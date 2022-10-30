@@ -5,7 +5,7 @@
 .player-container {
   color: $white;
   gap: $gap;
-  padding: $container-padding;
+  padding: $padding-container;
   @include useThemeBg($primary_darken_dark, $black);
   .comands-container,
   .info-container,

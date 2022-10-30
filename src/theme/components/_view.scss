@@ -1,5 +1,5 @@
 .view {
-  padding: $container-padding;
+  padding: $padding-container;
   @include useThemeBg($white, $background);
   @include useThemeText;
   & h2 {
