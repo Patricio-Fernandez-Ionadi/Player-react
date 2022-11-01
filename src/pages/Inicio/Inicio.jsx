@@ -1,23 +1,26 @@
+import { useThemeContext } from 'app/context'
 import React from 'react'
+import { Banner } from './Banner'
 export const Inicio = () => {
+  const { theme } = useThemeContext()
+
   return (
-    <article>
-      <h2>Disfruta de la mejor musica sin anuncios!</h2>
-      <div>
-        <p>banner</p>
-      </div>
-      <h2>Explora tus listas de reproducción</h2>
-      <div>
-        <div>card</div>
-        <div>card</div>
-        <div>card</div>
-        <div>card</div>
-        <div>...</div>
-      </div>
-      <h2>Crea listas a tu medida</h2>
-      <div>
-        <p>alguna imagen de la UI (link a /lista)</p>
-      </div>
-    </article>
+    <>
+      <Banner />
+      <article className={`view ${theme} after-banner`}>
+        <h2>Explora tus listas de reproducción</h2>
+        <div>
+          <div>card</div>
+          <div>card</div>
+          <div>card</div>
+          <div>card</div>
+          <div>...</div>
+        </div>
+        <h2>Crea listas a tu medida</h2>
+        <div>
+          <p>alguna imagen de la UI (link a /lista)</p>
+        </div>
+      </article>
+    </>
   )
 }
