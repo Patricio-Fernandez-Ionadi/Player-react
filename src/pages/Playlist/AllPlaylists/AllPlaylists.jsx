@@ -5,10 +5,10 @@ export const AllPlaylists = () => {
   const { playlists } = useSelector(({ playlist }) => playlist)
 
   return (
-    <div className='all-playlists-container'>
+    <article className='all-playlists-container'>
       {playlists.map((e) => {
         return <PlaylistCard key={e.name} pl={e} />
       })}
-    </div>
+    </article>
   )
 }
