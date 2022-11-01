@@ -1,8 +1,9 @@
 .all-playlists-container {
+  margin-top: $padding-container-tb;
   width: $full;
   display: grid;
   grid-template-columns: 1fr;
-  place-items: center;
+  // place-items: center;
   gap: $gap;
 }
 
