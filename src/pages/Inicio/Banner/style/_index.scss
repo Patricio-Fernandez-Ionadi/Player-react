@@ -1,0 +1,43 @@
+.banner-container {
+  position: relative;
+  width: $full;
+  overflow: hidden;
+  min-height: 300px;
+  padding: $pad;
+  display: flex;
+  align-items: center;
+  .banner-title {
+    position: relative;
+    z-index: 2;
+    color: $white;
+    text-shadow: 0 0 3px $black;
+  }
+  .banner-overlay {
+    width: $full;
+    height: $full;
+    background: transparent;
+    background: linear-gradient(
+      0deg,
+      rgba(18, 18, 18, 1) 0%,
+      rgba(0, 0, 0, 0) 70%
+    );
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+  .banner-image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    .banner-img {
+      width: $vw;
+      display: block;
+      max-width: 100%;
+    }
+  }
+}
+.after-banner {
+  box-shadow: 0 50px 20px -20px $black_dark inset;
+  padding-top: 40px;
+}
