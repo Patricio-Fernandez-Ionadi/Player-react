@@ -1,4 +1,5 @@
 import { useThemeContext } from 'app/context'
+import { Paper } from 'components'
 import { useSelector } from 'react-redux'
 
 export const CurrentPlaylist = () => {
@@ -10,9 +11,9 @@ export const CurrentPlaylist = () => {
   }
 
   return (
-    <div className='current-playlist-container'>
+    <Paper elevation={4}>
       <h3>{currentPlaylist.name}</h3>
-      <ul className={`current-playlist-list paper ${theme}`}>
+      <ul className={`current-playlist-list ${theme}`}>
         {currentPlaylist.songs.map((e, i) => {
           return (
             <li key={e.name}>
@@ -21,6 +22,6 @@ export const CurrentPlaylist = () => {
           )
         })}
       </ul>
-    </div>
+    </Paper>
   )
 }
