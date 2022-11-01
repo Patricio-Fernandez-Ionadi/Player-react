@@ -1,6 +1,23 @@
 .paper {
   padding: $pad;
   border-radius: 5px;
-  @include elevate(8);
   @include useThemeBg($white_light, $black);
+  &.elev-1 {
+    @include elevate(1);
+  }
+  &.elev-2 {
+    @include elevate(2);
+  }
+  &.elev-3 {
+    @include elevate(3);
+  }
+  &.elev-4 {
+    @include elevate(4);
+  }
+  &.elev-6 {
+    @include elevate(6);
+  }
+  &.elev-8 {
+    @include elevate(8);
+  }
 }
