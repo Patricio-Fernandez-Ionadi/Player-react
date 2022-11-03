@@ -6,6 +6,7 @@
   padding: $pad;
   display: flex;
   align-items: center;
+  justify-content: center;
   .banner-title {
     position: relative;
     z-index: 2;
@@ -30,14 +31,23 @@
     position: absolute;
     top: 0;
     left: 0;
+    height: $full;
     .banner-img {
-      width: $vw;
-      display: block;
       max-width: 100%;
+      width: $vw;
+      height: 100%;
+      // display: block;
+      object-fit: cover;
     }
   }
 }
 .after-banner {
   box-shadow: 0 50px 20px -20px $black_dark inset;
   padding-top: 40px;
+}
+
+@media (min-width: $medium) {
+  .banner-container {
+    height: 80%;
+  }
 }

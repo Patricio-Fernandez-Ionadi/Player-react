@@ -2,7 +2,10 @@ import React from 'react'
 
 export const Banner = () => {
   return (
-    <div className='banner-container'>
+    <article
+      className='banner-container'
+      style={{ height: `${window.innerHeight}px` }}
+    >
       <div className='banner-overlay'></div>
       <h2 className='banner-title'>
         Disfruta de la mejor musica sin anuncios!
@@ -10,6 +13,6 @@ export const Banner = () => {
       <div className='banner-image-container'>
         <img src={`assets/lp.jpg`} alt='banner-image' className='banner-img' />
       </div>
-    </div>
+    </article>
   )
 }
