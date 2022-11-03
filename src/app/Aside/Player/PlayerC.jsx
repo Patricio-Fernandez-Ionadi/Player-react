@@ -8,7 +8,6 @@ import { useLocalStoragePlaylists } from 'hooks'
 
 import { setCurrentSong } from 'store'
 import { turnLoading } from 'store'
-import { setCurrentPlaylist } from 'store'
 import { initTrackList } from 'store'
 import { isFirstSong } from 'store'
 import { isLastSong } from 'store'

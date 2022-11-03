@@ -4,17 +4,17 @@ import { useSelector } from 'react-redux'
 
 export const CurrentPlaylist = () => {
   const { theme } = useThemeContext()
-  const { currentPlaylist } = useSelector(({ playlist }) => playlist)
+  const { playlist } = useSelector(({ player }) => player)
 
-  if (!currentPlaylist.songs[0]) {
+  if (!playlist.songs[0]) {
     return <span />
   }
 
   return (
     <Paper elevation={4}>
-      <h3>{currentPlaylist.name}</h3>
+      <h3>{playlist.name}</h3>
       <ul className={`current-playlist-list ${theme}`}>
-        {currentPlaylist.songs.map((e, i) => {
+        {playlist.songs.map((e, i) => {
           return (
             <li key={e.name}>
               {++i} - {e.name}

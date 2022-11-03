@@ -4,10 +4,6 @@ const plr = {
     name: '',
     songs: [],
   },
-  currentPlaylist: {
-    name: '',
-    songs: [],
-  },
 }
 
 export const playlistReducer = (state = plr, action) => {
@@ -59,12 +55,6 @@ export const playlistReducer = (state = plr, action) => {
       return {
         ...state,
         playlists: action.payload,
-      }
-    // --------------------------------------------------------------
-    case 'SET_CURRENT_PLAYLIST':
-      return {
-        ...state,
-        currentPlaylist: action.payload,
       }
     // --------------------------------------------------------------
     case 'REMOVE_ALL_SONGS_FROM_NEW_PLAYLIST':
@@ -120,12 +110,6 @@ export const getLsPlaylists = () => (dispatch) => {
     payload: playlistsFromLocalStorage,
   })
 }
-
-export const setCurrentPlaylist = (pl) => (dispatch) =>
-  dispatch({
-    type: 'SET_CURRENT_PLAYLIST',
-    payload: pl,
-  })
 
 export const removeAllSongsFromNewPlaylist = () => (dispatch) =>
   dispatch({ type: 'REMOVE_ALL_SONGS_FROM_NEW_PLAYLIST' })
