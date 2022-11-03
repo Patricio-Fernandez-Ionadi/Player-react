@@ -1,1 +1,1 @@
-export * from './useCurrentSong'
+export * from './_useCurrentSong'
