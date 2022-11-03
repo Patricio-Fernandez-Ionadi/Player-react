@@ -31,7 +31,6 @@ export const PlayerC = () => {
   const { length, songs } = player.playlist
 
   const handleQuikPlay = () => {
-    dispatch(setCurrentPlaylist(lsplaylist[2]))
     dispatch(initTrackList(lsplaylist[2]))
   }
 
