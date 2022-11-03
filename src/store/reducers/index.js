@@ -1,2 +1,2 @@
-export * from './_playerReducer'
-export * from './playlistReducer'
+export * from './player'
+export * from './playlist'
