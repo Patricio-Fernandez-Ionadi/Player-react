@@ -5,7 +5,7 @@ export const Inicio = () => {
   const { theme } = useThemeContext()
 
   return (
-    <>
+    <section>
       <Banner />
       <article className={`view ${theme} after-banner`}>
         <h2>Explora tus listas de reproducción</h2>
@@ -21,6 +21,6 @@ export const Inicio = () => {
           <p>alguna imagen de la UI (link a /lista)</p>
         </div>
       </article>
-    </>
+    </section>
   )
 }
