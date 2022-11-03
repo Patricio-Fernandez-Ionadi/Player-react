@@ -1,17 +1,22 @@
 // external
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+
 import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 import PauseIcon from '@mui/icons-material/Pause'
 
+import { turnPlaying } from 'store'
+
 // utils
 import { pauseTrack, playTrack } from 'utils/helpers'
-import { usePlayerContext } from 'app/Aside/Player/Context'
 
 export const ControlPlayPause = () => {
-  const { player, turnPlay } = usePlayerContext()
+  const dispatch = useDispatch()
+  const player = useSelector(({ player }) => player)
   const { isPlaying, audio } = player
 
   const playPause = () => {
-    turnPlay()
+    dispatch(turnPlaying())
     isPlaying ? pauseTrack(audio) : playTrack(audio)
   }
 

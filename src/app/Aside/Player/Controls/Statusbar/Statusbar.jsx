@@ -1,10 +1,13 @@
-import { usePlayerContext } from 'app/Aside/Player/Context'
 import { useEffect, useState } from 'react'
+
+import { useSelector } from 'react-redux'
+
 import { getPercent } from 'utils/helpers'
 
 export const Statusbar = () => {
-  const { player, nextSong } = usePlayerContext()
-  const { currentSong, audio, isPlaying } = player
+  const player = useSelector(({ player }) => player)
+
+  const { audio, isPlaying } = player
 
   const [percentPlayed, setPercentPlayed] = useState(0)
 
@@ -13,7 +16,7 @@ export const Statusbar = () => {
     if (isPlaying) {
       interval = setInterval(() => {
         let percent_played = Math.round(
-          (audio.currentTime * 100) / currentSong.duration_sec
+          (audio.currentTime * 100) / audio.duration
         )
         setPercentPlayed(percent_played)
       }, 1000)
@@ -23,8 +26,7 @@ export const Statusbar = () => {
 
   const handleChange = (e) => {
     let value = Number(e.target.value)
-    setPercentPlayed(value)
-    audio.currentTime = getPercent(value, currentSong.duration_sec)
+    audio.currentTime = getPercent(value, Math.round(audio.duration))
   }
 
   if (audio.ended) nextSong()

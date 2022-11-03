@@ -1,20 +1,19 @@
-import { useState } from 'react'
 import ShuffleIcon from '@mui/icons-material/Shuffle'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
-import { usePlayerContext } from 'app/Aside/Player/Context'
+import { turnShuffle } from 'store'
 
 export const Shuffle = () => {
-  const { shuffle, player } = usePlayerContext()
-
-  const [shuffleActive, setShuffleActive] = useState(player.shuffle)
+  const player = useSelector(({ player }) => player)
+  const dispatch = useDispatch()
   const handleShuffleToggle = () => {
-    shuffle()
-    setShuffleActive(!player.shuffle)
+    dispatch(turnShuffle())
   }
   return (
     <button
       onClick={handleShuffleToggle}
-      className={`btn auxiliar-control ${shuffleActive ? 'active' : ''}`}
+      className={`btn auxiliar-control ${player.shuffle ? 'active' : ''}`}
     >
       <ShuffleIcon />
     </button>

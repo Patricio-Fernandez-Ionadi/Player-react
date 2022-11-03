@@ -1,13 +1,37 @@
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious'
-import { usePlayerContext } from 'app/Aside/Player/Context'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+
+import { setCurrentSong } from 'store'
+import { turnLoading } from 'store'
+import { setCurrentIndex } from 'store'
 
 export const ControlPrev = () => {
-  const { prevSong, player } = usePlayerContext()
+  const player = useSelector(({ player }) => player)
+  const dispatch = useDispatch()
+
+  const { firstSong, repeatAll } = player
+  const { currentIndex } = player
+
+  const disabled = firstSong ? 'btn-disabled' : ''
+
+  const handlePrevControl = (e) => {
+    dispatch(setCurrentSong(false))
+    dispatch(turnLoading())
+    if (firstSong) {
+      if (repeatAll) {
+        dispatch(setCurrentIndex(length - 1))
+      }
+      return
+    } else {
+      dispatch(setCurrentIndex(currentIndex - 1))
+    }
+  }
 
   return (
     <button
-      onClick={player.firstSong ? () => {} : prevSong}
-      className={`btn-player ${player.firstSong ? 'btn-disabled' : ''}`}
+      onClick={handlePrevControl}
+      className={`btn-player ${disabled}`}
       aria-label='prev button'
     >
       <SkipPreviousIcon />
