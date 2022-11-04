@@ -6,21 +6,13 @@
 @import '../app/style/_index.scss';
 
 // ##### Header #####
-@import '../app/Header/Navbar/NavbarList/style/_index.scss';
-@import '../app/Header/Navbar/Logo/style/_index.scss';
-@import '../app/Header/Navbar/Menu/style/index.scss';
-@import '../app/Header/Navbar/style/_index.scss';
+@import '../app/Header/style/_index.scss';
 
 // ##### Aside #####
 @import '../app/Aside/style/_index.scss';
 
 // ##### Content #####
-// CreatePlaylist
-@import '../pages/CreatePlaylist/style/_index.scss';
-// Playlists
-@import '../pages/Playlist/style/_index.scss';
-// Inicio
-@import '../pages/Inicio/style/_index.scss';
+@import '../pages/style/_index.scss';
 
 // ##### Footer #####
 @import '../app/Footer/style/_index.scss';
