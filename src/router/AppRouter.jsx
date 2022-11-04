@@ -1,7 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 import { About, CreatePlaylist, Inicio, Playlist, PlaylistDetail } from 'pages'
 import { routes } from 'utils'
-// import { PlaylistRoute } from './Playlist/PlaylistRoute'
 
 export const AppRouter = () => {
   return (
