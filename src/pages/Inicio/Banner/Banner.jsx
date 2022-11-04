@@ -10,9 +10,9 @@ export const Banner = () => {
       <h2 className='banner-title'>
         Disfruta de la mejor musica sin anuncios!
       </h2>
-      <div className='banner-image-container'>
+      <figure className='banner-image-container'>
         <img src={`assets/lp.jpg`} alt='banner-image' className='banner-img' />
-      </div>
+      </figure>
     </article>
   )
 }
