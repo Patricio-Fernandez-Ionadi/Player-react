@@ -1,3 +1,6 @@
+@import '../Header/style/_index.scss';
+@import '../Aside/style/_index.scss';
+@import '../Footer/style/_index.scss';
 .main-container-app {
   display: grid;
   grid-template-rows: auto 1fr auto;

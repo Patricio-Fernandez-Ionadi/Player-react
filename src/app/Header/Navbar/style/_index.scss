@@ -1,3 +1,7 @@
+@import '../Logo/style/_index.scss';
+@import '../Menu/style/_index.scss';
+@import '../NavbarList/style/_index.scss';
+
 .navigation-container {
   @include useThemeBg($primary, $primary_darken_dark);
   align-items: center;
