@@ -4,12 +4,12 @@ import {
   ControlPrev,
 } from 'app/Aside/Player/Controls'
 
-export const MainControls = () => {
+export const MainControls = ({ next, prev }) => {
   return (
     <div className='comands-container flex'>
-      <ControlPrev />
+      <ControlPrev prev={prev} />
       <ControlPlayPause />
-      <ControlNext />
+      <ControlNext next={next} />
     </div>
   )
 }
