@@ -5,9 +5,17 @@ import { useSelector } from 'react-redux'
 import { Paper } from 'components'
 import { routes } from 'utils'
 import { ArticleHeading } from 'pages/components'
+import { useNavigate } from 'react-router-dom'
 
 export const OwnPlaylists = () => {
   const { playlists } = useSelector(({ playlist }) => playlist)
+
+  const navigate = useNavigate()
+
+  const handleClick = (e) => () => {
+    window.scrollTo(0, 0)
+    navigate(`${routes.playlist.route}/detail/${e.name}`)
+  }
 
   if (!playlists[0]) {
     return <span></span>
@@ -19,11 +27,15 @@ export const OwnPlaylists = () => {
         title={'Explora tus listas de reproducción'}
         pathto={routes.playlist.route}
       />
-      <div className='flex'>
-        {playlists.map((e) => {
+      <div className='ownplaylist-container'>
+        {playlists.map((playlist) => {
           return (
-            <Paper key={e.name} elevation={2}>
-              <h3>{e.name}</h3>
+            <Paper
+              key={playlist.name}
+              elevation={2}
+              onclick={handleClick(playlist)}
+            >
+              <h3>{playlist.name}</h3>
             </Paper>
           )
         })}
