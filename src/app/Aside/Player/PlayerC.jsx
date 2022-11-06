@@ -17,8 +17,9 @@ import { Info } from './Info'
 import { Auxiliar } from './Auxiliar'
 import { MainControls } from './MainControls'
 import { continuePlaying } from 'utils'
+import { setCurrentIndex } from 'store'
 
-export const PlayerC = () => {
+export const PlayerC = ({ ended }) => {
   const { theme } = useThemeContext()
   const dispatch = useDispatch()
   const player = useSelector(({ player }) => player)
@@ -26,16 +27,47 @@ export const PlayerC = () => {
   const lsplaylist = useLocalStoragePlaylists()
 
   const { audio, currentSong } = player
-  const { isLoading, isPlaying } = player
+  const { shuffle } = player
+  const { isLoading, isPlaying, lastSong, firstSong, repeatAll } = player
   const { currentIndex } = player
   const { length, songs } = player.playlist
 
   const handleQuikPlay = () => {
     dispatch(initTrackList(lsplaylist[2]))
   }
+  const handleNextControl = () => {
+    dispatch(turnLoading())
+    dispatch(setCurrentSong(false))
+    if (shuffle) {
+      dispatch(setCurrentIndex(Math.floor(Math.random() * length)))
+      return
+    }
+
+    if (lastSong) {
+      if (repeatAll) {
+        dispatch(setCurrentIndex(0))
+      }
+      return
+    } else {
+      dispatch(setCurrentIndex(currentIndex + 1))
+    }
+  }
+  const handlePrevControl = () => {
+    dispatch(setCurrentSong(false))
+    dispatch(turnLoading())
+    if (firstSong) {
+      if (repeatAll) {
+        dispatch(setCurrentIndex(length - 1))
+      }
+      return
+    } else {
+      dispatch(setCurrentIndex(currentIndex - 1))
+    }
+  }
 
   // handles if metadata of the song is loaded
   useEffect(() => {
+    dispatch(setCurrentSong(false))
     if (audio && length > 0) {
       audio.addEventListener('loadedmetadata', () => {
         dispatch(setCurrentSong(songs[currentIndex]))
@@ -66,6 +98,15 @@ export const PlayerC = () => {
     isPlaying && continuePlaying(audio)
   }, [currentSong.loaded, isLoading])
 
+  // useEffect(() => {
+  // ended()
+  // console.log('leyendo efecto audio.ended ', audio, audio?.ended)
+  // if (audio && audio.ended) {
+  // console.log('condicion en efecto cumplida ', audio.ended)
+  // handleNextControl()
+  // }
+  // }, [])
+
   if (length <= 0) {
     return (
       <div className={`player-container flex-col ${theme}`}>
@@ -89,7 +130,7 @@ export const PlayerC = () => {
         <Loading />
       ) : (
         <>
-          <MainControls />
+          <MainControls next={handleNextControl} prev={handlePrevControl} />
           <Auxiliar />
           <Info />
         </>
