@@ -70,6 +70,9 @@ a {
 
 .view {
   padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   transition: background 0.2s ease;
   transition: color 0.2s ease;
 }
@@ -836,7 +839,7 @@ a {
   gap: 10px;
 }
 
-.article-heading-h2 {
+.article-heading-h2 a {
   border-bottom: 1px solid #00adb5;
 }
 
@@ -987,6 +990,22 @@ a {
     height: 80%;
   }
 }
+.ownplaylist-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  cursor: pointer;
+}
+.ownplaylist-container * {
+  transition: background 0.2s ease;
+}
+.ownplaylist-container *.light {
+  background: #f5f5f5;
+}
+.ownplaylist-container *.dark {
+  background: #00363a;
+}
+
 .all-playlists-container {
   margin-top: 10px;
   width: 100%;
