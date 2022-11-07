@@ -1,5 +1,8 @@
 .view {
   padding: $padding-container;
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
   @include useThemeBg($white, $background);
   @include useThemeText;
   & h2 {
