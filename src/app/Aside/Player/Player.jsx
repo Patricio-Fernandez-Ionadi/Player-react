@@ -21,9 +21,31 @@ export const Player = () => {
     }
   }, [])
 
+  // const handleEndedTrack = (cb) => {
+  //   // cb()
+  // }
+  // track.current?.addEventListener('ended', (e) => {
+  //   // if (e.returnValue){
+  //   // }
+  //   console.log(e)
+  // })
+  // track.current?.addEventListener('start', (e) => {
+  //   // if (e.returnValue){
+  //   // }
+  //   console.log(e)
+  // })
+  // useEffect(() => {
+  //   //   // console.log(track.current?.ended)
+  //   //   if (track.current?.ended) {
+  //   console.log('cancion terminada')
+  //   //   }
+  // }, [track.current?.ended])
+
+  // console.log(track)
+
   return (
     <aside className='player-container-app'>
-      <PlayerC />
+      <PlayerC ended={{}} />
       <audio
         ref={track}
         src={songs ? (songs[0] ? songs[currentIndex]?.src : '') : ''}
