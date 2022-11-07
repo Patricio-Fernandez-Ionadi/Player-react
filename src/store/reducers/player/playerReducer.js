@@ -1,11 +1,13 @@
 const initialState_player = {
   audio: null,
   autoplay: true,
-  firstSong: false,
   currentIndex: 0,
   currentSong: {
     loaded: false,
   },
+  ended: false,
+  firstSong: false,
+  isLoading: true,
   isMuted: false,
   isPlaying: false,
   lastSong: false,
@@ -18,7 +20,6 @@ const initialState_player = {
     length: 0,
   },
   volume: 1,
-  isLoading: true,
 }
 
 // audio
@@ -32,11 +33,6 @@ export const turnAutoplay = () => (dispatch) =>
   dispatch({
     type: 'TURN_AUTOPLAY',
   })
-// firstSong
-export const isFirstSong =
-  (bool = true) =>
-  (dispatch) =>
-    dispatch({ type: 'IS_FIRST_SONG', payload: bool })
 // currentIndex
 export const setCurrentIndex = (index) => (dispatch) =>
   dispatch({
@@ -62,6 +58,23 @@ export const setCurrentSong = (value) => (dispatch) => {
     })
   }
 }
+// ended
+export const endedSong = (bool) => (dispatch) =>
+  dispatch({
+    type: 'SET_ENDED',
+    payload: bool,
+  })
+// firstSong
+export const isFirstSong =
+  (bool = true) =>
+  (dispatch) =>
+    dispatch({ type: 'IS_FIRST_SONG', payload: bool })
+// isLoading
+export const turnLoading = (bool) => (dispatch) =>
+  dispatch({
+    type: 'TURN_LOADING',
+    payload: bool,
+  })
 // isMuted
 export const turnMute = (audio, isMuted) => (dispatch) => {
   dispatch({ type: 'TURN_MUTE' })
@@ -111,12 +124,6 @@ export const setVolume = (val, audio) => {
     })
   }
 }
-// isLoading
-export const turnLoading = (bool) => (dispatch) =>
-  dispatch({
-    type: 'TURN_LOADING',
-    payload: bool,
-  })
 
 export const setSongDuration = (minsSecs, numSecs) => (dispatch) => {
   dispatch({
@@ -180,6 +187,14 @@ export const playerReducer = (state = initialState_player, action) => {
       }
     }
     // -------------------------------------------------------
+    // ended
+    case 'SET_ENDED': {
+      return {
+        ...state,
+        ended: action.payload ? action.payload : !state.ended,
+      }
+    }
+    // -------------------------------------------------------
     // isMuted
     case 'TURN_MUTE': {
       return { ...state, isMuted: !state.isMuted }
@@ -217,11 +232,11 @@ export const playerReducer = (state = initialState_player, action) => {
     case 'INIT_TRACK_LIST': {
       return {
         ...state,
+        currentIndex: action.payload[1],
         playlist: {
           name: action.payload[0].name,
           songs: action.payload[0].songs,
           length: action.payload[0].songs.length,
-          index: action.payload[1],
         },
       }
     }
