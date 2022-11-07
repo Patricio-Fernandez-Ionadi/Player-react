@@ -26,10 +26,12 @@ export const Statusbar = () => {
 
   const handleChange = (e) => {
     let value = Number(e.target.value)
-    audio.currentTime = getPercent(value, Math.round(audio.duration))
+    audio.currentTime = Math.floor(
+      getPercent(value, Math.round(audio.duration))
+    )
   }
 
-  if (audio.ended) nextSong()
+  // if (audio.ended) nextSong()
 
   return (
     <input
