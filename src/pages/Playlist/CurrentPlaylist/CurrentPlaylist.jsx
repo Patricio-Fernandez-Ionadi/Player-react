@@ -1,9 +1,7 @@
-import { useThemeContext } from 'app/context'
-import { Paper } from 'components'
 import { useSelector } from 'react-redux'
+import { SinglePL } from '../components'
 
 export const CurrentPlaylist = () => {
-  const { theme } = useThemeContext()
   const { playlist } = useSelector(({ player }) => player)
 
   if (!playlist.songs[0]) {
@@ -11,17 +9,9 @@ export const CurrentPlaylist = () => {
   }
 
   return (
-    <Paper elevation={4}>
-      <h3>{playlist.name}</h3>
-      <ul className={`current-playlist-list ${theme}`}>
-        {playlist.songs.map((e, i) => {
-          return (
-            <li key={e.name}>
-              {++i} - {e.name}
-            </li>
-          )
-        })}
-      </ul>
-    </Paper>
+    <article>
+      <h2>Estas escuchando {playlist.name}</h2>
+      <SinglePL playlist={playlist} iscurrent={true} />
+    </article>
   )
 }
