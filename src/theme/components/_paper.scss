@@ -1,6 +1,8 @@
 .paper {
   padding: $pad;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
   @include useThemeBg($white_light, $black);
   &.elev-1 {
     @include elevate(1);
