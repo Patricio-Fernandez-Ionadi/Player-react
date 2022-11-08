@@ -1,0 +1,20 @@
+.detail-item {
+  padding: $pad;
+  transition: background-color $fast;
+  &:selected {
+    background-color: none;
+    color: none;
+  }
+  &.current-song {
+    background-color: $primary;
+    color: $primary_darken_dark;
+    &:hover {
+      color: $white;
+    }
+  }
+  &:hover {
+    color: $primary;
+    box-shadow: $shadow inset;
+    cursor: pointer;
+  }
+}
