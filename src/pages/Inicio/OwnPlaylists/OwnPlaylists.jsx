@@ -3,7 +3,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 import { Paper } from 'components'
-import { routes } from 'utils'
+import { routes, showTopPage } from 'utils'
 import { ArticleHeading } from 'pages/components'
 import { useNavigate } from 'react-router-dom'
 
@@ -13,7 +13,7 @@ export const OwnPlaylists = () => {
   const navigate = useNavigate()
 
   const handleClick = (e) => () => {
-    window.scrollTo(0, 0)
+    showTopPage()
     navigate(`${routes.playlist.route}/detail/${e.name}`)
   }
 
