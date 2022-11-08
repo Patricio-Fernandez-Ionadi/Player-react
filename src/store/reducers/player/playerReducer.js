@@ -106,13 +106,11 @@ export const turnShuffle = () => (dispatch) =>
     type: 'TURN_SHUFFLE',
   })
 // playlist
-export const initTrackList =
-  (playlist, index = 0) =>
-  (dispatch) =>
-    dispatch({
-      type: 'INIT_TRACK_LIST',
-      payload: [playlist, index],
-    })
+export const initTrackList = (playlist, index) => (dispatch) =>
+  dispatch({
+    type: 'INIT_TRACK_LIST',
+    payload: [playlist, index],
+  })
 // volume
 export const setVolume = (val, audio) => {
   const valueToSet = Number(val) / 100
@@ -232,7 +230,7 @@ export const playerReducer = (state = initialState_player, action) => {
     case 'INIT_TRACK_LIST': {
       return {
         ...state,
-        currentIndex: action.payload[1],
+        currentIndex: action.payload[1] ? action.payload[1] : 0,
         playlist: {
           name: action.payload[0].name,
           songs: action.payload[0].songs,
@@ -253,7 +251,8 @@ export const playerReducer = (state = initialState_player, action) => {
     case 'TURN_LOADING': {
       return {
         ...state,
-        isLoading: action.payload ? action.payload : !state.isLoading,
+        isLoading:
+          action.payload !== undefined ? action.payload : !state.isLoading,
       }
     }
     // -------------------------------------------------------
