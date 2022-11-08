@@ -39,6 +39,10 @@ a {
   align-items: center;
 }
 
+.gap {
+  gap: 10px;
+}
+
 @media (max-width: 769px) {
   .non-mobile {
     display: none;
@@ -102,6 +106,8 @@ a {
 .paper {
   padding: 5px 10px;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
   transition: background 0.2s ease;
 }
 .paper.light {
@@ -1057,6 +1063,27 @@ a {
 .current-playlist-list {
   list-style: none;
   padding: 0;
+}
+
+.detail-item {
+  padding: 5px 10px;
+  transition: background-color 0.2s ease;
+}
+.detail-item:selected {
+  background-color: none;
+  color: none;
+}
+.detail-item.current-song {
+  background-color: #00adb5;
+  color: #00363a;
+}
+.detail-item.current-song:hover {
+  color: #f5f5f5;
+}
+.detail-item:hover {
+  color: #00adb5;
+  box-shadow: 0 0 3px 0 #484848 inset;
+  cursor: pointer;
 }
 
 .footer-container-app {
