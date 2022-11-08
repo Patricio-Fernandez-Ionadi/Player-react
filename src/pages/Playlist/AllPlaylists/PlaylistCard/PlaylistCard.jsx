@@ -1,7 +1,6 @@
-import { useDispatch } from 'react-redux'
-
 import { useThemeContext } from 'app/context'
-import { initTrackList } from 'store'
+import { useNavigate } from 'react-router-dom'
+import { showTopPage } from 'utils'
 
 import { PlaylistCardDetail } from './PlaylistCardDetail'
 import { PlaylistCardHeader } from './PlaylistCardHeader'
@@ -9,10 +8,11 @@ import { PlaylistCardHeader } from './PlaylistCardHeader'
 export const PlaylistCard = ({ pl }) => {
   const { theme } = useThemeContext()
 
-  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const handleSelectPlaylist = () => {
-    dispatch(initTrackList(pl))
+    showTopPage()
+    navigate(`./detail/${pl.name}`)
   }
 
   let expired = null
