@@ -29,3 +29,5 @@ export const pauseTrack = (audio) => audio?.pause()
 export const getPercent = (value, from) => {
   return (value * from) / 100
 }
+
+export const showTopPage = () => window.scrollTo(0, 0)
