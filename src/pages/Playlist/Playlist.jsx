@@ -21,7 +21,6 @@ export const Playlist = () => {
     return (
       <section className={`view ${theme}`}>
         <AddPlaylistButton />
-        <h2>Listas creadas</h2>
         <CurrentPlaylist />
         <AllPlaylists />
       </section>
