@@ -1,5 +1,5 @@
 export * from './AllPlaylists'
 export * from './CurrentPlaylist'
 export * from './Playlist'
-export * from './PlaylistDetail'
+export * from './Detail'
 export * from './components'
