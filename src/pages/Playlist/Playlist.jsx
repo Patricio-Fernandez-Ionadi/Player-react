@@ -1,33 +1,35 @@
 import { useLocalStoragePlaylists } from 'hooks'
 
-import { AddPlaylistButton, PageControls } from './components'
 import { CurrentPlaylist } from './CurrentPlaylist'
 import { AllPlaylists } from './AllPlaylists'
-import { useThemeContext } from 'app/context'
-import { PrevPageButton } from 'pages/components'
+import {
+  CreatePlaylistButton,
+  PageControls,
+  PrevPageButton,
+} from 'pages/components'
+import { View } from 'components'
 
 export const Playlist = () => {
   const playlists = useLocalStoragePlaylists()
-  const { theme } = useThemeContext()
 
   if (!playlists[0]) {
     return (
-      <section className={`view ${theme}`}>
+      <View>
         <h2>Crea tu primer lista de reproducción</h2>
         <AddPlaylistButton />
         <p>no hay listas de reproducción creadas, ¡haz la tuya!</p>
-      </section>
+      </View>
     )
   } else {
     return (
-      <section className={`view ${theme}`}>
+      <View>
         <PageControls>
           <PrevPageButton />
-          <AddPlaylistButton />
+          <CreatePlaylistButton />
         </PageControls>
         <CurrentPlaylist />
         <AllPlaylists />
-      </section>
+      </View>
     )
   }
 }

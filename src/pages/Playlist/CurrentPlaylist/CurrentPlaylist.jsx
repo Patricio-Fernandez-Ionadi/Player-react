@@ -1,5 +1,5 @@
+import { Article, SinglePL } from 'pages/components'
 import { useSelector } from 'react-redux'
-import { SinglePL } from '../components'
 
 export const CurrentPlaylist = () => {
   const { playlist } = useSelector(({ player }) => player)
@@ -9,9 +9,9 @@ export const CurrentPlaylist = () => {
   }
 
   return (
-    <article>
+    <Article>
       <h2>Estas escuchando {playlist.name}</h2>
       <SinglePL playlist={playlist} iscurrent={true} />
-    </article>
+    </Article>
   )
 }

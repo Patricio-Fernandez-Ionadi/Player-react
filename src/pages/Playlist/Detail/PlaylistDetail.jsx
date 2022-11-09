@@ -2,16 +2,13 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { useThemeContext } from 'app/context'
 import { initTrackList } from 'store'
 
-import { PrevPageButton } from 'pages/components'
-import { Button } from 'components'
-import { PageControls, SinglePL } from '../components'
+import { PageControls, PrevPageButton, SinglePL } from 'pages/components'
+import { Button, View } from 'components'
 
 export const PlaylistDetail = () => {
   const dispatch = useDispatch()
-  const { theme } = useThemeContext()
   // get the current playlist detail from url
   const { playlistname } = useParams()
 
@@ -24,7 +21,7 @@ export const PlaylistDetail = () => {
   const { playlist } = useSelector(({ player }) => player)
 
   return (
-    <section className={`view ${theme}`}>
+    <View>
       <PageControls>
         <PrevPageButton />
         {selected?.name !== playlist?.name ? (
@@ -39,6 +36,6 @@ export const PlaylistDetail = () => {
         playlist={selected}
         iscurrent={selected?.name === playlist?.name}
       />
-    </section>
+    </View>
   )
 }

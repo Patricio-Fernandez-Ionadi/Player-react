@@ -1,21 +1,20 @@
 import React from 'react'
 
-import { useThemeContext } from 'app/context'
-
 import { Banner } from './Banner'
+
+import { View } from 'components'
 import { OwnPlaylists } from './OwnPlaylists'
+
 import { ArticleHeading } from 'pages/components'
+
 import { routes } from 'utils'
 
 export const Inicio = () => {
-  const { theme } = useThemeContext()
-
   return (
     <section>
       <Banner />
-      <div className={`view ${theme} after-banner`}>
+      <View styles='after-banner'>
         <OwnPlaylists />
-
         <article>
           <ArticleHeading
             title={`Crea listas a tu medida`}
@@ -23,7 +22,7 @@ export const Inicio = () => {
           />
           <p>alguna imagen de la UI (link a /lista)</p>
         </article>
-      </div>
+      </View>
     </section>
   )
 }

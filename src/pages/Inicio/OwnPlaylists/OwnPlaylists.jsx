@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 
 import { Paper } from 'components'
 import { routes, showTopPage } from 'utils'
-import { ArticleHeading } from 'pages/components'
+import { Article, ArticleHeading } from 'pages/components'
 import { useNavigate } from 'react-router-dom'
 
 export const OwnPlaylists = () => {
@@ -22,7 +22,7 @@ export const OwnPlaylists = () => {
   }
 
   return (
-    <article>
+    <Article>
       <ArticleHeading
         title={'Explora tus listas de reproducción'}
         pathto={routes.playlist.route}
@@ -40,6 +40,6 @@ export const OwnPlaylists = () => {
           )
         })}
       </div>
-    </article>
+    </Article>
   )
 }

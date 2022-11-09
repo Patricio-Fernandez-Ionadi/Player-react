@@ -1,3 +1,4 @@
+import { Article } from 'pages/components'
 import { useSelector } from 'react-redux'
 import { PlaylistCard } from './PlaylistCard'
 
@@ -5,12 +6,14 @@ export const AllPlaylists = () => {
   const { playlists } = useSelector(({ playlist }) => playlist)
 
   return (
-    <article className='all-playlists-container'>
+    <Article>
       <h2>Listas creadas</h2>
 
-      {playlists.map((e) => {
-        return <PlaylistCard key={e.name} pl={e} />
-      })}
-    </article>
+      <div className='playlist-cards-containter'>
+        {playlists.map((e) => {
+          return <PlaylistCard key={e.name} pl={e} />
+        })}
+      </div>
+    </Article>
   )
 }

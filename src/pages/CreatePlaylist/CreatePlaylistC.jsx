@@ -1,17 +1,16 @@
-import { useThemeContext } from 'app/context'
-import { Loading, Paper } from 'components'
-import { PrevPageButton } from 'pages/components'
-import { PageControls } from 'pages/Playlist'
 import { useCreatePlaylist } from './Context'
+import { Loading, Paper, View } from 'components'
+
+import { PrevPageButton, PageControls } from 'pages/components'
+
 import { NameInput } from './Name'
 import { Table } from './Table'
 
 export const CreatePlaylistC = () => {
   const { songs } = useCreatePlaylist()
-  const { theme } = useThemeContext()
 
   return (
-    <section className={`view ${theme}`}>
+    <View>
       <PageControls>
         <PrevPageButton />
       </PageControls>
@@ -24,6 +23,6 @@ export const CreatePlaylistC = () => {
       ) : (
         <Loading />
       )}
-    </section>
+    </View>
   )
 }
