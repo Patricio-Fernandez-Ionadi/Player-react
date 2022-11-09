@@ -1,9 +1,10 @@
 import { useLocalStoragePlaylists } from 'hooks'
 
-import { AddPlaylistButton } from './components'
+import { AddPlaylistButton, PageControls } from './components'
 import { CurrentPlaylist } from './CurrentPlaylist'
 import { AllPlaylists } from './AllPlaylists'
 import { useThemeContext } from 'app/context'
+import { PrevPageButton } from 'pages/components'
 
 export const Playlist = () => {
   const playlists = useLocalStoragePlaylists()
@@ -20,7 +21,10 @@ export const Playlist = () => {
   } else {
     return (
       <section className={`view ${theme}`}>
-        <AddPlaylistButton />
+        <PageControls>
+          <PrevPageButton />
+          <AddPlaylistButton />
+        </PageControls>
         <CurrentPlaylist />
         <AllPlaylists />
       </section>
