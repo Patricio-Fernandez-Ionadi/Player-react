@@ -3,7 +3,6 @@
   flex-wrap: wrap;
   gap: calc($gap / 2);
   cursor: pointer;
-  // justify-content: center;
   & * {
     @include useThemeBg($white, $primary_darken_dark);
   }

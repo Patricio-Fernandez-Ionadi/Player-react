@@ -1,14 +1,13 @@
-.all-playlists-container {
-  margin-top: $padding-container-tb;
-  width: $full;
+.playlist-cards-containter {
   display: grid;
   grid-template-columns: 1fr;
-  // place-items: center;
+  grid-template-rows: auto;
   gap: $gap;
 }
 
 @media (min-width: $medium) {
-  .all-playlists-container {
-    grid-template-columns: repeat(3, 1fr);
+  .playlist-cards-containter {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
   }
 }
