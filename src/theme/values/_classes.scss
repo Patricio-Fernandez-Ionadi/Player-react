@@ -1,13 +1,17 @@
-.flex {
+.df {
   display: flex;
+}
+.jcc {
   justify-content: center;
+}
+
+.aic {
   align-items: center;
 }
-.flex-col {
+
+.fc {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .gap {
