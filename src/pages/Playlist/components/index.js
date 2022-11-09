@@ -1,2 +1,2 @@
-export * from './AddPlaylistButton'
+export * from './Controls'
 export * from './PlaylistView'
