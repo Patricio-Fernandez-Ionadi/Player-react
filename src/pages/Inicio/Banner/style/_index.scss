@@ -9,6 +9,8 @@
   justify-content: center;
   .banner-title {
     position: relative;
+    text-align: center;
+    top: -48px;
     z-index: 2;
     color: $white;
     text-shadow: 0 0 3px $black;
@@ -33,11 +35,12 @@
     left: 0;
     height: $full;
     .banner-img {
+      display: block;
       max-width: 100%;
       width: $vw;
       height: 100%;
-      // display: block;
       object-fit: cover;
+      border-bottom: 2px solid $black_dark;
     }
   }
 }
