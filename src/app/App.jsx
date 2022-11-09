@@ -1,4 +1,4 @@
-import { useMenuMobileContext } from 'app/context'
+import { useMenuMobileContext, useThemeContext } from 'app/context'
 
 import { Header } from './Header'
 import { Player } from 'app/Aside/Player'
@@ -9,8 +9,11 @@ import { Footer } from './Footer'
 export const App = () => {
   const { isOpen, turnMenu } = useMenuMobileContext()
   const closeMenu = () => isOpen && turnMenu(false)
+
+  const { theme } = useThemeContext()
+
   return (
-    <div className='main-container-app' onClick={closeMenu}>
+    <div className={`main-container-app ${theme}`} onClick={closeMenu}>
       <Header />
       <Player />
       <Content>
