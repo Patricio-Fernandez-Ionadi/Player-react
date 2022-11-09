@@ -1,10 +1,12 @@
 import { useLocation, useNavigate } from 'react-router-dom'
+import { showTopPage } from 'utils'
 
 export const PlaylistCardDetail = ({ playlist }) => {
   const navigate = useNavigate()
   const { pathname } = useLocation()
 
   const handleMoreItems = (e) => {
+    showTopPage()
     navigate(`./detail/${playlist.name}`, { from: pathname })
   }
 
