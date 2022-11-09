@@ -4,6 +4,8 @@ import { useThemeContext } from 'app/context'
 
 import { Banner } from './Banner'
 import { OwnPlaylists } from './OwnPlaylists'
+import { ArticleHeading } from 'pages/components'
+import { routes } from 'utils'
 
 export const Inicio = () => {
   const { theme } = useThemeContext()
@@ -11,14 +13,17 @@ export const Inicio = () => {
   return (
     <section>
       <Banner />
-      <article className={`view ${theme} after-banner`}>
+      <div className={`view ${theme} after-banner`}>
         <OwnPlaylists />
 
-        <h2>Crea listas a tu medida</h2>
-        <div>
+        <article>
+          <ArticleHeading
+            title={`Crea listas a tu medida`}
+            pathto={routes.lista.route}
+          />
           <p>alguna imagen de la UI (link a /lista)</p>
-        </div>
-      </article>
+        </article>
+      </div>
     </section>
   )
 }
