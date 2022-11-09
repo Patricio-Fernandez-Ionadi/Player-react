@@ -1,9 +1,12 @@
 .footer-container-app {
+  display: grid;
+  grid-template-columns: 1fr minmax(1px, 200px) minmax(1px, 200px);
+  grid-template-rows: 1fr;
+  gap: $gap;
   padding: $padding-container;
   @include useThemeBg($primary, $primary_darken_dark);
   @include useThemeText;
   .footer-column {
-    // flex: 1;
     width: $full;
   }
 }
