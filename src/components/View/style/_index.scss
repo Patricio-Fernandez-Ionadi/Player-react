@@ -1,8 +1,9 @@
 .view {
-  padding: $padding-container;
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: $gap;
+  grid-template-columns: minmax($small, $large);
+  justify-content: center;
+  padding: $padding-container;
   @include useThemeBg($white, $background);
   @include useThemeText;
   & h2 {
