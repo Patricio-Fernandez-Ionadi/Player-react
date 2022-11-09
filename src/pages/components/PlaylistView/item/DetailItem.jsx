@@ -5,7 +5,7 @@ import { turnLoading } from 'store'
 import { setCurrentSong } from 'store'
 import { initTrackList } from 'store'
 
-export const PlaylistDetailItem = ({ element, index, playlist, iscurrent }) => {
+export const DetailItem = ({ element, index, playlist, iscurrent }) => {
   const dispatch = useDispatch()
 
   const { currentIndex, isPlaying } = useSelector(({ player }) => player)

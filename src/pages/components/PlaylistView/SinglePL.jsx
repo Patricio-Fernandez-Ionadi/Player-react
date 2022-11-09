@@ -1,6 +1,6 @@
 import { Paper } from 'components'
 import React from 'react'
-import { PlaylistDetailItem } from './PlaylistDetailItem'
+import { DetailItem } from './item/DetailItem.jsx'
 export const SinglePL = ({ playlist, iscurrent }) => {
   if (!playlist) {
     return <span></span>
@@ -11,7 +11,7 @@ export const SinglePL = ({ playlist, iscurrent }) => {
       <h3>{playlist.name}</h3>
       {playlist?.songs?.map((e, i) => {
         return (
-          <PlaylistDetailItem
+          <DetailItem
             key={e.name}
             element={e}
             index={i}
