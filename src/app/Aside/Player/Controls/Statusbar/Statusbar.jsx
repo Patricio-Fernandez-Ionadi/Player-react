@@ -31,8 +31,6 @@ export const Statusbar = () => {
     )
   }
 
-  // if (audio.ended) nextSong()
-
   return (
     <input
       type='range'
