@@ -6,7 +6,7 @@ import {
 
 export const MainControls = ({ next, prev }) => {
   return (
-    <div className='comands-container flex'>
+    <div className='comands-container'>
       <ControlPrev prev={prev} />
       <ControlPlayPause />
       <ControlNext next={next} />

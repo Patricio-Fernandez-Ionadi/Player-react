@@ -1,48 +1,42 @@
 .navbar-list-container {
   @include useThemeBg($primary_light, $primary_darken);
-  list-style: none;
-  padding: $pad;
-
   height: calc($vh - $navigation-height);
-  width: $navigation-width-mobile;
-
-  position: absolute;
-  top: $navigation-height;
-  right: -$navigation-width-mobile;
-  z-index: 1;
-
+  list-style: none;
   opacity: 0;
+  padding: $pad;
+  position: absolute;
+  right: -$navigation-width-mobile;
+  top: $navigation-height;
   transition: all 0.4s;
+  width: $navigation-width-mobile;
+  z-index: 1;
   &.menu-open {
-    top: $navigation-height;
     opacity: 1;
     right: 0;
+    top: $navigation-height;
   }
   .navbar-list-element {
-    height: $list-element-height;
-    margin: 5px 0;
-    line-height: $list-element-height;
-    padding: $pad;
-
-    // box-shadow: $shadow-light;
-    // border-radius: 6px 25px 6px 25px;
-
-    overflow: hidden;
+    @extend %flex-row-center;
     cursor: pointer;
+    height: $list-element-height;
+    line-height: $list-element-height;
+    margin: 5px 0;
+    overflow: hidden;
+    padding: $pad;
     .navbar-list-link,
     .navbar-list-icon {
       @include useThemeText;
     }
     .navbar-list-link {
-      letter-spacing: 1px;
-      font-size: 1.2em;
       display: block;
-      width: $full;
+      font-size: 1.2em;
+      letter-spacing: 1px;
       padding-left: 10px;
+      width: $full;
     }
     .navbar-list-icon {
       position: relative;
-      top: 4px;
+      top: 8px;
     }
   }
 }
@@ -50,10 +44,10 @@
 @media (min-width: $medium) {
   .navbar-list-container {
     @include useThemeBg();
-    width: $navigation-width;
+    left: 0;
     opacity: 1;
     position: relative;
     top: 0;
-    left: 0;
+    width: $navigation-width;
   }
 }

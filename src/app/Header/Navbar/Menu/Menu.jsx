@@ -9,7 +9,7 @@ export const Menu = () => {
   const { theme } = useThemeContext()
 
   return (
-    <div className='navigation-right navigation-menu-container flex'>
+    <div className='navigation-right navigation-menu-container df aic jcc'>
       <button className={`menu-button ${theme}`} onClick={turnMenu}>
         {isOpen ? <CloseIcon /> : <MenuIcon />}
       </button>

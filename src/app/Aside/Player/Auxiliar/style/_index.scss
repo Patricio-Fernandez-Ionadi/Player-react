@@ -1,4 +1,5 @@
 .auxiliar-container {
+  @extend %flex-row-center;
   & .auxiliar-control {
     min-height: 20px;
     height: 20px;

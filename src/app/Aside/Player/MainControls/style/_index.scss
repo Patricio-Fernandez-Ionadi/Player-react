@@ -1,4 +1,5 @@
 .comands-container {
+  @extend %flex-row-center;
   .play-button {
     width: $button-height + 10px;
     height: $button-height + 10px;

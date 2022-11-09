@@ -20,10 +20,7 @@ const TableRow = ({ song }) => {
   const selectedRow = checkSong(song.e) ? 'clicked-once' : ''
 
   return (
-    <div
-      className={`table-row flex ${selectedRow}`}
-      onClick={handleOneClickRow}
-    >
+    <div className={`table-row df ${selectedRow}`} onClick={handleOneClickRow}>
       <div className='non-mobile row-item'>{songIndex}</div>
       <div className='row-item'>{name}</div>
       <div className='non-mobile row-item'>{album}</div>

@@ -3,6 +3,7 @@
 @import '../MainControls/style/_index.scss';
 
 .player-container {
+  @extend %flex-col-center;
   color: $white;
   gap: $gap;
   padding: $padding-container;
