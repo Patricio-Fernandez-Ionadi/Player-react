@@ -6,18 +6,20 @@ import { useSelector } from 'react-redux'
 import { useThemeContext } from 'app/context'
 import { useLocalStoragePlaylists } from 'hooks'
 
-import { setCurrentSong } from 'store'
-import { turnLoading } from 'store'
 import { initTrackList } from 'store'
+import { setCurrentSong } from 'store'
+import { setCurrentIndex } from 'store'
+import { turnLoading } from 'store'
 import { isFirstSong } from 'store'
 import { isLastSong } from 'store'
 
 import { Button, Loading } from 'components'
+
 import { Info } from './Info'
 import { Auxiliar } from './Auxiliar'
 import { MainControls } from './MainControls'
+
 import { continuePlaying } from 'utils'
-import { setCurrentIndex } from 'store'
 
 export const PlayerC = ({ ended }) => {
   const { theme } = useThemeContext()
@@ -98,18 +100,9 @@ export const PlayerC = ({ ended }) => {
     isPlaying && continuePlaying(audio)
   }, [currentSong.loaded, isLoading])
 
-  // useEffect(() => {
-  // ended()
-  // console.log('leyendo efecto audio.ended ', audio, audio?.ended)
-  // if (audio && audio.ended) {
-  // console.log('condicion en efecto cumplida ', audio.ended)
-  // handleNextControl()
-  // }
-  // }, [])
-
   if (length <= 0) {
     return (
-      <div className={`player-container flex-col ${theme}`}>
+      <div className={`player-container ${theme}`}>
         <p>Añande una playlist!</p>
         {lsplaylist[0] ? (
           <Button theme={theme} primary onclick={handleQuikPlay}>
@@ -125,7 +118,7 @@ export const PlayerC = ({ ended }) => {
   }
 
   return (
-    <div className={`player-container flex-col ${theme}`}>
+    <div className={`player-container ${theme}`}>
       {isLoading ? (
         <Loading />
       ) : (
