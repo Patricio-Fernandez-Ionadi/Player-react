@@ -7,7 +7,7 @@
   min-height: $vh;
   position: relative;
   padding-top: $navigation-height;
-  background-color: $white;
+  @include useThemeBg($white, $black_dark);
   .header-container-app {
     position: fixed;
     top: 0;
