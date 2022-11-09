@@ -7,7 +7,7 @@ import { initTrackList } from 'store'
 
 import { PrevPageButton } from 'pages/components'
 import { Button } from 'components'
-import { SinglePL } from '../components'
+import { PageControls, SinglePL } from '../components'
 
 export const PlaylistDetail = () => {
   const dispatch = useDispatch()
@@ -25,7 +25,7 @@ export const PlaylistDetail = () => {
 
   return (
     <section className={`view ${theme}`}>
-      <nav className='flex'>
+      <PageControls>
         <PrevPageButton />
         {selected?.name !== playlist?.name ? (
           <Button primary onclick={() => dispatch(initTrackList(selected))}>
@@ -34,7 +34,7 @@ export const PlaylistDetail = () => {
         ) : (
           <span></span>
         )}
-      </nav>
+      </PageControls>
       <SinglePL
         playlist={selected}
         iscurrent={selected?.name === playlist?.name}
