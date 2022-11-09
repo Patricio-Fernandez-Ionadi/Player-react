@@ -6,7 +6,7 @@ import { useCurrentSong } from 'app/Aside/Player/hooks'
 
 import { continuePlaying } from 'utils/helpers'
 
-export const PlayerProvider = ({ children }) => {
+const PlayerProvider = ({ children }) => {
   // ELEMENT
   const track = useRef()
   // States
