@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
-import { About, CreatePlaylist, Inicio, Playlist, PlaylistDetail } from 'pages'
+import { About, CreatePlaylist, Inicio, PlaylistDetail } from 'pages'
 import { routes } from 'utils'
+import { PlaylistRoute } from './Playlist/PlaylistRoute'
 
 export const AppRouter = () => {
   return (
@@ -8,11 +9,10 @@ export const AppRouter = () => {
       {/* PRIVATE ROUTES */}
       <Route path={routes.home.route} element={<Inicio />} />
       {/* Playlists */}
-      <Route path={routes.playlist.route} element={<Playlist />} />
-      <Route
-        path={`${routes.playlist.route}/detail/:playlistname`}
-        element={<PlaylistDetail />}
-      />
+      <Route path={routes.playlist.route} element={<PlaylistRoute />}>
+        <Route path={`detail/:playlistname`} element={<PlaylistDetail />} />
+      </Route>
+
       {/* Create Playlist */}
       <Route path='/lista' element={<CreatePlaylist />} />
       {/* PUBLIC ROUTES */}
