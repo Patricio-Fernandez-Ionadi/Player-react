@@ -1,27 +1,36 @@
 // Dark mode
-@mixin useThemeText($lightc: $black, $darkc: $white) {
+@mixin useThemeText($light: $black, $dark: $white) {
   transition: color $fast;
   &.light {
-    color: $lightc;
+    color: $light;
     & a {
-      color: $lightc;
+      color: $light;
     }
   }
   &.dark {
-    color: $darkc;
+    color: $dark;
     & a {
-      color: $darkc;
+      color: $dark;
     }
   }
 }
-@mixin useThemeBg($lightc: transparent, $darkc: transparent) {
+@mixin useThemeBg($light: transparent, $dark: transparent) {
   transition: background $fast;
   &.light {
-    background: $lightc;
+    background: $light;
   }
   &.dark {
-    background: $darkc;
+    background: $dark;
   }
+}
+@mixin useThemeShadowInset(
+  $left: 0,
+  $top: 0,
+  $blur: 3px,
+  $size: 0,
+  $color: $black
+) {
+  box-shadow: $left $top $blur $size $color inset;
 }
 
 // Elevation Effect
