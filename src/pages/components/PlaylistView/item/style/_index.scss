@@ -1,3 +1,14 @@
 .detail-item {
-  background-color: red;
+  padding: 3px;
+  margin-bottom: 2px;
+  border-radius: 2px;
+  cursor: pointer;
+  @include useThemeShadowInset($blur: 2px, $color: $black_dark);
+  &:hover {
+    @include useThemeShadowInset($blur: 7px, $color: $black_dark);
+  }
+  &.current-song {
+    @include useThemeBg($primary_darken, $primary);
+    @include useThemeText($white, $primary_darken_dark);
+  }
 }
