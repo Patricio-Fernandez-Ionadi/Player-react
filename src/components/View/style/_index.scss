@@ -4,7 +4,6 @@
   grid-template-columns: minmax($small, $large);
   justify-content: center;
   padding: $padding-container;
-  @include useThemeBg($white, $background);
   @include useThemeText;
   & h2 {
     text-align: center;
