@@ -284,11 +284,12 @@ a {
 }
 .tooltip .tooltip-span {
   position: absolute;
-  top: -53px;
+  top: -38px;
   left: 0;
   background-color: #c2c2c2;
   padding: 5px 10px;
   font-size: 14px;
+  color: #212121;
   border: 1px solid #8e8e8e;
   border-radius: 3px;
   opacity: 0;
@@ -652,6 +653,39 @@ a {
 
 .article-heading-h2 a {
   border-bottom: 1px solid #00adb5;
+}
+
+.detail-item {
+  padding: 3px;
+  margin-bottom: 2px;
+  border-radius: 2px;
+  cursor: pointer;
+  box-shadow: 0 0 2px 0 #121212 inset;
+}
+.detail-item:hover {
+  box-shadow: 0 0 7px 0 #121212 inset;
+}
+.detail-item.current-song {
+  transition: background 0.2s ease;
+  transition: color 0.2s ease;
+}
+.detail-item.current-song.light {
+  background: #006064;
+}
+.detail-item.current-song.dark {
+  background: #00adb5;
+}
+.detail-item.current-song.light {
+  color: #f5f5f5;
+}
+.detail-item.current-song.light a {
+  color: #f5f5f5;
+}
+.detail-item.current-song.dark {
+  color: #00363a;
+}
+.detail-item.current-song.dark a {
+  color: #00363a;
 }
 
 .table-container {
