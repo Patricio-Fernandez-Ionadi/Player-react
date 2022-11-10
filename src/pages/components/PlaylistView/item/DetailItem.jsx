@@ -1,3 +1,4 @@
+import { useThemeContext } from 'app/context'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { turnPlaying } from 'store'
@@ -7,6 +8,7 @@ import { initTrackList } from 'store'
 
 export const DetailItem = ({ element, index, playlist, iscurrent }) => {
   const dispatch = useDispatch()
+  const { theme } = useThemeContext()
 
   const { currentIndex, isPlaying } = useSelector(({ player }) => player)
 
@@ -24,7 +26,7 @@ export const DetailItem = ({ element, index, playlist, iscurrent }) => {
 
   return (
     <p
-      className={`detail-item ${isCurrentSong}`}
+      className={`detail-item ${isCurrentSong} ${theme}`}
       onDoubleClick={handleSelectPlIndex}
     >
       {element.name}
