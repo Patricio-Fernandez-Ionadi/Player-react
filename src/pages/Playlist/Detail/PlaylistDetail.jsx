@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { initTrackList } from 'store'
 
-import { PageControls, PrevPageButton, SinglePL } from 'pages/components'
+import { PageControls, SinglePL } from 'pages/components'
 import { Button, View } from 'components'
 
 export const PlaylistDetail = () => {
@@ -23,7 +23,6 @@ export const PlaylistDetail = () => {
   return (
     <View>
       <PageControls>
-        <PrevPageButton />
         {selected?.name !== playlist?.name ? (
           <Button primary onclick={() => dispatch(initTrackList(selected))}>
             Seleccionar lista

@@ -24,7 +24,6 @@ export const Playlist = () => {
     return (
       <View>
         <PageControls>
-          <PrevPageButton />
           <CreatePlaylistButton />
         </PageControls>
         <CurrentPlaylist />
