@@ -1,6 +1,5 @@
 import { useThemeContext } from 'app/context'
 import { useNavigate } from 'react-router-dom'
-import { showTopPage } from 'utils'
 
 import { PlaylistCardDetail } from './PlaylistCardDetail'
 import { PlaylistCardHeader } from './PlaylistCardHeader'
@@ -11,7 +10,6 @@ export const PlaylistCard = ({ pl }) => {
   const navigate = useNavigate()
 
   const handleSelectPlaylist = () => {
-    showTopPage()
     navigate(`./detail/${pl.name}`)
   }
 
