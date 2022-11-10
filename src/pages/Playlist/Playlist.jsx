@@ -2,11 +2,7 @@ import { useLocalStoragePlaylists } from 'hooks'
 
 import { CurrentPlaylist } from './CurrentPlaylist'
 import { AllPlaylists } from './AllPlaylists'
-import {
-  CreatePlaylistButton,
-  PageControls,
-  PrevPageButton,
-} from 'pages/components'
+import { CreatePlaylistButton, PageControls } from 'pages/components'
 import { View } from 'components'
 
 export const Playlist = () => {
@@ -16,7 +12,7 @@ export const Playlist = () => {
     return (
       <View>
         <h2>Crea tu primer lista de reproducción</h2>
-        <AddPlaylistButton />
+        <CreatePlaylistButton />
         <p>no hay listas de reproducción creadas, ¡haz la tuya!</p>
       </View>
     )
