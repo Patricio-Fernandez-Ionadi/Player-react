@@ -2,7 +2,7 @@
 
 ### Ver el proyecto en [malacara.netlify.app](https://malacara.netlify.app/)
 
-ultimo build `commit e4b898ae97096240c05767634d8df30f4b7ebf41` 08/11/22
+ultimo build `commit 4ec192cfaf664e15c1ab7ac08d589be5b44228e8` 10/11/22
 
 Actualmente trabajando en: estilos de tabla para lista de canciones
 
