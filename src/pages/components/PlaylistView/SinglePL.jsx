@@ -7,7 +7,7 @@ export const SinglePL = ({ playlist, iscurrent }) => {
   }
 
   return (
-    <Paper elevation={4} styles='gap'>
+    <Paper elevation={4}>
       <h3>{playlist.name}</h3>
       {playlist?.songs?.map((e, i) => {
         return (
