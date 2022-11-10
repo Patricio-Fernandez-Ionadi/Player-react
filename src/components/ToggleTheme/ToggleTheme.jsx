@@ -1,5 +1,6 @@
-import { useThemeContext } from 'app/context'
 import { useState } from 'react'
+
+import { useThemeContext } from 'app/context'
 
 export const ToggleTheme = () => {
   const { toggleTheme } = useThemeContext()
@@ -11,13 +12,17 @@ export const ToggleTheme = () => {
     setChecked(!checked)
   }
 
+  const finalStyles = `
+  toggle-theme-input
+  ${checked ? 'active' : ''}
+  `
+
   return (
     <input
       type='checkbox'
       name='toggletheme'
-      id='toggletheme'
       onClick={handleThemeSelector}
-      className={`toggle-theme-input ${checked ? 'active' : ''}`}
+      className={finalStyles}
     />
   )
 }

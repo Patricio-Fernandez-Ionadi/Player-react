@@ -1,23 +1,9 @@
 import { useEffect, useState } from 'react'
 
 export const Tooltip = (props) => {
-  let finalInlineStyles = {}
-
   const [isActive, setIsActive] = useState()
 
   const { children, title } = props
-
-  // position
-  // const { position } = props
-  // size
-  const { width } = props
-
-  if (width) {
-    finalInlineStyles = {
-      ...finalInlineStyles,
-      maxWidth: `${width}px`,
-    }
-  }
 
   // types of call
   //  - recives a boolean to show the tooltip
@@ -56,7 +42,7 @@ export const Tooltip = (props) => {
     }, 3000)
   }
 
-  const finalClasses = `
+  const finalStyles = `
   tooltip
   ${isActive ? 'active' : ''}
   `
@@ -64,10 +50,8 @@ export const Tooltip = (props) => {
   // Hover render
   if (hover) {
     return (
-      <div className={finalClasses}>
-        <span className='tooltip-span' style={finalInlineStyles}>
-          {title}
-        </span>
+      <div className={finalStyles}>
+        <span className='tooltip-span'>{title}</span>
         <div onMouseEnter={handleHover} onMouseLeave={handleHover}>
           {children}
         </div>
@@ -78,10 +62,8 @@ export const Tooltip = (props) => {
   // Click render
   if (click) {
     return (
-      <div className={finalClasses}>
-        <span className='tooltip-span' style={finalInlineStyles}>
-          {title}
-        </span>
+      <div className={finalStyles}>
+        <span className='tooltip-span'>{title}</span>
         <div onClick={handleClick}>{children}</div>
       </div>
     )
@@ -89,10 +71,8 @@ export const Tooltip = (props) => {
 
   // Condition render
   return (
-    <div className={finalClasses}>
-      <span className='tooltip-span' style={finalInlineStyles}>
-        {title}
-      </span>
+    <div className={finalStyles}>
+      <span className='tooltip-span'>{title}</span>
       <div>{children}</div>
     </div>
   )
