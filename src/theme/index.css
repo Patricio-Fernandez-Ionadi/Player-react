@@ -309,14 +309,7 @@ a {
   grid-template-columns: minmax(320px, 1025px);
   justify-content: center;
   padding: 10px 20px;
-  transition: background 0.2s ease;
   transition: color 0.2s ease;
-}
-.view.light {
-  background: #f5f5f5;
-}
-.view.dark {
-  background: #121212;
 }
 .view.light {
   color: #212121;
